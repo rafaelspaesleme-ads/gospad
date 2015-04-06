@@ -141,6 +141,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_fornecedor_atualizaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_produto_atualiza">
           <Properties>
@@ -171,6 +174,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_produto_atualizaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_vs_atualiza">
           <Properties>
@@ -201,6 +207,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_vs_atualizaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_contas_atualiza">
           <Properties>
@@ -231,6 +240,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_contas_atualizaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_contato_atualiza">
           <Properties>
@@ -261,6 +273,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_contato_atualizaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_colaboradores_atualiza">
           <Properties>
@@ -291,6 +306,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_colaboradores_atualizaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -11,14 +11,14 @@ import br.com.visao.telas.cadastro.*;
  *
  * @author Rafael Paes Leme
  */
-public class clientes extends javax.swing.JInternalFrame {
+public class fornecedores extends javax.swing.JInternalFrame {
     
     
 
     /**
      * Creates new form clientes
      */
-    public clientes() {
+    public fornecedores() {
     
         
         
@@ -36,38 +36,38 @@ public class clientes extends javax.swing.JInternalFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        id_ccliente = new javax.swing.JTextField();
+        id_cfornecedores = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        nome_ccliente = new javax.swing.JTextField();
+        nome_cfornecedores = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        end_ccliente = new javax.swing.JTextField();
+        end_cfornecedores = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cep_ccliente = new javax.swing.JFormattedTextField();
+        cep_cfornecedores = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
-        cidade_ccliente = new javax.swing.JTextField();
+        cidade_cfornecedores = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cbx_uf_ccliente = new javax.swing.JComboBox();
+        cbx_uf_cfornecedores = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
-        cnpj_ccliente = new javax.swing.JFormattedTextField();
+        cnpj_cfornecedores = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        cpf_ccliente = new javax.swing.JFormattedTextField();
+        cpf_cfornecedores = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        reg_cnpj_ccliente = new javax.swing.JFormattedTextField();
+        registro_cnpj_cfornecedores = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
-        dt_nasc__ccliente = new javax.swing.JFormattedTextField();
+        dt_nasc_cfornecedores = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
-        tel_com_ccliente = new javax.swing.JFormattedTextField();
+        tel_com1_cfornecedores = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
-        tel_resid_ccliente = new javax.swing.JFormattedTextField();
+        tel_com2_cfornecedores = new javax.swing.JFormattedTextField();
         jLabel13 = new javax.swing.JLabel();
-        cel_ccliente = new javax.swing.JFormattedTextField();
+        cel_cfornecedores = new javax.swing.JFormattedTextField();
         jLabel14 = new javax.swing.JLabel();
-        fax_ccliente = new javax.swing.JTextField();
+        fax_cfornecedores = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        email_ccliente = new javax.swing.JTextField();
+        email_cfornecedores = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        obs_ccliente = new javax.swing.JTextArea();
+        obs_cfornecedores = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -75,13 +75,13 @@ public class clientes extends javax.swing.JInternalFrame {
         jComboBox2 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        bt_salvar_ccliente = new javax.swing.JButton();
-        bt_limpar_ccliente = new javax.swing.JButton();
+        bt_salvar_cfornecedores = new javax.swing.JButton();
+        bt_limpar_cfornecedores = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setClosable(true);
         setIconifiable(true);
-        setTitle("Atualização de Clientes");
+        setTitle("Atualização de Fornecedores");
         setOpaque(true);
         setVisible(true);
 
@@ -91,133 +91,131 @@ public class clientes extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("ID");
 
-        id_ccliente.setBackground(new java.awt.Color(255, 255, 204));
-        id_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        id_ccliente.setEnabled(false);
+        id_cfornecedores.setBackground(new java.awt.Color(255, 255, 204));
+        id_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        id_cfornecedores.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nome");
 
-        nome_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        nome_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel3.setText("Endereço");
 
-        end_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        end_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel4.setText("CEP");
 
         try {
-            cep_ccliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            cep_cfornecedores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        cep_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cep_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel5.setText("Cidade");
 
-        cidade_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cidade_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("UF");
 
-        cbx_uf_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        cbx_uf_ccliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC ", "AL ", "AP ", "AM ", "BA ", "CE ", "DF ", "GO ", "ES ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SP ", "SC ", "SE ", "TO" }));
+        cbx_uf_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_uf_cfornecedores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC ", "AL ", "AP ", "AM ", "BA ", "CE ", "DF ", "GO ", "ES ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SP ", "SC ", "SE ", "TO" }));
 
         jLabel8.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel8.setText("CNPJ");
 
         try {
-            cnpj_ccliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+            cnpj_cfornecedores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        cnpj_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cnpj_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel7.setText("CPF");
 
         try {
-            cpf_ccliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            cpf_cfornecedores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        cpf_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cpf_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel9.setText("Registro");
 
         try {
-            reg_cnpj_ccliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            registro_cnpj_cfornecedores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        reg_cnpj_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        registro_cnpj_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel10.setText("Nascimento");
 
         try {
-            dt_nasc__ccliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            dt_nasc_cfornecedores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        dt_nasc__ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        dt_nasc_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jLabel11.setText("Comercial");
+        jLabel11.setText("Comercial 1");
 
         try {
-            tel_com_ccliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            tel_com1_cfornecedores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        tel_com_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        tel_com1_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jLabel12.setText("Residencial");
+        jLabel12.setText("Comercial 2");
 
         try {
-            tel_resid_ccliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            tel_com2_cfornecedores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        tel_resid_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        tel_com2_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Cel");
 
         try {
-            cel_ccliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# ####-####")));
+            cel_cfornecedores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        cel_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cel_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Fax");
 
-        fax_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-
         jLabel15.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel15.setText("Email");
 
-        email_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        email_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel16.setText("Observação");
 
-        obs_ccliente.setColumns(20);
-        obs_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        obs_ccliente.setLineWrap(true);
-        obs_ccliente.setRows(5);
-        jScrollPane1.setViewportView(obs_ccliente);
+        obs_cfornecedores.setColumns(20);
+        obs_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        obs_cfornecedores.setLineWrap(true);
+        obs_cfornecedores.setRows(5);
+        jScrollPane1.setViewportView(obs_cfornecedores);
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 255)));
@@ -293,140 +291,135 @@ public class clientes extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(id_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(id_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nome_ccliente))
+                                .addComponent(nome_cfornecedores))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(end_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(end_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(cidade_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cidade_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cep_ccliente)
-                                    .addComponent(cbx_uf_ccliente, 0, 91, Short.MAX_VALUE)))
+                                    .addComponent(cep_cfornecedores)
+                                    .addComponent(cbx_uf_cfornecedores, 0, 91, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(tel_com_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tel_com1_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tel_resid_ccliente))
+                                        .addComponent(tel_com2_cfornecedores))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(cnpj_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cnpj_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel9)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(reg_cnpj_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(registro_cnpj_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cpf_ccliente)
-                                    .addComponent(cel_ccliente, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                                    .addComponent(cpf_cfornecedores)
+                                    .addComponent(cel_cfornecedores, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dt_nasc__ccliente)
-                                    .addComponent(fax_ccliente)))
-                            .addComponent(email_ccliente)
+                                    .addComponent(dt_nasc_cfornecedores)
+                                    .addComponent(fax_cfornecedores)))
+                            .addComponent(email_cfornecedores)
                             .addComponent(jScrollPane1))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 73, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(id_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(id_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(nome_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nome_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(end_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(end_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(cep_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cep_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(cidade_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cidade_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(cbx_uf_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbx_uf_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(cnpj_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cnpj_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(reg_cnpj_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(registro_cnpj_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(cpf_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpf_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(dt_nasc__ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dt_nasc_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(tel_com_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tel_com1_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(tel_resid_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tel_com2_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
-                    .addComponent(cel_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cel_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
-                    .addComponent(fax_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fax_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(email_ccliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(email_cfornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(50, 50, 50))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 153));
 
-        bt_salvar_ccliente.setBackground(new java.awt.Color(0, 153, 204));
-        bt_salvar_ccliente.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
-        bt_salvar_ccliente.setForeground(new java.awt.Color(255, 255, 255));
-        bt_salvar_ccliente.setText("SALVAR");
-        bt_salvar_ccliente.setBorderPainted(false);
-        bt_salvar_ccliente.setContentAreaFilled(false);
-        bt_salvar_ccliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bt_salvar_ccliente.setOpaque(true);
-        bt_salvar_ccliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_salvar_cclienteActionPerformed(evt);
-            }
-        });
+        bt_salvar_cfornecedores.setBackground(new java.awt.Color(0, 153, 204));
+        bt_salvar_cfornecedores.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
+        bt_salvar_cfornecedores.setForeground(new java.awt.Color(255, 255, 255));
+        bt_salvar_cfornecedores.setText("SALVAR");
+        bt_salvar_cfornecedores.setBorderPainted(false);
+        bt_salvar_cfornecedores.setContentAreaFilled(false);
+        bt_salvar_cfornecedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_salvar_cfornecedores.setOpaque(true);
 
-        bt_limpar_ccliente.setBackground(new java.awt.Color(0, 153, 204));
-        bt_limpar_ccliente.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
-        bt_limpar_ccliente.setForeground(new java.awt.Color(255, 255, 255));
-        bt_limpar_ccliente.setText("LIMPAR");
-        bt_limpar_ccliente.setBorderPainted(false);
-        bt_limpar_ccliente.setContentAreaFilled(false);
-        bt_limpar_ccliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bt_limpar_ccliente.setOpaque(true);
+        bt_limpar_cfornecedores.setBackground(new java.awt.Color(0, 153, 204));
+        bt_limpar_cfornecedores.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
+        bt_limpar_cfornecedores.setForeground(new java.awt.Color(255, 255, 255));
+        bt_limpar_cfornecedores.setText("LIMPAR");
+        bt_limpar_cfornecedores.setBorderPainted(false);
+        bt_limpar_cfornecedores.setContentAreaFilled(false);
+        bt_limpar_cfornecedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_limpar_cfornecedores.setOpaque(true);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -434,18 +427,18 @@ public class clientes extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bt_salvar_ccliente)
+                .addComponent(bt_salvar_cfornecedores)
                 .addGap(18, 18, 18)
-                .addComponent(bt_limpar_ccliente)
-                .addContainerGap(548, Short.MAX_VALUE))
+                .addComponent(bt_limpar_cfornecedores)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_salvar_ccliente)
-                    .addComponent(bt_limpar_ccliente))
+                    .addComponent(bt_salvar_cfornecedores)
+                    .addComponent(bt_limpar_cfornecedores))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -453,8 +446,10 @@ public class clientes extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,28 +459,24 @@ public class clientes extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 762, 510);
+        setBounds(0, 0, 762, 468);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bt_salvar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_cclienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_salvar_cclienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_limpar_ccliente;
-    private javax.swing.JButton bt_salvar_ccliente;
-    private javax.swing.JComboBox cbx_uf_ccliente;
-    private javax.swing.JFormattedTextField cel_ccliente;
-    private javax.swing.JFormattedTextField cep_ccliente;
-    private javax.swing.JTextField cidade_ccliente;
-    private javax.swing.JFormattedTextField cnpj_ccliente;
-    private javax.swing.JFormattedTextField cpf_ccliente;
-    private javax.swing.JFormattedTextField dt_nasc__ccliente;
-    private javax.swing.JTextField email_ccliente;
-    private javax.swing.JTextField end_ccliente;
-    private javax.swing.JTextField fax_ccliente;
-    private javax.swing.JTextField id_ccliente;
+    private javax.swing.JButton bt_limpar_cfornecedores;
+    private javax.swing.JButton bt_salvar_cfornecedores;
+    private javax.swing.JComboBox cbx_uf_cfornecedores;
+    private javax.swing.JFormattedTextField cel_cfornecedores;
+    private javax.swing.JFormattedTextField cep_cfornecedores;
+    private javax.swing.JTextField cidade_cfornecedores;
+    private javax.swing.JFormattedTextField cnpj_cfornecedores;
+    private javax.swing.JFormattedTextField cpf_cfornecedores;
+    private javax.swing.JFormattedTextField dt_nasc_cfornecedores;
+    private javax.swing.JTextField email_cfornecedores;
+    private javax.swing.JTextField end_cfornecedores;
+    private javax.swing.JTextField fax_cfornecedores;
+    private javax.swing.JTextField id_cfornecedores;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
@@ -511,12 +502,10 @@ public class clientes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nome_ccliente;
-    private javax.swing.JTextArea obs_ccliente;
-    private javax.swing.JFormattedTextField reg_cnpj_ccliente;
-    private javax.swing.JFormattedTextField tel_com_ccliente;
-    private javax.swing.JFormattedTextField tel_resid_ccliente;
+    private javax.swing.JTextField nome_cfornecedores;
+    private javax.swing.JTextArea obs_cfornecedores;
+    private javax.swing.JFormattedTextField registro_cnpj_cfornecedores;
+    private javax.swing.JFormattedTextField tel_com1_cfornecedores;
+    private javax.swing.JFormattedTextField tel_com2_cfornecedores;
     // End of variables declaration//GEN-END:variables
-
-
 }

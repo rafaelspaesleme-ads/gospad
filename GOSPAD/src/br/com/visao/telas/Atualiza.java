@@ -7,6 +7,12 @@ package br.com.visao.telas;
 
 import br.com.visao.Principal;
 import br.com.visao.telas.atualiza.clientes;
+import br.com.visao.telas.atualiza.colaboradores;
+import br.com.visao.telas.atualiza.contas;
+import br.com.visao.telas.atualiza.contatos;
+import br.com.visao.telas.atualiza.fornecedores;
+import br.com.visao.telas.atualiza.produtos;
+import br.com.visao.telas.atualiza.vendas_e_servicos;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -79,6 +85,11 @@ public class Atualiza extends javax.swing.JInternalFrame {
         bt_fornecedor_atualiza.setOpaque(true);
         bt_fornecedor_atualiza.setRequestFocusEnabled(false);
         bt_fornecedor_atualiza.setRolloverEnabled(false);
+        bt_fornecedor_atualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_fornecedor_atualizaActionPerformed(evt);
+            }
+        });
 
         bt_produto_atualiza.setBackground(new java.awt.Color(153, 153, 255));
         bt_produto_atualiza.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -92,6 +103,11 @@ public class Atualiza extends javax.swing.JInternalFrame {
         bt_produto_atualiza.setOpaque(true);
         bt_produto_atualiza.setRequestFocusEnabled(false);
         bt_produto_atualiza.setRolloverEnabled(false);
+        bt_produto_atualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_produto_atualizaActionPerformed(evt);
+            }
+        });
 
         bt_vs_atualiza.setBackground(new java.awt.Color(153, 153, 255));
         bt_vs_atualiza.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -105,6 +121,11 @@ public class Atualiza extends javax.swing.JInternalFrame {
         bt_vs_atualiza.setOpaque(true);
         bt_vs_atualiza.setRequestFocusEnabled(false);
         bt_vs_atualiza.setRolloverEnabled(false);
+        bt_vs_atualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_vs_atualizaActionPerformed(evt);
+            }
+        });
 
         bt_contas_atualiza.setBackground(new java.awt.Color(153, 153, 255));
         bt_contas_atualiza.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -118,6 +139,11 @@ public class Atualiza extends javax.swing.JInternalFrame {
         bt_contas_atualiza.setOpaque(true);
         bt_contas_atualiza.setRequestFocusEnabled(false);
         bt_contas_atualiza.setRolloverEnabled(false);
+        bt_contas_atualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_contas_atualizaActionPerformed(evt);
+            }
+        });
 
         bt_contato_atualiza.setBackground(new java.awt.Color(153, 153, 255));
         bt_contato_atualiza.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -131,6 +157,11 @@ public class Atualiza extends javax.swing.JInternalFrame {
         bt_contato_atualiza.setOpaque(true);
         bt_contato_atualiza.setRequestFocusEnabled(false);
         bt_contato_atualiza.setRolloverEnabled(false);
+        bt_contato_atualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_contato_atualizaActionPerformed(evt);
+            }
+        });
 
         bt_colaboradores_atualiza.setBackground(new java.awt.Color(153, 153, 255));
         bt_colaboradores_atualiza.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -144,6 +175,11 @@ public class Atualiza extends javax.swing.JInternalFrame {
         bt_colaboradores_atualiza.setOpaque(true);
         bt_colaboradores_atualiza.setRequestFocusEnabled(false);
         bt_colaboradores_atualiza.setRolloverEnabled(false);
+        bt_colaboradores_atualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_colaboradores_atualizaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -195,7 +231,7 @@ public class Atualiza extends javax.swing.JInternalFrame {
 
     private void bt_cliente_atualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cliente_atualizaActionPerformed
 
-                clientes exibecliente = new clientes();
+        clientes exibecliente = new clientes();
         chamarTelas(exibecliente);
 
         //Codigo para fechar janelinha após clique!!!
@@ -206,9 +242,85 @@ public class Atualiza extends javax.swing.JInternalFrame {
         } catch (PropertyVetoException ex) {
             Logger.getLogger(Cadastros.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 // TODO add your handling code here:
     }//GEN-LAST:event_bt_cliente_atualizaActionPerformed
+
+    private void bt_fornecedor_atualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fornecedor_atualizaActionPerformed
+
+        fornecedores exibefornecedores = new fornecedores();
+        chamarTelas(exibefornecedores);
+
+        //Codigo para fechar janelinha após clique!!!
+        try {
+            setClosed(iconable);
+
+// TODO add your handling code here:
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Cadastros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_fornecedor_atualizaActionPerformed
+
+    private void bt_produto_atualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_produto_atualizaActionPerformed
+
+        produtos exibeprodutos = new produtos();
+        chamarTelas(exibeprodutos);
+
+        //Codigo para fechar janelinha após clique!!!
+        try {
+            setClosed(iconable);
+
+// TODO add your handling code here:
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Cadastros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_produto_atualizaActionPerformed
+
+    private void bt_vs_atualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_vs_atualizaActionPerformed
+
+        vendas_e_servicos exibeves = new vendas_e_servicos();
+        chamarTelas(exibeves);
+
+        //Codigo para fechar janelinha após clique!!!
+        try {
+            setClosed(iconable);
+
+// TODO add your handling code here:
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Cadastros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_vs_atualizaActionPerformed
+
+    private void bt_contas_atualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_contas_atualizaActionPerformed
+
+        contas c = new contas();
+        chamarTelas(c);
+        
+        this.dispose();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_contas_atualizaActionPerformed
+
+    private void bt_contato_atualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_contato_atualizaActionPerformed
+
+        contatos ct = new contatos();
+        chamarTelas(ct);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_contato_atualizaActionPerformed
+
+    private void bt_colaboradores_atualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_colaboradores_atualizaActionPerformed
+
+        colaboradores clb = new colaboradores();
+        chamarTelas(clb);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_colaboradores_atualizaActionPerformed
 
     private void chamarTelas(JInternalFrame p) {
 
