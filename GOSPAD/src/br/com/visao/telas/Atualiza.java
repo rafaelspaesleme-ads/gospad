@@ -5,6 +5,13 @@
  */
 package br.com.visao.telas;
 
+import br.com.visao.Principal;
+import br.com.visao.telas.atualiza.clientes;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author Rafael Paes Leme
@@ -54,6 +61,11 @@ public class Atualiza extends javax.swing.JInternalFrame {
         bt_cliente_atualiza.setOpaque(true);
         bt_cliente_atualiza.setRequestFocusEnabled(false);
         bt_cliente_atualiza.setRolloverEnabled(false);
+        bt_cliente_atualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cliente_atualizaActionPerformed(evt);
+            }
+        });
 
         bt_fornecedor_atualiza.setBackground(new java.awt.Color(153, 153, 255));
         bt_fornecedor_atualiza.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -181,6 +193,35 @@ public class Atualiza extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bt_cliente_atualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cliente_atualizaActionPerformed
+
+                clientes exibecliente = new clientes();
+        chamarTelas(exibecliente);
+
+        //Codigo para fechar janelinha após clique!!!
+        try {
+            setClosed(iconable);
+
+// TODO add your handling code here:
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Cadastros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_cliente_atualizaActionPerformed
+
+    private void chamarTelas(JInternalFrame p) {
+
+        Principal.getPainel().add(p);
+        p.setVisible(true);
+
+        int x = (Principal.getPainel().getWidth() / 2) - (p.getWidth() / 2);
+        int y = (Principal.getPainel().getHeight() / 2) - (p.getHeight() / 2);
+        p.setVisible(true);
+        p.setLocation(x, y);
+        p.toFront();
+        p.show();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cliente_atualiza;
