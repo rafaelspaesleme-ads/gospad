@@ -103,7 +103,7 @@ public class colaboradores extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Cadastro de Colaboradores");
+        setTitle("Atualização de Colaboradores");
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 153));
 
