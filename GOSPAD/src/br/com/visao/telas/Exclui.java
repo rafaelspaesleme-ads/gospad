@@ -5,6 +5,16 @@
  */
 package br.com.visao.telas;
 
+import br.com.visao.Principal;
+import br.com.visao.telas.cadastro.colaboradores;
+import br.com.visao.telas.exclui.clientes;
+import br.com.visao.telas.exclui.contas;
+import br.com.visao.telas.exclui.contatos;
+import br.com.visao.telas.exclui.fornecedores;
+import br.com.visao.telas.exclui.produtos;
+import br.com.visao.telas.exclui.vendas_e_servicos;
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author Rafael Paes Leme
@@ -55,6 +65,11 @@ public class Exclui extends javax.swing.JInternalFrame {
         bt_cliente_exclui.setOpaque(true);
         bt_cliente_exclui.setRequestFocusEnabled(false);
         bt_cliente_exclui.setRolloverEnabled(false);
+        bt_cliente_exclui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cliente_excluiActionPerformed(evt);
+            }
+        });
 
         bt_fornecedor_exclui.setBackground(new java.awt.Color(153, 153, 255));
         bt_fornecedor_exclui.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -68,6 +83,11 @@ public class Exclui extends javax.swing.JInternalFrame {
         bt_fornecedor_exclui.setOpaque(true);
         bt_fornecedor_exclui.setRequestFocusEnabled(false);
         bt_fornecedor_exclui.setRolloverEnabled(false);
+        bt_fornecedor_exclui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_fornecedor_excluiActionPerformed(evt);
+            }
+        });
 
         bt_produto_exclui.setBackground(new java.awt.Color(153, 153, 255));
         bt_produto_exclui.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -81,6 +101,11 @@ public class Exclui extends javax.swing.JInternalFrame {
         bt_produto_exclui.setOpaque(true);
         bt_produto_exclui.setRequestFocusEnabled(false);
         bt_produto_exclui.setRolloverEnabled(false);
+        bt_produto_exclui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_produto_excluiActionPerformed(evt);
+            }
+        });
 
         bt_vs_exclui.setBackground(new java.awt.Color(153, 153, 255));
         bt_vs_exclui.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -94,6 +119,11 @@ public class Exclui extends javax.swing.JInternalFrame {
         bt_vs_exclui.setOpaque(true);
         bt_vs_exclui.setRequestFocusEnabled(false);
         bt_vs_exclui.setRolloverEnabled(false);
+        bt_vs_exclui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_vs_excluiActionPerformed(evt);
+            }
+        });
 
         bt_conta_exclui.setBackground(new java.awt.Color(153, 153, 255));
         bt_conta_exclui.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -107,6 +137,11 @@ public class Exclui extends javax.swing.JInternalFrame {
         bt_conta_exclui.setOpaque(true);
         bt_conta_exclui.setRequestFocusEnabled(false);
         bt_conta_exclui.setRolloverEnabled(false);
+        bt_conta_exclui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_conta_excluiActionPerformed(evt);
+            }
+        });
 
         bt_contato_exclui.setBackground(new java.awt.Color(153, 153, 255));
         bt_contato_exclui.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -120,6 +155,11 @@ public class Exclui extends javax.swing.JInternalFrame {
         bt_contato_exclui.setOpaque(true);
         bt_contato_exclui.setRequestFocusEnabled(false);
         bt_contato_exclui.setRolloverEnabled(false);
+        bt_contato_exclui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_contato_excluiActionPerformed(evt);
+            }
+        });
 
         bt_colaborador_exclui.setBackground(new java.awt.Color(153, 153, 255));
         bt_colaborador_exclui.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -133,6 +173,11 @@ public class Exclui extends javax.swing.JInternalFrame {
         bt_colaborador_exclui.setOpaque(true);
         bt_colaborador_exclui.setRequestFocusEnabled(false);
         bt_colaborador_exclui.setRolloverEnabled(false);
+        bt_colaborador_exclui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_colaborador_excluiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,6 +227,89 @@ public class Exclui extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bt_cliente_excluiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cliente_excluiActionPerformed
+
+        clientes cli = new clientes();
+        chamarTelas(cli);
+        
+        this.dispose();
+                
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_cliente_excluiActionPerformed
+
+    private void bt_fornecedor_excluiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fornecedor_excluiActionPerformed
+
+        fornecedores frn = new fornecedores();
+        chamarTelas(frn);
+        
+        this.dispose();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_fornecedor_excluiActionPerformed
+
+    private void bt_produto_excluiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_produto_excluiActionPerformed
+
+        produtos prd = new produtos();
+        chamarTelas(prd);
+        
+        this.dispose();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_produto_excluiActionPerformed
+
+    private void bt_vs_excluiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_vs_excluiActionPerformed
+
+        vendas_e_servicos vs = new vendas_e_servicos();
+        chamarTelas(vs);
+        
+        this.dispose();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_vs_excluiActionPerformed
+
+    private void bt_conta_excluiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_conta_excluiActionPerformed
+
+        contas c = new contas();
+        chamarTelas(c);
+        
+        this.dispose();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_conta_excluiActionPerformed
+
+    private void bt_contato_excluiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_contato_excluiActionPerformed
+
+        contatos ct = new contatos();
+        chamarTelas(ct);
+        
+        this.dispose();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_contato_excluiActionPerformed
+
+    private void bt_colaborador_excluiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_colaborador_excluiActionPerformed
+
+        colaboradores clb = new colaboradores();
+        chamarTelas(clb);
+        
+        this.dispose();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_colaborador_excluiActionPerformed
+
+    private void chamarTelas(JInternalFrame p) {
+
+        Principal.getPainel().add(p);
+        p.setVisible(true);
+
+        int x = (Principal.getPainel().getWidth() / 2) - (p.getWidth() / 2);
+        int y = (Principal.getPainel().getHeight() / 2) - (p.getHeight() / 2);
+        p.setVisible(true);
+        p.setLocation(x, y);
+        p.toFront();
+        p.show();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cliente_exclui;

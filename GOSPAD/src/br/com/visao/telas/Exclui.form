@@ -109,6 +109,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_cliente_excluiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_fornecedor_exclui">
           <Properties>
@@ -139,6 +142,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_fornecedor_excluiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_produto_exclui">
           <Properties>
@@ -169,6 +175,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_produto_excluiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_vs_exclui">
           <Properties>
@@ -199,6 +208,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_vs_excluiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_conta_exclui">
           <Properties>
@@ -229,6 +241,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_conta_excluiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_contato_exclui">
           <Properties>
@@ -259,6 +274,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_contato_excluiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_colaborador_exclui">
           <Properties>
@@ -289,6 +307,9 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="rolloverEnabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_colaborador_excluiActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
