@@ -6,7 +6,7 @@
 package br.com.visao.telas;
 
 import br.com.visao.Principal;
-import br.com.visao.telas.cadastro.colaboradores;
+import br.com.visao.telas.exclui.colaboradores;
 import br.com.visao.telas.exclui.clientes;
 import br.com.visao.telas.exclui.contas;
 import br.com.visao.telas.exclui.contatos;
