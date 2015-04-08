@@ -73,7 +73,7 @@ public class produtos extends javax.swing.JInternalFrame {
         bt_salvar_cprodutos.setBackground(new java.awt.Color(0, 153, 204));
         bt_salvar_cprodutos.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         bt_salvar_cprodutos.setForeground(new java.awt.Color(255, 255, 255));
-        bt_salvar_cprodutos.setText("SALVAR");
+        bt_salvar_cprodutos.setText("ATUALIZAR");
         bt_salvar_cprodutos.setBorderPainted(false);
         bt_salvar_cprodutos.setContentAreaFilled(false);
         bt_salvar_cprodutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -97,7 +97,7 @@ public class produtos extends javax.swing.JInternalFrame {
                 .addComponent(bt_salvar_cprodutos)
                 .addGap(18, 18, 18)
                 .addComponent(bt_limpar_cprodutos)
-                .addContainerGap(576, Short.MAX_VALUE))
+                .addContainerGap(552, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

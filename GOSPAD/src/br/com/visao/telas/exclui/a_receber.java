@@ -74,7 +74,7 @@ public class a_receber extends javax.swing.JInternalFrame {
         bt_salvar_a_receber.setBackground(new java.awt.Color(0, 153, 204));
         bt_salvar_a_receber.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         bt_salvar_a_receber.setForeground(new java.awt.Color(255, 255, 255));
-        bt_salvar_a_receber.setText("SALVAR");
+        bt_salvar_a_receber.setText("EXCLUIR");
         bt_salvar_a_receber.setBorderPainted(false);
         bt_salvar_a_receber.setContentAreaFilled(false);
         bt_salvar_a_receber.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

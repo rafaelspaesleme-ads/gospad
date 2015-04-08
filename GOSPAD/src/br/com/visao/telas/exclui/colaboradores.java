@@ -111,7 +111,7 @@ public class colaboradores extends javax.swing.JInternalFrame {
         bt_salvar_ccolaboradores.setBackground(new java.awt.Color(0, 153, 204));
         bt_salvar_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         bt_salvar_ccolaboradores.setForeground(new java.awt.Color(255, 255, 255));
-        bt_salvar_ccolaboradores.setText("SALVAR");
+        bt_salvar_ccolaboradores.setText("EXCLUIR");
         bt_salvar_ccolaboradores.setBorderPainted(false);
         bt_salvar_ccolaboradores.setContentAreaFilled(false);
         bt_salvar_ccolaboradores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

@@ -406,7 +406,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
         bt_salvar_cfornecedores.setBackground(new java.awt.Color(0, 153, 204));
         bt_salvar_cfornecedores.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         bt_salvar_cfornecedores.setForeground(new java.awt.Color(255, 255, 255));
-        bt_salvar_cfornecedores.setText("SALVAR");
+        bt_salvar_cfornecedores.setText("ATUALIZAR");
         bt_salvar_cfornecedores.setBorderPainted(false);
         bt_salvar_cfornecedores.setContentAreaFilled(false);
         bt_salvar_cfornecedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

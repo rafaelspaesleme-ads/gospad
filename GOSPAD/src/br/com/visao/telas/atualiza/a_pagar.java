@@ -73,7 +73,7 @@ public class a_pagar extends javax.swing.JInternalFrame {
         bt_salvar_a_pagar.setBackground(new java.awt.Color(0, 153, 204));
         bt_salvar_a_pagar.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         bt_salvar_a_pagar.setForeground(new java.awt.Color(255, 255, 255));
-        bt_salvar_a_pagar.setText("SALVAR");
+        bt_salvar_a_pagar.setText("ATUALIZAR");
         bt_salvar_a_pagar.setBorderPainted(false);
         bt_salvar_a_pagar.setContentAreaFilled(false);
         bt_salvar_a_pagar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -97,7 +97,7 @@ public class a_pagar extends javax.swing.JInternalFrame {
                 .addComponent(bt_salvar_a_pagar)
                 .addGap(18, 18, 18)
                 .addComponent(bt_limpar_a_pagar)
-                .addContainerGap(429, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

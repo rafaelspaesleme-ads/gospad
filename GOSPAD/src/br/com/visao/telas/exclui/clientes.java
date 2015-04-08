@@ -409,7 +409,7 @@ public class clientes extends javax.swing.JInternalFrame {
         bt_salvar_ccliente.setBackground(new java.awt.Color(0, 153, 204));
         bt_salvar_ccliente.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         bt_salvar_ccliente.setForeground(new java.awt.Color(255, 255, 255));
-        bt_salvar_ccliente.setText("SALVAR");
+        bt_salvar_ccliente.setText("EXCLUIR");
         bt_salvar_ccliente.setBorderPainted(false);
         bt_salvar_ccliente.setContentAreaFilled(false);
         bt_salvar_ccliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -438,7 +438,7 @@ public class clientes extends javax.swing.JInternalFrame {
                 .addComponent(bt_salvar_ccliente)
                 .addGap(18, 18, 18)
                 .addComponent(bt_limpar_ccliente)
-                .addContainerGap(548, Short.MAX_VALUE))
+                .addContainerGap(546, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

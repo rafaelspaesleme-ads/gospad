@@ -73,7 +73,7 @@ public class vendas_e_servicos extends javax.swing.JInternalFrame {
         bt_salvar_cvs.setBackground(new java.awt.Color(0, 153, 204));
         bt_salvar_cvs.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         bt_salvar_cvs.setForeground(new java.awt.Color(255, 255, 255));
-        bt_salvar_cvs.setText("SALVAR");
+        bt_salvar_cvs.setText("EXCLUIR");
         bt_salvar_cvs.setBorderPainted(false);
         bt_salvar_cvs.setContentAreaFilled(false);
         bt_salvar_cvs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -97,7 +97,7 @@ public class vendas_e_servicos extends javax.swing.JInternalFrame {
                 .addComponent(bt_salvar_cvs)
                 .addGap(18, 18, 18)
                 .addComponent(bt_limpar_cvs)
-                .addContainerGap(577, Short.MAX_VALUE))
+                .addContainerGap(575, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

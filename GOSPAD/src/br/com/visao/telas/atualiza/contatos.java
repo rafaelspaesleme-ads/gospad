@@ -73,7 +73,7 @@ public class contatos extends javax.swing.JInternalFrame {
         bt_salvar_ccontatos.setBackground(new java.awt.Color(0, 153, 204));
         bt_salvar_ccontatos.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         bt_salvar_ccontatos.setForeground(new java.awt.Color(255, 255, 255));
-        bt_salvar_ccontatos.setText("SALVAR");
+        bt_salvar_ccontatos.setText("ATUALIZAR");
         bt_salvar_ccontatos.setBorderPainted(false);
         bt_salvar_ccontatos.setContentAreaFilled(false);
         bt_salvar_ccontatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -97,7 +97,7 @@ public class contatos extends javax.swing.JInternalFrame {
                 .addComponent(bt_salvar_ccontatos)
                 .addGap(18, 18, 18)
                 .addComponent(bt_limpar_ccontatos)
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -5,6 +5,16 @@
  */
 package br.com.visao.telas;
 
+import br.com.visao.Principal;
+import br.com.visao.telas.relatorios.clientes;
+import br.com.visao.telas.relatorios.colaboradores;
+import br.com.visao.telas.relatorios.contas;
+import br.com.visao.telas.relatorios.contatos;
+import br.com.visao.telas.relatorios.fornecedores;
+import br.com.visao.telas.relatorios.produtos;
+import br.com.visao.telas.relatorios.vendas_e_servicos;
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author Rafael Paes Leme
@@ -54,6 +64,11 @@ public class Relatorio extends javax.swing.JInternalFrame {
         bt_cliente_relatorio.setOpaque(true);
         bt_cliente_relatorio.setRequestFocusEnabled(false);
         bt_cliente_relatorio.setRolloverEnabled(false);
+        bt_cliente_relatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cliente_relatorioActionPerformed(evt);
+            }
+        });
 
         bt_fornecedor_relatorio.setBackground(new java.awt.Color(153, 153, 255));
         bt_fornecedor_relatorio.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -67,6 +82,11 @@ public class Relatorio extends javax.swing.JInternalFrame {
         bt_fornecedor_relatorio.setOpaque(true);
         bt_fornecedor_relatorio.setRequestFocusEnabled(false);
         bt_fornecedor_relatorio.setRolloverEnabled(false);
+        bt_fornecedor_relatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_fornecedor_relatorioActionPerformed(evt);
+            }
+        });
 
         bt_produto_relatorio.setBackground(new java.awt.Color(153, 153, 255));
         bt_produto_relatorio.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -80,6 +100,11 @@ public class Relatorio extends javax.swing.JInternalFrame {
         bt_produto_relatorio.setOpaque(true);
         bt_produto_relatorio.setRequestFocusEnabled(false);
         bt_produto_relatorio.setRolloverEnabled(false);
+        bt_produto_relatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_produto_relatorioActionPerformed(evt);
+            }
+        });
 
         bt_vs_relatorio.setBackground(new java.awt.Color(153, 153, 255));
         bt_vs_relatorio.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -93,6 +118,11 @@ public class Relatorio extends javax.swing.JInternalFrame {
         bt_vs_relatorio.setOpaque(true);
         bt_vs_relatorio.setRequestFocusEnabled(false);
         bt_vs_relatorio.setRolloverEnabled(false);
+        bt_vs_relatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_vs_relatorioActionPerformed(evt);
+            }
+        });
 
         bt_conta_relatorio.setBackground(new java.awt.Color(153, 153, 255));
         bt_conta_relatorio.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -106,6 +136,11 @@ public class Relatorio extends javax.swing.JInternalFrame {
         bt_conta_relatorio.setOpaque(true);
         bt_conta_relatorio.setRequestFocusEnabled(false);
         bt_conta_relatorio.setRolloverEnabled(false);
+        bt_conta_relatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_conta_relatorioActionPerformed(evt);
+            }
+        });
 
         bt_contato_relatorio.setBackground(new java.awt.Color(153, 153, 255));
         bt_contato_relatorio.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -119,6 +154,11 @@ public class Relatorio extends javax.swing.JInternalFrame {
         bt_contato_relatorio.setOpaque(true);
         bt_contato_relatorio.setRequestFocusEnabled(false);
         bt_contato_relatorio.setRolloverEnabled(false);
+        bt_contato_relatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_contato_relatorioActionPerformed(evt);
+            }
+        });
 
         bt_colaborador_relatorio.setBackground(new java.awt.Color(153, 153, 255));
         bt_colaborador_relatorio.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -132,6 +172,11 @@ public class Relatorio extends javax.swing.JInternalFrame {
         bt_colaborador_relatorio.setOpaque(true);
         bt_colaborador_relatorio.setRequestFocusEnabled(false);
         bt_colaborador_relatorio.setRolloverEnabled(false);
+        bt_colaborador_relatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_colaborador_relatorioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,6 +226,75 @@ public class Relatorio extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bt_cliente_relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cliente_relatorioActionPerformed
+
+        clientes clie = new clientes();
+        chamarTelas(clie);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_cliente_relatorioActionPerformed
+
+    private void bt_fornecedor_relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fornecedor_relatorioActionPerformed
+
+        fornecedores forn = new fornecedores();
+        chamarTelas(forn);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_fornecedor_relatorioActionPerformed
+
+    private void bt_produto_relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_produto_relatorioActionPerformed
+
+        produtos prd = new produtos();
+        chamarTelas(prd);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_produto_relatorioActionPerformed
+
+    private void bt_vs_relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_vs_relatorioActionPerformed
+
+        vendas_e_servicos vs = new vendas_e_servicos();
+        chamarTelas(vs);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_vs_relatorioActionPerformed
+
+    private void bt_conta_relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_conta_relatorioActionPerformed
+
+        contas c = new contas();
+        chamarTelas(c);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_conta_relatorioActionPerformed
+
+    private void bt_contato_relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_contato_relatorioActionPerformed
+
+        contatos ct = new contatos();
+        chamarTelas(ct);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_contato_relatorioActionPerformed
+
+    private void bt_colaborador_relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_colaborador_relatorioActionPerformed
+
+        colaboradores clb = new colaboradores();
+        chamarTelas(clb);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_colaborador_relatorioActionPerformed
+
+    
+        private void chamarTelas(JInternalFrame p) {
+
+        Principal.getPainel().add(p);
+        p.setVisible(true);
+
+        int x = (Principal.getPainel().getWidth() / 2) - (p.getWidth() / 2);
+        int y = (Principal.getPainel().getHeight() / 2) - (p.getHeight() / 2);
+        p.setVisible(true);
+        p.setLocation(x, y);
+        p.toFront();
+        p.show();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cliente_relatorio;
