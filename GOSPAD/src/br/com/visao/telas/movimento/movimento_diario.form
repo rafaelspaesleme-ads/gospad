@@ -510,15 +510,27 @@
                           <Font name="Khmer UI" size="11" style="1"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="10">
+                          <Table columnCount="6" rowCount="10">
                             <Column editable="false" title="DOC" type="java.lang.Object"/>
                             <Column editable="false" title="DT LANC" type="java.lang.Object"/>
                             <Column editable="false" title="DT VENC" type="java.lang.Object"/>
                             <Column editable="false" title="SITUA&#xc7;&#xc3;O" type="java.lang.Object"/>
+                            <Column editable="true" title="ENTRADA" type="java.lang.Object"/>
+                            <Column editable="true" title="SAIDA" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
