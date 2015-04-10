@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de Dados: `GOSPAD_BD`
+-- Banco de Dados: `gospad_bd`
 --
 
 -- --------------------------------------------------------
@@ -331,15 +331,15 @@ ALTER TABLE `fechar_cx`
 -- Restrições para a tabela `produtos`
 --
 ALTER TABLE `produtos`
-  ADD CONSTRAINT `produtos_ibfk_2` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`id_comprador`) REFERENCES `colaboradores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`id_comprador`) REFERENCES `colaboradores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `produtos_ibfk_2` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Restrições para a tabela `vendas_e_servicos`
 --
 ALTER TABLE `vendas_e_servicos`
-  ADD CONSTRAINT `vendas_e_servicos_ibfk_2` FOREIGN KEY (`id_vendedor`) REFERENCES `colaboradores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `vendas_e_servicos_ibfk_1` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `vendas_e_servicos_ibfk_1` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vendas_e_servicos_ibfk_2` FOREIGN KEY (`id_vendedor`) REFERENCES `colaboradores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
