@@ -502,25 +502,25 @@ public class Login extends javax.swing.JFrame {
 
     private void acessarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acessarMousePressed
 
-        
-        if (login.getText() == "Admin" && senha.getText() == "Admin"){
-        
-        getInstancia().setVisible(true);
-        this.dispose();
-        
-        acessar.setBackground(new java.awt.Color(0, 80, 90));
-        acessar.setForeground(new java.awt.Color(200, 200, 200));
+        if ("Admin".equals(login.getText()) && "Admin".equals(senha.getText())) {
 
+            //
+            getInstancia().setVisible(true);
+            this.dispose();
+
+            acessar.setBackground(new java.awt.Color(0, 80, 90));
+            acessar.setForeground(new java.awt.Color(200, 200, 200));
+
+            //
+            JOptionPane.showMessageDialog(null, "Acesso Liberado!\n\nSeja Bem Vindo ao Sistema GOSPAD!");
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Erro de Login e Senha!\n\n Favor informe as informações corretas para acesso.");
+
+        }
         jPanel6.setVisible(false);
         jPanel5.setVisible(false);
-        
-        JOptionPane.showMessageDialog(null, "Acesso Liberado!\n\nSeja Bem Vindo ao Sistema GOSPAD!");
-        
-        }else{
-            
-            JOptionPane.showMessageDialog(null, "Erro de Login e Senha!\n\n Favor informe as informações corretas para acesso.");
-            
-        }
 
 // TODO add your handling code here:
     }//GEN-LAST:event_acessarMousePressed
