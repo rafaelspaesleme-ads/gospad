@@ -5,6 +5,10 @@
  */
 package br.com.visao.telas.cadastro;
 
+import br.com.controle.clienteControl;
+import java.sql.Date;
+import java.util.ArrayList;
+
 /**
  *
  * @author Rafael Paes Leme
@@ -345,6 +349,11 @@ public class clientes extends javax.swing.JInternalFrame {
         bt_salvar_ccliente.setContentAreaFilled(false);
         bt_salvar_ccliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_salvar_ccliente.setOpaque(true);
+        bt_salvar_ccliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvar_cclienteActionPerformed(evt);
+            }
+        });
 
         bt_limpar_ccliente.setBackground(new java.awt.Color(0, 153, 204));
         bt_limpar_ccliente.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -395,6 +404,41 @@ public class clientes extends javax.swing.JInternalFrame {
 
         setBounds(0, 0, 762, 453);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_salvar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_cclienteActionPerformed
+
+        int iCodAtual = Integer.parseInt(id_ccliente.getText());
+
+        ArrayList<String> Registro = new ArrayList<>();
+        Registro.add(id_ccliente.getText());
+        Registro.add(nome_ccliente.getText());
+        Registro.add(end_ccliente.getText());
+        Registro.add((String) cep_ccliente.getText().replace("-", ""));
+        Registro.add(cidade_ccliente.getText());
+        String uf = (String) cbx_uf_ccliente.getSelectedItem();
+        Registro.add(uf);
+        Registro.add(cnpj_ccliente.getText());
+        Date registro = Date.valueOf(reg_cnpj_ccliente.getText());
+        Registro.add(String.valueOf(registro));
+        Registro.add(cpf_ccliente.getText());
+        Date nascimento = Date.valueOf(dt_nasc__ccliente.getText());
+        Registro.add(String.valueOf(nascimento));
+        Registro.add(tel_com_ccliente.getText());
+        Registro.add(tel_resid_ccliente.getText());
+        Registro.add(cel_ccliente.getText());
+        Registro.add(fax_ccliente.getText());
+        Registro.add(email_ccliente.getText());
+        Registro.add(obs_ccliente.getText());
+
+        clienteControl ControllerCidade = new clienteControl();
+        if (iCodAtual > 0) {
+            ControllerCidade.Atualizar(Registro);
+        } else {
+            id_ccliente.setText(String.valueOf(ControllerCidade.Salvar(Registro)));
+        }
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_salvar_cclienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
