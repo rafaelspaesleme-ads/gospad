@@ -167,6 +167,26 @@ public class ClienteModel {
         clienteDao.atualizar(this);
     }
     
+    public void RecuperaObjeto(int iCodigo) {
+        ClienteModel cityTemp = clienteDao.RecuperaObjCodigo(iCodigo);
+        this.setId(cityTemp.getId());
+        this.setNome(cityTemp.getNome());
+        this.setEndereco(cityTemp.getEndereco());
+        this.setCep(cityTemp.getCep());
+        this.setCidade(cityTemp.getCidade());
+        this.setUf(cityTemp.getUf());
+        this.setCnpj(cityTemp.getCnpj());
+        this.setRegistro_dt(cityTemp.getRegistro_dt());
+        this.setCpf(cityTemp.getCpf());
+        this.setNascimento_dt(cityTemp.getNascimento_dt());
+        this.setTel_comercial(cityTemp.getTel_comercial());
+        this.setTel_residencial(cityTemp.getTel_residencial());
+        this.setCelular(cityTemp.getCelular());
+        this.setFax(cityTemp.getFax());
+        this.setEmail(cityTemp.getEmail());
+        this.setObservacao(cityTemp.getObservacao());
+    }
+    
     public void Excluir() {
         clienteDao.excluir(this);
     }
