@@ -8,6 +8,7 @@ package br.com.visao;
 import br.com.visao.Principal;
 import static br.com.visao.Principal.getInstancia;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -501,6 +502,9 @@ public class Login extends javax.swing.JFrame {
 
     private void acessarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acessarMousePressed
 
+        
+        if (login.getText() == "Admin" && senha.getText() == "Admin"){
+        
         getInstancia().setVisible(true);
         this.dispose();
         
@@ -509,6 +513,14 @@ public class Login extends javax.swing.JFrame {
 
         jPanel6.setVisible(false);
         jPanel5.setVisible(false);
+        
+        JOptionPane.showMessageDialog(null, "Acesso Liberado!\n\nSeja Bem Vindo ao Sistema GOSPAD!");
+        
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "Erro de Login e Senha!\n\n Favor informe as informações corretas para acesso.");
+            
+        }
 
 // TODO add your handling code here:
     }//GEN-LAST:event_acessarMousePressed
