@@ -413,7 +413,7 @@ public class clientes extends javax.swing.JInternalFrame {
         Registro.add(id_ccliente.getText());
         Registro.add(nome_ccliente.getText());
         Registro.add(end_ccliente.getText());
-        Registro.add((String) cep_ccliente.getText().replace("-", ""));
+        Registro.add(cep_ccliente.getText());
         Registro.add(cidade_ccliente.getText());
         String uf = (String) cbx_uf_ccliente.getSelectedItem();
         Registro.add(uf);
