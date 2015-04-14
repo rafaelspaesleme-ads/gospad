@@ -66,17 +66,16 @@ public class clienteDao {
     }
 
     //Codigo fonte da listagem, criação de lista buscando dados do banco através do ID
+    
     public static ClienteModel RecuperaObjCodigo(int cliente) {
         Connection cnx = conexao.GeraConexao();
-        List<ClienteModel> cid = new ArrayList<>();
+        ClienteModel cid = new ClienteModel();
         try {
             Statement objStm = cnx.createStatement();
-            objStm.executeQuery("Select * from GOSPAD_BD.clientes where id like '%" + cliente + "%'");
+            objStm.executeQuery("Select * from GOSPAD_BD.clientes where id =" + String.valueOf(cliente));
             ResultSet objRsSt = objStm.getResultSet();
             while (objRsSt.next()) {
-
-                ClienteModel c = new ClienteModel();
-
+                cid = new ClienteModel();
                 int vID = Integer.parseInt(objRsSt.getString("id"));
                 String vNome = objRsSt.getString("nome");
                 String vEndereco = objRsSt.getString("endereco");
@@ -94,34 +93,37 @@ public class clienteDao {
                 String vEmail = objRsSt.getString("email");
                 String vObservacao = objRsSt.getString("observacao");
 
-                c.setId(vID);
-                c.setNome(vNome);
-                c.setEndereco(vEndereco);
-                c.setCep(vCEP);
-                c.setCidade(vCidade);
-                c.setUf(vUf);
-                c.setCnpj(vCnpj);
-                c.setRegistro_dt(vRegistro_dt);
-                c.setCpf(vCpf);
-                c.setNascimento_dt(vNascimento_dt);
-                c.setTel_comercial(vTel_comercial);
-                c.setTel_residencial(vTel_residencial);
-                c.setCelular(vCelular);
-                c.setFax(vFax);
-                c.setEmail(vEmail);
-                c.setObservacao(vObservacao);
+                //
+                
+                cid.setId(vID);
+                cid.setNome(vNome);
+                cid.setEndereco(vEndereco);
+                cid.setCep(vCEP);
+                cid.setCidade(vCidade);
+                cid.setUf(vUf);
+                cid.setCnpj(vCnpj);
+                cid.setRegistro_dt(vRegistro_dt);
+                cid.setCpf(vCpf);
+                cid.setNascimento_dt(vNascimento_dt);
+                cid.setTel_comercial(vTel_comercial);
+                cid.setTel_residencial(vTel_residencial);
+                cid.setCelular(vCelular);
+                cid.setFax(vFax);
+                cid.setEmail(vEmail);
+                cid.setObservacao(vObservacao);
 
-                cid.add(c);
             }
+
             objRsSt.close();
             objStm.close();
             cnx.close();
         } catch (NumberFormatException | SQLException erro) {
-            String erroMsg = "Erro ao recuperar objetos: " + erro.getMessage();
+            String erroMsg = "Erro ao recuperar: " + erro.getMessage();
             JOptionPane.showMessageDialog(null, erroMsg, "Mensagem", JOptionPane.ERROR_MESSAGE);
+
         }
 
-        return (ClienteModel) cid;
+        return cid;
     }
 
     //Codigo fonte da listagem, criação de lista buscando dados do banco através do Nome
