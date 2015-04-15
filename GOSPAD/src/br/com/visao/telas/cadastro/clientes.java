@@ -444,6 +444,9 @@ public class clientes extends javax.swing.JInternalFrame {
         } catch (ParseException ex) {
             Logger.getLogger(clientes.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        LimparCampos();
+        
     }//GEN-LAST:event_bt_salvar_cclienteActionPerformed
 
     private void bt_limpar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cclienteActionPerformed
