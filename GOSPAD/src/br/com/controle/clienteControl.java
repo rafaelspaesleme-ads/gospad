@@ -7,6 +7,7 @@ package br.com.controle;
 
 import br.com.modelo.ClienteModel;
 import java.sql.Date;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
@@ -21,16 +22,17 @@ public class clienteControl {
         this.objCliente = new ClienteModel();
     }
 
-    public int Salvar(ArrayList<String> pLista) {
+    public int Salvar(ArrayList<String> pLista) throws ParseException {
+        
         this.objCliente.setNome(pLista.get(1));
         this.objCliente.setEndereco(pLista.get(2));
         this.objCliente.setCep(pLista.get(3));
         this.objCliente.setCidade(pLista.get(4));
         this.objCliente.setUf(pLista.get(5));
         this.objCliente.setCnpj(pLista.get(6));
-        this.objCliente.setRegistro_dt(Date.valueOf(pLista.get(7)));
+        this.objCliente.setRegistro_dt((pLista.get(7)));
         this.objCliente.setCpf(pLista.get(8));
-        this.objCliente.setNascimento_dt(Date.valueOf(pLista.get(9)));
+        this.objCliente.setNascimento_dt((pLista.get(9)));
         this.objCliente.setTel_comercial(pLista.get(10));
         this.objCliente.setTel_residencial(pLista.get(11));
         this.objCliente.setCelular(pLista.get(12));
@@ -43,7 +45,7 @@ public class clienteControl {
         return this.objCliente.getId();
     }
 
-    public void Atualizar(ArrayList<String> pLista) {
+    public void Atualizar(ArrayList<String> pLista) throws ParseException {
         this.objCliente.setId(Integer.parseInt(pLista.get(0)));
         this.objCliente.setNome(pLista.get(1));
         this.objCliente.setEndereco(pLista.get(2));
@@ -51,9 +53,9 @@ public class clienteControl {
         this.objCliente.setCidade(pLista.get(4));
         this.objCliente.setUf(pLista.get(5));
         this.objCliente.setCnpj(pLista.get(6));
-        this.objCliente.setRegistro_dt(Date.valueOf(pLista.get(7)));
+        this.objCliente.setRegistro_dt((pLista.get(7)));
         this.objCliente.setCpf(pLista.get(8));
-        this.objCliente.setNascimento_dt(Date.valueOf(pLista.get(9)));
+        this.objCliente.setNascimento_dt((pLista.get(9)));
         this.objCliente.setTel_comercial(pLista.get(10));
         this.objCliente.setTel_residencial(pLista.get(11));
         this.objCliente.setCelular(pLista.get(12));

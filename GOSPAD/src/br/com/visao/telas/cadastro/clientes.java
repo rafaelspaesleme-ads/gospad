@@ -6,24 +6,26 @@
 package br.com.visao.telas.cadastro;
 
 import br.com.controle.clienteControl;
-import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Rafael Paes Leme
  */
 public class clientes extends javax.swing.JInternalFrame {
-    
-    
 
+    //
     /**
      * Creates new form clientes
      */
     public clientes() {
-    
-        
-        
+//
         initComponents();
     }
 
@@ -363,6 +365,11 @@ public class clientes extends javax.swing.JInternalFrame {
         bt_limpar_ccliente.setContentAreaFilled(false);
         bt_limpar_ccliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_ccliente.setOpaque(true);
+        bt_limpar_ccliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_cclienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -407,8 +414,7 @@ public class clientes extends javax.swing.JInternalFrame {
 
     private void bt_salvar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_cclienteActionPerformed
 
-        int iCodAtual = Integer.parseInt(id_ccliente.getText());
-
+        //
         ArrayList<String> Registro = new ArrayList<>();
         Registro.add(id_ccliente.getText());
         Registro.add(nome_ccliente.getText());
@@ -418,11 +424,9 @@ public class clientes extends javax.swing.JInternalFrame {
         String uf = (String) cbx_uf_ccliente.getSelectedItem();
         Registro.add(uf);
         Registro.add(cnpj_ccliente.getText());
-        Date registro = Date.valueOf(reg_cnpj_ccliente.getText());
-        Registro.add(String.valueOf(registro));
+        Registro.add(reg_cnpj_ccliente.getText());
         Registro.add(cpf_ccliente.getText());
-        Date nascimento = Date.valueOf(dt_nasc__ccliente.getText());
-        Registro.add(String.valueOf(nascimento));
+        Registro.add(dt_nasc__ccliente.getText());
         Registro.add(tel_com_ccliente.getText());
         Registro.add(tel_resid_ccliente.getText());
         Registro.add(cel_ccliente.getText());
@@ -431,15 +435,44 @@ public class clientes extends javax.swing.JInternalFrame {
         Registro.add(obs_ccliente.getText());
 
         clienteControl ControllerCidade = new clienteControl();
-        if (iCodAtual > 0) {
-            ControllerCidade.Atualizar(Registro);
-        } else {
-            id_ccliente.setText(String.valueOf(ControllerCidade.Salvar(Registro)));
-        }
-        
+        try {
+            //
+            ControllerCidade.Salvar(Registro);
+            //
+            
 // TODO add your handling code here:
+        } catch (ParseException ex) {
+            Logger.getLogger(clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_bt_salvar_cclienteActionPerformed
 
+    private void bt_limpar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cclienteActionPerformed
+
+        LimparCampos();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_cclienteActionPerformed
+
+    public void LimparCampos() {
+
+        id_ccliente.setText(null);
+        nome_ccliente.setText(null);
+        end_ccliente.setText(null);
+        cep_ccliente.setText(null);
+        cidade_ccliente.setText(null);
+        cbx_uf_ccliente.setSelectedItem(null);
+        cnpj_ccliente.setText(null);
+        reg_cnpj_ccliente.setText(null);
+        cpf_ccliente.setText(null);
+        dt_nasc__ccliente.setText(null);
+        tel_com_ccliente.setText(null);
+        tel_resid_ccliente.setText(null);
+        cel_ccliente.setText(null);
+        fax_ccliente.setText(null);
+        email_ccliente.setText(null);
+        obs_ccliente.setText(null);
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_limpar_ccliente;
@@ -480,6 +513,5 @@ public class clientes extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField tel_com_ccliente;
     private javax.swing.JFormattedTextField tel_resid_ccliente;
     // End of variables declaration//GEN-END:variables
-
-
+//
 }

@@ -6,7 +6,7 @@
 package br.com.modelo;
 
 import br.com.dao.clienteDao;
-import java.sql.Date;
+import java.text.ParseException;
 
 /**
  *
@@ -21,9 +21,9 @@ public class ClienteModel {
     private String cidade = "";
     private String uf = "";
     private String cnpj = "";
-    private Date registro_dt = null;
+    private String registro_dt = null;
     private String cpf = "";
-    private Date nascimento_dt = null;
+    private String nascimento_dt = null;
     private String tel_comercial = "";
     private String tel_residencial = "";
     private String celular = "";
@@ -87,11 +87,11 @@ public class ClienteModel {
         this.cnpj = cnpj;
     }
 
-    public Date getRegistro_dt() {
+    public String getRegistro_dt() {
         return registro_dt;
     }
 
-    public void setRegistro_dt(Date registro_dt) {
+    public void setRegistro_dt(String registro_dt) {
         this.registro_dt = registro_dt;
     }
 
@@ -103,11 +103,11 @@ public class ClienteModel {
         this.cpf = cpf;
     }
 
-    public Date getNascimento_dt() {
+    public String getNascimento_dt() {
         return nascimento_dt;
     }
 
-    public void setNascimento_dt(Date nascimento_dt) {
+    public void setNascimento_dt(String nascimento_dt) {
         this.nascimento_dt = nascimento_dt;
     }
 
@@ -159,11 +159,11 @@ public class ClienteModel {
         this.observacao = observacao;
     }
     
-    public void Salvar() {
+    public void Salvar() throws ParseException {
         clienteDao.salvar(this);
     }
     
-    public void Atualizar() {
+    public void Atualizar() throws ParseException {
         clienteDao.atualizar(this);
     }
     

@@ -13,6 +13,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -24,7 +27,7 @@ import javax.swing.JOptionPane;
 public class clienteDao {
 
     //Codigo fonte de Cadastro, salvamento de dados no banco
-    public static void salvar(ClienteModel cliente) {
+    public static void salvar(ClienteModel cliente) throws ParseException {
         Connection cnx = conexao.GeraConexao();
         PreparedStatement insereSt = null;
         String sql = "insert into GOSPAD_BD.clientes values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -39,9 +42,30 @@ public class clienteDao {
             insereSt.setString(5, cliente.getCidade());
             insereSt.setString(6, cliente.getUf());
             insereSt.setString(7, cliente.getCnpj());
-            insereSt.setDate(8, cliente.getRegistro_dt());
+
+//        java.util.Date dataSistema = new java.util.Date();
+//        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+//        JLDATA.setText(formato.format(dataSistema));
+            
+//        String dataString = request.getParameter("data");  
+//        DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");  
+//        java.sql.Date data = new java.sql.Date(fmt.parse(dataString).getTime()); 
+//        
+//        java.util.Date dataUtil = new java.util.Date();
+//        java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+            
+            String data_registro = cliente.getRegistro_dt();
+            DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+            java.sql.Date data1 = new java.sql.Date(fmt.parse(data_registro).getTime());
+            
+            insereSt.setDate(8, data1);
             insereSt.setString(9, cliente.getCpf());
-            insereSt.setDate(10, cliente.getNascimento_dt());
+            
+            String data_nascimento = cliente.getNascimento_dt();
+            DateFormat fmt2 = new SimpleDateFormat("dd/MM/yyyy");
+            java.sql.Date data2 = new java.sql.Date(fmt2.parse(data_nascimento).getTime());
+            
+            insereSt.setDate(10, data2);
             insereSt.setString(11, cliente.getTel_comercial());
             insereSt.setString(12, cliente.getTel_residencial());
             insereSt.setString(13, cliente.getCelular());
@@ -50,12 +74,13 @@ public class clienteDao {
             insereSt.setString(16, cliente.getObservacao());
 
             insereSt.executeUpdate();
-            System.out.println("Linha inserida: " + cliente.getId() + " | " + cliente.getNome() + ". ");
+            JOptionPane.showMessageDialog(null, "Informações Cadastradas com Sucesso!");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao salvar cliente: " + e.getMessage() + "\n");
         } finally {
             try {
+                
                 insereSt.close();
                 cnx.close();
             } catch (SQLException e) {
@@ -66,7 +91,7 @@ public class clienteDao {
     }
 
     //Codigo fonte da listagem, criação de lista buscando dados do banco através do ID
-    
+    //
     public static ClienteModel RecuperaObjCodigo(int cliente) {
         Connection cnx = conexao.GeraConexao();
         ClienteModel cid = new ClienteModel();
@@ -94,7 +119,7 @@ public class clienteDao {
                 String vObservacao = objRsSt.getString("observacao");
 
                 //
-                
+                //
                 cid.setId(vID);
                 cid.setNome(vNome);
                 cid.setEndereco(vEndereco);
@@ -102,9 +127,9 @@ public class clienteDao {
                 cid.setCidade(vCidade);
                 cid.setUf(vUf);
                 cid.setCnpj(vCnpj);
-                cid.setRegistro_dt(vRegistro_dt);
+                cid.setRegistro_dt(String.valueOf(vRegistro_dt));
                 cid.setCpf(vCpf);
-                cid.setNascimento_dt(vNascimento_dt);
+                cid.setNascimento_dt(String.valueOf(vNascimento_dt));
                 cid.setTel_comercial(vTel_comercial);
                 cid.setTel_residencial(vTel_residencial);
                 cid.setCelular(vCelular);
@@ -162,9 +187,9 @@ public class clienteDao {
                 c.setCidade(vCidade);
                 c.setUf(vUf);
                 c.setCnpj(vCnpj);
-                c.setRegistro_dt(vRegistro_dt);
+                c.setRegistro_dt(String.valueOf(vRegistro_dt));
                 c.setCpf(vCpf);
-                c.setNascimento_dt(vNascimento_dt);
+                c.setNascimento_dt(String.valueOf(vNascimento_dt));
                 c.setTel_comercial(vTel_comercial);
                 c.setTel_residencial(vTel_residencial);
                 c.setCelular(vCelular);
@@ -186,7 +211,7 @@ public class clienteDao {
     }
 
     //Codigo fonte de Atualização de dados no banco
-    public static void atualizar(ClienteModel cliente) {
+    public static void atualizar(ClienteModel cliente) throws ParseException {
         Connection cnx = conexao.GeraConexao();
         PreparedStatement insereSt = null;
         String sqlU = "update GOSPAD_BD.clientes set id = ?, "
@@ -217,9 +242,19 @@ public class clienteDao {
             insereSt.setString(5, cliente.getCidade());
             insereSt.setString(6, cliente.getUf());
             insereSt.setString(7, cliente.getCnpj());
-            insereSt.setDate(8, cliente.getRegistro_dt());
+            
+            String atualiza_registro = cliente.getRegistro_dt();
+            DateFormat fmtA1 = new SimpleDateFormat("dd/MM/yyyy");
+            java.sql.Date data1At = new java.sql.Date(fmtA1.parse(atualiza_registro).getTime());
+            
+            insereSt.setDate(8, data1At);
             insereSt.setString(9, cliente.getCpf());
-            insereSt.setDate(10, cliente.getNascimento_dt());
+            
+            String atualiza_nascimento = cliente.getNascimento_dt();
+            DateFormat fmtA2 = new SimpleDateFormat("dd/MM/yyyy");
+            java.sql.Date data2At = new java.sql.Date(fmtA2.parse(atualiza_nascimento).getTime());
+            
+            insereSt.setDate(10, data2At);
             insereSt.setString(11, cliente.getTel_comercial());
             insereSt.setString(12, cliente.getTel_residencial());
             insereSt.setString(13, cliente.getCelular());
