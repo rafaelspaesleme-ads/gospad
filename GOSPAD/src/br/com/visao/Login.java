@@ -55,8 +55,8 @@ public class Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         login = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        senha = new javax.swing.JTextField();
         acessar = new javax.swing.JLabel();
+        senha = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
 
@@ -200,7 +200,6 @@ public class Login extends javax.swing.JFrame {
                 jPanel2MousePressed(evt);
             }
         });
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setVisible(false);
         jPanel6.setBackground(new java.awt.Color(204, 204, 255));
@@ -269,8 +268,6 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel19)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
-
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 150));
 
         jPanel5.setVisible(false);
         jPanel5.setBackground(new java.awt.Color(204, 204, 255));
@@ -353,11 +350,8 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 140, 150));
-
         jLabel6.setFont(new java.awt.Font("Khmer UI", 0, 14)); // NOI18N
         jLabel6.setText("Login");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 46, -1, -1));
 
         login.setFont(new java.awt.Font("Khmer UI", 0, 14)); // NOI18N
         login.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -365,19 +359,9 @@ public class Login extends javax.swing.JFrame {
                 loginMousePressed(evt);
             }
         });
-        jPanel2.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 68, 151, 32));
 
         jLabel7.setFont(new java.awt.Font("Khmer UI", 0, 14)); // NOI18N
         jLabel7.setText("Senha");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 118, -1, -1));
-
-        senha.setFont(new java.awt.Font("Khmer UI", 0, 14)); // NOI18N
-        senha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                senhaMousePressed(evt);
-            }
-        });
-        jPanel2.add(senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 140, 151, 32));
 
         acessar.setBackground(new java.awt.Color(0, 102, 153));
         acessar.setFont(new java.awt.Font("Khmer UI", 0, 14)); // NOI18N
@@ -391,7 +375,59 @@ public class Login extends javax.swing.JFrame {
                 acessarMousePressed(evt);
             }
         });
-        jPanel2.add(acessar, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 183, 79, 29));
+
+        senha.setFont(new java.awt.Font("Khmer UI", 0, 14)); // NOI18N
+        senha.setText("jPasswordField1");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addComponent(acessar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel7))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel6))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addComponent(jLabel7))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel6))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13)
+                .addComponent(acessar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 270, 270));
 
@@ -549,14 +585,6 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1MousePressed
 
-    private void senhaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_senhaMousePressed
-
-        jPanel6.setVisible(false);
-        jPanel5.setVisible(false);
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaMousePressed
-
     private void loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMousePressed
 
         jPanel6.setVisible(false);
@@ -642,7 +670,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField login;
     private javax.swing.JLabel logoff;
     private javax.swing.JLabel sair;
-    private javax.swing.JTextField senha;
+    private javax.swing.JPasswordField senha;
     private javax.swing.JLabel sobre;
     // End of variables declaration//GEN-END:variables
 }

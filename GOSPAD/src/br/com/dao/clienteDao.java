@@ -80,7 +80,6 @@ public class clienteDao {
             JOptionPane.showMessageDialog(null, "Erro ao salvar cliente: " + e.getMessage() + "\n");
         } finally {
             try {
-                
                 insereSt.close();
                 cnx.close();
             } catch (SQLException e) {

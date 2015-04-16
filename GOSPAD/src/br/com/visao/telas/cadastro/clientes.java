@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -424,9 +425,18 @@ public class clientes extends javax.swing.JInternalFrame {
         String uf = (String) cbx_uf_ccliente.getSelectedItem();
         Registro.add(uf);
         Registro.add(cnpj_ccliente.getText());
-        Registro.add(reg_cnpj_ccliente.getText());
+        
+        if ("  /  /    ".equals(reg_cnpj_ccliente.getText())){
+            Registro.add("00/00/0000");
+        } else{
+            Registro.add(reg_cnpj_ccliente.getText());
+        }
         Registro.add(cpf_ccliente.getText());
-        Registro.add(dt_nasc__ccliente.getText());
+        if ("  /  /    ".equals(dt_nasc__ccliente.getText())){
+            Registro.add("00/00/0000");
+        } else{
+            Registro.add(dt_nasc__ccliente.getText());
+        }
         Registro.add(tel_com_ccliente.getText());
         Registro.add(tel_resid_ccliente.getText());
         Registro.add(cel_ccliente.getText());
@@ -442,6 +452,9 @@ public class clientes extends javax.swing.JInternalFrame {
             
 // TODO add your handling code here:
         } catch (ParseException ex) {
+            
+            JOptionPane.showMessageDialog(null, "Erro Fatal! Erro, " + ex + ". Informações inseridas incorretamentes!");
+            
             Logger.getLogger(clientes.class.getName()).log(Level.SEVERE, null, ex);
         }
         
