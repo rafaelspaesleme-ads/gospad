@@ -5,24 +5,35 @@
  */
 package br.com.visao.telas.atualiza;
 
+import br.com.classes.clienteClass;
+import br.com.conexao.conexao;
+import br.com.controle.clienteControl;
 import br.com.visao.telas.cadastro.*;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import br.com.dao.clienteDao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
  * @author Rafael Paes Leme
  */
 public class clientes extends javax.swing.JInternalFrame {
-    
-    
 
+    //
     /**
      * Creates new form clientes
      */
     public clientes() {
-    
-        
-        
+//
         initComponents();
+
+        //
     }
 
     /**
@@ -70,9 +81,9 @@ public class clientes extends javax.swing.JInternalFrame {
         obs_ccliente = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbx_busca_nome = new javax.swing.JComboBox();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        cbx_busca_id = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         bt_salvar_ccliente = new javax.swing.JButton();
@@ -225,14 +236,29 @@ public class clientes extends javax.swing.JInternalFrame {
         jLabel17.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel17.setText("Buscar por Nome");
 
-        jComboBox1.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_busca_nome.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_busca_nome.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clique aqui para carregar informações de pesquisa" }));
+        cbx_busca_nome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_busca_nomeMousePressed(evt);
+            }
+        });
+        cbx_busca_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_busca_nomeActionPerformed(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel18.setText("Buscar por ID");
 
-        jComboBox2.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_busca_id.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_busca_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID" }));
+        cbx_busca_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_busca_idMousePressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setFont(new java.awt.Font("Khmer UI", 1, 12)); // NOI18N
@@ -251,11 +277,11 @@ public class clientes extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_busca_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -266,9 +292,9 @@ public class clientes extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_busca_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -427,6 +453,11 @@ public class clientes extends javax.swing.JInternalFrame {
         bt_limpar_ccliente.setContentAreaFilled(false);
         bt_limpar_ccliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_ccliente.setOpaque(true);
+        bt_limpar_ccliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_cclienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -468,13 +499,104 @@ public class clientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_salvar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_cclienteActionPerformed
-        // TODO add your handling code here:
+
+        ArrayList<String> Registro = new ArrayList<>();
+        Registro.add(id_ccliente.getText());
+        Registro.add(nome_ccliente.getText());
+        Registro.add(end_ccliente.getText());
+        Registro.add(cep_ccliente.getText());
+        Registro.add(cidade_ccliente.getText());
+        String uf = (String) cbx_uf_ccliente.getSelectedItem();
+        Registro.add(uf);
+        Registro.add(cnpj_ccliente.getText());
+
+        if ("  /  /    ".equals(reg_cnpj_ccliente.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(reg_cnpj_ccliente.getText());
+        }
+        Registro.add(cpf_ccliente.getText());
+        if ("  /  /    ".equals(dt_nasc__ccliente.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(dt_nasc__ccliente.getText());
+        }
+        Registro.add(tel_com_ccliente.getText());
+        Registro.add(tel_resid_ccliente.getText());
+        Registro.add(cel_ccliente.getText());
+        Registro.add(fax_ccliente.getText());
+        Registro.add(email_ccliente.getText());
+        Registro.add(obs_ccliente.getText());
+
+        clienteControl ControllerCidade = new clienteControl();
+        try {
+            ControllerCidade.Atualizar(Registro);
+        } catch (ParseException ex) {
+            Logger.getLogger(clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        LimparCampos();
+
+// TODO add your handling code here:
     }//GEN-LAST:event_bt_salvar_cclienteActionPerformed
+
+    private void bt_limpar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cclienteActionPerformed
+
+        LimparCampos();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_cclienteActionPerformed
+
+    private void cbx_busca_nomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_busca_nomeMousePressed
+
+        cbx_busca_id.setEnabled(false);
+        ListarNomes_CBX();
+        cbx_busca_nome.setEnabled(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_nomeMousePressed
+
+    private void cbx_busca_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_busca_nomeActionPerformed
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_nomeActionPerformed
+
+    private void cbx_busca_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_busca_idMousePressed
+
+        cbx_busca_nome.setEnabled(false);
+        ListarId_CBX();
+        cbx_busca_id.setEnabled(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_idMousePressed
+
+    public void LimparCampos() {
+
+        id_ccliente.setText(null);
+        nome_ccliente.setText(null);
+        end_ccliente.setText(null);
+        cep_ccliente.setText(null);
+        cidade_ccliente.setText(null);
+        cbx_uf_ccliente.setSelectedItem(null);
+        cnpj_ccliente.setText(null);
+        reg_cnpj_ccliente.setText(null);
+        cpf_ccliente.setText(null);
+        dt_nasc__ccliente.setText(null);
+        tel_com_ccliente.setText(null);
+        tel_resid_ccliente.setText(null);
+        cel_ccliente.setText(null);
+        fax_ccliente.setText(null);
+        email_ccliente.setText(null);
+        obs_ccliente.setText(null);
+
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_limpar_ccliente;
     private javax.swing.JButton bt_salvar_ccliente;
+    private javax.swing.JComboBox cbx_busca_id;
+    private javax.swing.JComboBox cbx_busca_nome;
     private javax.swing.JComboBox cbx_uf_ccliente;
     private javax.swing.JFormattedTextField cel_ccliente;
     private javax.swing.JFormattedTextField cep_ccliente;
@@ -487,8 +609,6 @@ public class clientes extends javax.swing.JInternalFrame {
     private javax.swing.JTextField fax_ccliente;
     private javax.swing.JTextField id_ccliente;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -518,5 +638,58 @@ public class clientes extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField tel_resid_ccliente;
     // End of variables declaration//GEN-END:variables
 
+    public void ListarNomes_CBX() {
 
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.clientes";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_busca_nome.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_busca_nome.addItem(rs.getString("nome"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void ListarId_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.clientes";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+//          cbx_id_pes_usuario.removeAllItems();
+
+            cbx_busca_id.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_busca_id.addItem(rs.getString("id"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
 }

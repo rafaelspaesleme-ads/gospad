@@ -25,6 +25,18 @@ import javax.swing.JOptionPane;
  * @author rafael
  */
 public class clienteDao {
+    
+    Connection connection;
+    public ResultSet carregaCbx()throws Exception{
+        connection = conexao.getInstance().getConnection();
+        String sql = "SELECT * FROM clientes";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        return rs;
+        
+        
+    }
 
     //Codigo fonte de Cadastro, salvamento de dados no banco
     public static void salvar(ClienteModel cliente) throws ParseException {
