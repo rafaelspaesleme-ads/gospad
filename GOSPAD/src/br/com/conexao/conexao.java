@@ -10,11 +10,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author rafae
+ * 
+ * 
+ * @author rafael
  */
 public class conexao {
     
+    Connection connection = null;
+    static conexao instance = null;
         public static Connection GeraConexao(){
         Connection conexao = null;
         
@@ -30,5 +33,17 @@ public class conexao {
        }
         return conexao;
     }   
+
+
+        public static conexao getInstance() throws Exception{
+            if (instance == null){
+                instance = new conexao();
+            }
+            return instance;
+        }
+        
+        public Connection getConnection(){
+            return connection;
+        }
     
 }
