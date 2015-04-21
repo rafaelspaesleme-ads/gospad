@@ -57,7 +57,6 @@ public class clientes extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         cidade_ccliente = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cbx_uf_ccliente = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         cnpj_ccliente = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -85,6 +84,7 @@ public class clientes extends javax.swing.JInternalFrame {
         jLabel18 = new javax.swing.JLabel();
         cbx_busca_id = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        cbx_uf_ccliente = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         bt_salvar_ccliente = new javax.swing.JButton();
         bt_limpar_ccliente = new javax.swing.JButton();
@@ -135,9 +135,6 @@ public class clientes extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("UF");
-
-        cbx_uf_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        cbx_uf_ccliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC ", "AL ", "AP ", "AM ", "BA ", "CE ", "DF ", "GO ", "ES ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SP ", "SC ", "SE ", "TO" }));
 
         jLabel8.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel8.setText("CNPJ");
@@ -268,6 +265,11 @@ public class clientes extends javax.swing.JInternalFrame {
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setOpaque(true);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -284,7 +286,7 @@ public class clientes extends javax.swing.JInternalFrame {
                 .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,6 +300,8 @@ public class clientes extends javax.swing.JInternalFrame {
                     .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        cbx_uf_ccliente.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -337,8 +341,8 @@ public class clientes extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cep_ccliente)
-                                    .addComponent(cbx_uf_ccliente, 0, 91, Short.MAX_VALUE)))
+                                    .addComponent(cep_ccliente, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                                    .addComponent(cbx_uf_ccliente)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -426,7 +430,7 @@ public class clientes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 153));
@@ -506,7 +510,7 @@ public class clientes extends javax.swing.JInternalFrame {
         Registro.add(end_ccliente.getText());
         Registro.add(cep_ccliente.getText());
         Registro.add(cidade_ccliente.getText());
-        String uf = (String) cbx_uf_ccliente.getSelectedItem();
+        String uf = (String) cbx_uf_ccliente.getText();
         Registro.add(uf);
         Registro.add(cnpj_ccliente.getText());
 
@@ -570,6 +574,33 @@ public class clientes extends javax.swing.JInternalFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_cbx_busca_idMousePressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        boolean nome = cbx_busca_nome.isEnabled();
+        String cbxNome = (String) cbx_busca_nome.getSelectedItem();
+
+        boolean id = cbx_busca_id.isEnabled();
+        String cbxID = (String) cbx_busca_id.getSelectedItem();
+
+        if (nome == true && id == false) {
+            ListarClientes_Nome();
+        } else if (nome == true && id == true) {
+            ListarClientes_ID();
+        } else if (nome == false && id == true) {
+            ListarClientes_ID();
+        } else if (nome == true && id == true && "Clique aqui para carregar informações de pesquisa".equals(cbxNome) && "ID".equals(cbxID)) {
+            JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
+        } else if (nome == true && id == true && "Clique aqui para carregar informações de pesquisa".equals(cbxNome) && !"ID".equals(cbxID)) {
+            ListarClientes_ID();
+        } else if (nome == true && id == true && !"Clique aqui para carregar informações de pesquisa".equals(cbxNome) && "ID".equals(cbxID)) {
+            ListarClientes_Nome();
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
+        }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void LimparCampos() {
 
         id_ccliente.setText(null);
@@ -577,7 +608,7 @@ public class clientes extends javax.swing.JInternalFrame {
         end_ccliente.setText(null);
         cep_ccliente.setText(null);
         cidade_ccliente.setText(null);
-        cbx_uf_ccliente.setSelectedItem(null);
+        cbx_uf_ccliente.setText(null);
         cnpj_ccliente.setText(null);
         reg_cnpj_ccliente.setText(null);
         cpf_ccliente.setText(null);
@@ -597,7 +628,7 @@ public class clientes extends javax.swing.JInternalFrame {
     private javax.swing.JButton bt_salvar_ccliente;
     private javax.swing.JComboBox cbx_busca_id;
     private javax.swing.JComboBox cbx_busca_nome;
-    private javax.swing.JComboBox cbx_uf_ccliente;
+    private javax.swing.JTextField cbx_uf_ccliente;
     private javax.swing.JFormattedTextField cel_ccliente;
     private javax.swing.JFormattedTextField cep_ccliente;
     private javax.swing.JTextField cidade_ccliente;
@@ -637,6 +668,106 @@ public class clientes extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField tel_com_ccliente;
     private javax.swing.JFormattedTextField tel_resid_ccliente;
     // End of variables declaration//GEN-END:variables
+
+    public void ListarClientes_ID() {
+
+        String buscarId = (String) cbx_busca_id.getSelectedItem();
+
+        try {
+
+            if (!buscarId.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.clientes WHERE id = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarId);
+
+                ResultSet rs = comando.executeQuery();
+
+                while (rs.next()) {
+
+                    id_ccliente.setText(rs.getString("id"));
+                    nome_ccliente.setText(rs.getString("nome"));
+                    end_ccliente.setText(rs.getString("endereco"));
+                    cep_ccliente.setText(rs.getString("cep"));
+                    cidade_ccliente.setText(rs.getString("cidade"));
+                    cbx_uf_ccliente.setText(rs.getString("uf"));
+                    cnpj_ccliente.setText(rs.getString("cnpj"));
+                    reg_cnpj_ccliente.setText(rs.getString("registro_dt"));
+                    cpf_ccliente.setText(rs.getString("cpf"));
+                    dt_nasc__ccliente.setText(rs.getString("nascimento_dt"));
+                    tel_com_ccliente.setText(rs.getString("tel_comercial"));
+                    tel_resid_ccliente.setText(rs.getString("tel_residencial"));
+                    cel_ccliente.setText(rs.getString("celular"));
+                    fax_ccliente.setText(rs.getString("fax"));
+                    email_ccliente.setText(rs.getString("email"));
+                    obs_ccliente.setText("observacao");
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um ID!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void ListarClientes_Nome() {
+
+        String buscarNome = (String) cbx_busca_nome.getSelectedItem();
+
+        try {
+
+            if (!buscarNome.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.clientes WHERE nome = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarNome);
+
+                ResultSet rs = comando.executeQuery();
+
+                while (rs.next()) {
+
+                    id_ccliente.setText(rs.getString("id"));
+                    nome_ccliente.setText(rs.getString("nome"));
+                    end_ccliente.setText(rs.getString("endereco"));
+                    cep_ccliente.setText(rs.getString("cep"));
+                    cidade_ccliente.setText(rs.getString("cidade"));
+                    cbx_uf_ccliente.setText(rs.getString("uf"));
+                    cnpj_ccliente.setText(rs.getString("cnpj"));
+                    reg_cnpj_ccliente.setText(rs.getString("registro_dt"));
+                    cpf_ccliente.setText(rs.getString("cpf"));
+                    dt_nasc__ccliente.setText(rs.getString("nascimento_dt"));
+                    tel_com_ccliente.setText(rs.getString("tel_comercial"));
+                    tel_resid_ccliente.setText(rs.getString("tel_residencial"));
+                    cel_ccliente.setText(rs.getString("celular"));
+                    fax_ccliente.setText(rs.getString("fax"));
+                    email_ccliente.setText(rs.getString("email"));
+                    obs_ccliente.setText("observacao");
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
 
     public void ListarNomes_CBX() {
 
