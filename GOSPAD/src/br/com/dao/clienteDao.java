@@ -25,16 +25,17 @@ import javax.swing.JOptionPane;
  * @author rafael
  */
 public class clienteDao {
-    
+
     Connection connection;
-    public ResultSet carregaCbx()throws Exception{
+
+    public ResultSet carregaCbx() throws Exception {
         connection = conexao.getInstance().getConnection();
         String sql = "SELECT * FROM clientes";
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
-        
+
         return rs;
-        
+
         
     }
 
@@ -69,14 +70,14 @@ public class clienteDao {
             String data_registro = cliente.getRegistro_dt();
             DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
             java.sql.Date data1 = new java.sql.Date(fmt.parse(data_registro).getTime());
-            
+
             insereSt.setDate(8, data1);
             insereSt.setString(9, cliente.getCpf());
-            
+
             String data_nascimento = cliente.getNascimento_dt();
             DateFormat fmt2 = new SimpleDateFormat("dd/MM/yyyy");
             java.sql.Date data2 = new java.sql.Date(fmt2.parse(data_nascimento).getTime());
-            
+
             insereSt.setDate(10, data2);
             insereSt.setString(11, cliente.getTel_comercial());
             insereSt.setString(12, cliente.getTel_residencial());
@@ -253,18 +254,18 @@ public class clienteDao {
             insereSt.setString(5, cliente.getCidade());
             insereSt.setString(6, cliente.getUf());
             insereSt.setString(7, cliente.getCnpj());
-            
+
             String atualiza_registro = cliente.getRegistro_dt();
             DateFormat fmtA1 = new SimpleDateFormat("dd/MM/yyyy");
             java.sql.Date data1At = new java.sql.Date(fmtA1.parse(atualiza_registro).getTime());
-            
+
             insereSt.setDate(8, data1At);
             insereSt.setString(9, cliente.getCpf());
-            
+
             String atualiza_nascimento = cliente.getNascimento_dt();
             DateFormat fmtA2 = new SimpleDateFormat("dd/MM/yyyy");
             java.sql.Date data2At = new java.sql.Date(fmtA2.parse(atualiza_nascimento).getTime());
-            
+
             insereSt.setDate(10, data2At);
             insereSt.setString(11, cliente.getTel_comercial());
             insereSt.setString(12, cliente.getTel_residencial());
@@ -274,6 +275,9 @@ public class clienteDao {
             insereSt.setString(16, cliente.getObservacao());
 
             insereSt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Informações Atualizadas com Sucesso!");
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar cliente: " + e.getMessage());
         } finally {

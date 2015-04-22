@@ -18,6 +18,9 @@ import br.com.dao.clienteDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -29,11 +32,12 @@ public class clientes extends javax.swing.JInternalFrame {
     /**
      * Creates new form clientes
      */
+    boolean flag;
+
     public clientes() {
-//
+
         initComponents();
 
-        //
     }
 
     /**
@@ -696,9 +700,20 @@ public class clientes extends javax.swing.JInternalFrame {
                     cidade_ccliente.setText(rs.getString("cidade"));
                     cbx_uf_ccliente.setText(rs.getString("uf"));
                     cnpj_ccliente.setText(rs.getString("cnpj"));
-                    reg_cnpj_ccliente.setText(rs.getString("registro_dt"));
+
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+
+                    String data_registro = df.format(rs.getDate("registro_dt"));
+
+                    reg_cnpj_ccliente.setText(String.valueOf(data_registro));
+
                     cpf_ccliente.setText(rs.getString("cpf"));
-                    dt_nasc__ccliente.setText(rs.getString("nascimento_dt"));
+
+                    String data_nascimento = df.format(rs.getString("nascimento_dt"));
+
+                    dt_nasc__ccliente.setText(String.valueOf(data_nascimento));
+
                     tel_com_ccliente.setText(rs.getString("tel_comercial"));
                     tel_resid_ccliente.setText(rs.getString("tel_residencial"));
                     cel_ccliente.setText(rs.getString("celular"));
@@ -746,9 +761,22 @@ public class clientes extends javax.swing.JInternalFrame {
                     cidade_ccliente.setText(rs.getString("cidade"));
                     cbx_uf_ccliente.setText(rs.getString("uf"));
                     cnpj_ccliente.setText(rs.getString("cnpj"));
-                    reg_cnpj_ccliente.setText(rs.getString("registro_dt"));
+
+
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+
+                    String data_registro = df.format(rs.getDate("registro_dt"));
+
+                    reg_cnpj_ccliente.setText(String.valueOf(data_registro));
+                    
                     cpf_ccliente.setText(rs.getString("cpf"));
-                    dt_nasc__ccliente.setText(rs.getString("nascimento_dt"));
+
+
+                    String data_nascimento = df.format(rs.getString("nascimento_dt"));
+
+                    dt_nasc__ccliente.setText(String.valueOf(data_nascimento));
+                    
                     tel_com_ccliente.setText(rs.getString("tel_comercial"));
                     tel_resid_ccliente.setText(rs.getString("tel_residencial"));
                     cel_ccliente.setText(rs.getString("celular"));
