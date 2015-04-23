@@ -46,6 +46,7 @@ public class clienteDao {
         String sql = "insert into GOSPAD_BD.clientes values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
+            
             insereSt = cnx.prepareStatement(sql);
 
             insereSt.setInt(1, cliente.getId());

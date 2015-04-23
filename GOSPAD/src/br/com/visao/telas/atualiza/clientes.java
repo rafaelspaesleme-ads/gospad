@@ -710,7 +710,7 @@ public class clientes extends javax.swing.JInternalFrame {
 
                     cpf_ccliente.setText(rs.getString("cpf"));
 
-                    String data_nascimento = df.format(rs.getString("nascimento_dt"));
+                    String data_nascimento = df.format(rs.getDate("nascimento_dt"));
 
                     dt_nasc__ccliente.setText(String.valueOf(data_nascimento));
 
@@ -719,7 +719,7 @@ public class clientes extends javax.swing.JInternalFrame {
                     cel_ccliente.setText(rs.getString("celular"));
                     fax_ccliente.setText(rs.getString("fax"));
                     email_ccliente.setText(rs.getString("email"));
-                    obs_ccliente.setText("observacao");
+                    obs_ccliente.setText(rs.getString("observacao"));
 
                 }
 
@@ -765,6 +765,9 @@ public class clientes extends javax.swing.JInternalFrame {
 
                     DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                     df.setLenient(false);
+                    
+                    DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+                    df2.setLenient(false);
 
                     String data_registro = df.format(rs.getDate("registro_dt"));
 
@@ -773,7 +776,7 @@ public class clientes extends javax.swing.JInternalFrame {
                     cpf_ccliente.setText(rs.getString("cpf"));
 
 
-                    String data_nascimento = df.format(rs.getString("nascimento_dt"));
+                    String data_nascimento = df2.format(rs.getDate("nascimento_dt"));
 
                     dt_nasc__ccliente.setText(String.valueOf(data_nascimento));
                     
@@ -782,7 +785,7 @@ public class clientes extends javax.swing.JInternalFrame {
                     cel_ccliente.setText(rs.getString("celular"));
                     fax_ccliente.setText(rs.getString("fax"));
                     email_ccliente.setText(rs.getString("email"));
-                    obs_ccliente.setText("observacao");
+                    obs_ccliente.setText(rs.getString("observacao"));
 
                 }
 
