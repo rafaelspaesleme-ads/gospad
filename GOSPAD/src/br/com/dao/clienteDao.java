@@ -36,7 +36,6 @@ public class clienteDao {
 
         return rs;
 
-        
     }
 
     //Codigo fonte de Cadastro, salvamento de dados no banco
@@ -46,7 +45,7 @@ public class clienteDao {
         String sql = "insert into GOSPAD_BD.clientes values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
-            
+
             insereSt = cnx.prepareStatement(sql);
 
             insereSt.setInt(1, cliente.getId());
@@ -60,14 +59,12 @@ public class clienteDao {
 //        java.util.Date dataSistema = new java.util.Date();
 //        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 //        JLDATA.setText(formato.format(dataSistema));
-            
 //        String dataString = request.getParameter("data");  
 //        DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");  
 //        java.sql.Date data = new java.sql.Date(fmt.parse(dataString).getTime()); 
 //        
 //        java.util.Date dataUtil = new java.util.Date();
 //        java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
-            
             String data_registro = cliente.getRegistro_dt();
             DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
             java.sql.Date data1 = new java.sql.Date(fmt.parse(data_registro).getTime());
@@ -300,6 +297,8 @@ public class clienteDao {
             insereSt = cnx.prepareStatement(sql);
             insereSt.setInt(1, cliente.getId());
             insereSt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Informações Deletadas com Sucesso!");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir cliente: " + e.getMessage() + "\n");

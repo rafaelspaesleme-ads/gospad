@@ -5,24 +5,28 @@
  */
 package br.com.visao.telas.exclui;
 
+import br.com.conexao.conexao;
+import br.com.controle.clienteControl;
 import br.com.visao.telas.atualiza.*;
 import br.com.visao.telas.cadastro.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Rafael Paes Leme
  */
 public class clientes extends javax.swing.JInternalFrame {
-    
-    
 
     /**
      * Creates new form clientes
      */
     public clientes() {
-    
-        
-        
+
         initComponents();
     }
 
@@ -71,9 +75,9 @@ public class clientes extends javax.swing.JInternalFrame {
         obs_ccliente = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbx_busca_nome = new javax.swing.JComboBox();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        cbx_busca_id = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         bt_salvar_ccliente = new javax.swing.JButton();
@@ -226,14 +230,24 @@ public class clientes extends javax.swing.JInternalFrame {
         jLabel17.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel17.setText("Buscar por Nome");
 
-        jComboBox1.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_busca_nome.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_busca_nome.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clique aqui para carregar informações de pesquisa" }));
+        cbx_busca_nome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_busca_nomeMousePressed(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel18.setText("Buscar por ID");
 
-        jComboBox2.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_busca_id.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_busca_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID" }));
+        cbx_busca_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_busca_idMousePressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setFont(new java.awt.Font("Khmer UI", 1, 12)); // NOI18N
@@ -243,6 +257,11 @@ public class clientes extends javax.swing.JInternalFrame {
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setOpaque(true);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -252,11 +271,11 @@ public class clientes extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_busca_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -267,9 +286,9 @@ public class clientes extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_busca_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -428,6 +447,11 @@ public class clientes extends javax.swing.JInternalFrame {
         bt_limpar_ccliente.setContentAreaFilled(false);
         bt_limpar_ccliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_ccliente.setOpaque(true);
+        bt_limpar_ccliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_cclienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -469,13 +493,276 @@ public class clientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_salvar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_cclienteActionPerformed
-        // TODO add your handling code here:
+
+        int iPodeExcluir = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir?", "Meu cadastro", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (iPodeExcluir == 0) {
+            clienteControl ctrlClie = new clienteControl();
+            ctrlClie.Excluir(Integer.parseInt(id_ccliente.getText()));
+            LimparCampos();
+        }
+
+// TODO add your handling code here:
     }//GEN-LAST:event_bt_salvar_cclienteActionPerformed
+
+    private void bt_limpar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cclienteActionPerformed
+
+        LimparCampos();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_cclienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        boolean nome = cbx_busca_nome.isEnabled();
+        String cbxNome = (String) cbx_busca_nome.getSelectedItem();
+
+        boolean id = cbx_busca_id.isEnabled();
+        String cbxID = (String) cbx_busca_id.getSelectedItem();
+
+        if (nome == true && id == false) {
+            ListarClientes_Nome();
+        } else if (nome == true && id == true) {
+            ListarClientes_ID();
+        } else if (nome == false && id == true) {
+            ListarClientes_ID();
+        } else if (nome == true && id == true && "Clique aqui para carregar informações de pesquisa".equals(cbxNome) && "ID".equals(cbxID)) {
+            JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
+        } else if (nome == true && id == true && "Clique aqui para carregar informações de pesquisa".equals(cbxNome) && !"ID".equals(cbxID)) {
+            ListarClientes_ID();
+        } else if (nome == true && id == true && !"Clique aqui para carregar informações de pesquisa".equals(cbxNome) && "ID".equals(cbxID)) {
+            ListarClientes_Nome();
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
+        }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cbx_busca_nomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_busca_nomeMousePressed
+
+        cbx_busca_id.setEnabled(false);
+        ListarNomes_CBX();
+        cbx_busca_nome.setEnabled(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_nomeMousePressed
+
+    private void cbx_busca_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_busca_idMousePressed
+
+        cbx_busca_nome.setEnabled(false);
+        ListarId_CBX();
+        cbx_busca_id.setEnabled(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_idMousePressed
+
+    public void ListarNomes_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.clientes";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_busca_nome.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_busca_nome.addItem(rs.getString("nome"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void ListarId_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.clientes";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+//          cbx_id_pes_usuario.removeAllItems();
+
+            cbx_busca_id.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_busca_id.addItem(rs.getString("id"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void ListarClientes_Nome() {
+
+        String buscarNome = (String) cbx_busca_nome.getSelectedItem();
+
+        try {
+
+            if (!buscarNome.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.clientes WHERE nome = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarNome);
+
+                ResultSet rs = comando.executeQuery();
+
+                while (rs.next()) {
+
+                    id_ccliente.setText(rs.getString("id"));
+                    nome_ccliente.setText(rs.getString("nome"));
+                    end_ccliente.setText(rs.getString("endereco"));
+                    cep_ccliente.setText(rs.getString("cep"));
+                    cidade_ccliente.setText(rs.getString("cidade"));
+                    cbx_uf_ccliente.addItem(rs.getString("uf"));
+                    cnpj_ccliente.setText(rs.getString("cnpj"));
+
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+
+                    DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+                    df2.setLenient(false);
+
+                    String data_registro = df.format(rs.getDate("registro_dt"));
+
+                    reg_cnpj_ccliente.setText(String.valueOf(data_registro));
+
+                    cpf_ccliente.setText(rs.getString("cpf"));
+
+                    String data_nascimento = df2.format(rs.getDate("nascimento_dt"));
+
+                    dt_nasc__ccliente.setText(String.valueOf(data_nascimento));
+
+                    tel_com_ccliente.setText(rs.getString("tel_comercial"));
+                    tel_resid_ccliente.setText(rs.getString("tel_residencial"));
+                    cel_ccliente.setText(rs.getString("celular"));
+                    fax_ccliente.setText(rs.getString("fax"));
+                    email_ccliente.setText(rs.getString("email"));
+                    obs_ccliente.setText(rs.getString("observacao"));
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void ListarClientes_ID() {
+
+        String buscarId = (String) cbx_busca_id.getSelectedItem();
+
+        try {
+
+            if (!buscarId.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.clientes WHERE id = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarId);
+
+                ResultSet rs = comando.executeQuery();
+
+                while (rs.next()) {
+
+                    id_ccliente.setText(rs.getString("id"));
+                    nome_ccliente.setText(rs.getString("nome"));
+                    end_ccliente.setText(rs.getString("endereco"));
+                    cep_ccliente.setText(rs.getString("cep"));
+                    cidade_ccliente.setText(rs.getString("cidade"));
+                    cbx_uf_ccliente.addItem(rs.getString("uf"));
+                    cnpj_ccliente.setText(rs.getString("cnpj"));
+
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+
+                    String data_registro = df.format(rs.getDate("registro_dt"));
+
+                    reg_cnpj_ccliente.setText(String.valueOf(data_registro));
+
+                    cpf_ccliente.setText(rs.getString("cpf"));
+
+                    String data_nascimento = df.format(rs.getDate("nascimento_dt"));
+
+                    dt_nasc__ccliente.setText(String.valueOf(data_nascimento));
+
+                    tel_com_ccliente.setText(rs.getString("tel_comercial"));
+                    tel_resid_ccliente.setText(rs.getString("tel_residencial"));
+                    cel_ccliente.setText(rs.getString("celular"));
+                    fax_ccliente.setText(rs.getString("fax"));
+                    email_ccliente.setText(rs.getString("email"));
+                    obs_ccliente.setText(rs.getString("observacao"));
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um ID!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void LimparCampos() {
+
+        id_ccliente.setText(null);
+        nome_ccliente.setText(null);
+        end_ccliente.setText(null);
+        cep_ccliente.setText(null);
+        cidade_ccliente.setText(null);
+        cbx_uf_ccliente.addItem(null);
+        cnpj_ccliente.setText(null);
+        reg_cnpj_ccliente.setText(null);
+        cpf_ccliente.setText(null);
+        dt_nasc__ccliente.setText(null);
+        tel_com_ccliente.setText(null);
+        tel_resid_ccliente.setText(null);
+        cel_ccliente.setText(null);
+        fax_ccliente.setText(null);
+        email_ccliente.setText(null);
+        obs_ccliente.setText(null);
+
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_limpar_ccliente;
     private javax.swing.JButton bt_salvar_ccliente;
+    private javax.swing.JComboBox cbx_busca_id;
+    private javax.swing.JComboBox cbx_busca_nome;
     private javax.swing.JComboBox cbx_uf_ccliente;
     private javax.swing.JFormattedTextField cel_ccliente;
     private javax.swing.JFormattedTextField cep_ccliente;
@@ -488,8 +775,6 @@ public class clientes extends javax.swing.JInternalFrame {
     private javax.swing.JTextField fax_ccliente;
     private javax.swing.JTextField id_ccliente;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -518,6 +803,5 @@ public class clientes extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField tel_com_ccliente;
     private javax.swing.JFormattedTextField tel_resid_ccliente;
     // End of variables declaration//GEN-END:variables
-
 
 }
