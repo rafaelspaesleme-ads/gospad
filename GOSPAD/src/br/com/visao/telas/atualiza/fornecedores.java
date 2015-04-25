@@ -6,8 +6,8 @@
 package br.com.visao.telas.atualiza;
 
 import br.com.conexao.conexao;
-import br.com.controle.clienteControl;
-import br.com.visao.telas.cadastro.*;
+import br.com.controle.fornecedorControl;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -547,6 +547,9 @@ public class fornecedores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bt_limpar_cfornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cfornecedoresActionPerformed
+
+        LimparCampos();
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_limpar_cfornecedoresActionPerformed
 
@@ -592,9 +595,9 @@ public class fornecedores extends javax.swing.JInternalFrame {
         Registro.add(email_cfornecedores.getText());
         Registro.add(obs_cfornecedores.getText());
 
-        clienteControl ControllerClie = new clienteControl();
+        fornecedorControl ControllerForn = new fornecedorControl();
         try {
-            ControllerClie.Atualizar(Registro);
+            ControllerForn.Atualizar(Registro);
         } catch (ParseException ex) {
             Logger.getLogger(clientes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -680,7 +683,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
 
                 Connection conn = conexao.GeraConexao();
 
-                String sql = "SELECT * FROM GOSPAD_BD.fornecedores WHERE id = ?";
+                String sql = "SELECT * FROM GOSPAD_BD.fornecedor WHERE id = ?";
 
                 PreparedStatement comando = conn.prepareStatement(sql);
 
@@ -741,7 +744,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
 
                 Connection conn = conexao.GeraConexao();
 
-                String sql = "SELECT * FROM GOSPAD_BD.fornecedores WHERE nome = ?";
+                String sql = "SELECT * FROM GOSPAD_BD.fornecedor WHERE nome = ?";
 
                 PreparedStatement comando = conn.prepareStatement(sql);
 
@@ -801,7 +804,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
 
             Connection conn = conexao.GeraConexao();
 
-            String sql = "SELECT * FROM GOSPAD_BD.fornecedores";
+            String sql = "SELECT * FROM GOSPAD_BD.fornecedor";
 
             PreparedStatement comando = conn.prepareStatement(sql);
 
@@ -828,7 +831,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
 
             Connection conn = conexao.GeraConexao();
 
-            String sql = "SELECT * FROM GOSPAD_BD.fornecedores";
+            String sql = "SELECT * FROM GOSPAD_BD.fornecedor";
 
             PreparedStatement comando = conn.prepareStatement(sql);
 

@@ -569,7 +569,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
 
             Connection conn = conexao.GeraConexao();
 
-            String sql = "SELECT * FROM GOSPAD_BD.fornecedores";
+            String sql = "SELECT * FROM GOSPAD_BD.fornecedor";
 
             PreparedStatement comando = conn.prepareStatement(sql);
 
@@ -596,7 +596,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
 
             Connection conn = conexao.GeraConexao();
 
-            String sql = "SELECT * FROM GOSPAD_BD.fornecedores";
+            String sql = "SELECT * FROM GOSPAD_BD.fornecedor";
 
             PreparedStatement comando = conn.prepareStatement(sql);
 
@@ -628,7 +628,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
 
                 Connection conn = conexao.GeraConexao();
 
-                String sql = "SELECT * FROM GOSPAD_BD.fornecedores WHERE nome = ?";
+                String sql = "SELECT * FROM GOSPAD_BD.fornecedor WHERE nome = ?";
 
                 PreparedStatement comando = conn.prepareStatement(sql);
 
@@ -692,7 +692,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
 
                 Connection conn = conexao.GeraConexao();
 
-                String sql = "SELECT * FROM GOSPAD_BD.fornecedores WHERE id = ?";
+                String sql = "SELECT * FROM GOSPAD_BD.fornecedor WHERE id = ?";
 
                 PreparedStatement comando = conn.prepareStatement(sql);
 
