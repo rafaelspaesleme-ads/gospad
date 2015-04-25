@@ -5,21 +5,24 @@
  */
 package br.com.visao.telas.cadastro;
 
+import br.com.controle.fornecedorControl;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rafael Paes Leme
  */
 public class fornecedores extends javax.swing.JInternalFrame {
-    
-    
-
+//
     /**
-     * Creates new form clientes
+     * Creates new form fornecedores
      */
     public fornecedores() {
-    
-        
-        
+//
         initComponents();
     }
 
@@ -343,6 +346,11 @@ public class fornecedores extends javax.swing.JInternalFrame {
         bt_salvar_cfornecedores.setContentAreaFilled(false);
         bt_salvar_cfornecedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_salvar_cfornecedores.setOpaque(true);
+        bt_salvar_cfornecedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvar_cfornecedoresActionPerformed(evt);
+            }
+        });
 
         bt_limpar_cfornecedores.setBackground(new java.awt.Color(0, 153, 204));
         bt_limpar_cfornecedores.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -352,6 +360,11 @@ public class fornecedores extends javax.swing.JInternalFrame {
         bt_limpar_cfornecedores.setContentAreaFilled(false);
         bt_limpar_cfornecedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_cfornecedores.setOpaque(true);
+        bt_limpar_cfornecedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_cfornecedoresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -393,6 +406,90 @@ public class fornecedores extends javax.swing.JInternalFrame {
 
         setBounds(0, 0, 762, 453);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_limpar_cfornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cfornecedoresActionPerformed
+
+        LimparCampos();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_cfornecedoresActionPerformed
+
+    private void bt_salvar_cfornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_cfornecedoresActionPerformed
+
+        SalvarDados();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_salvar_cfornecedoresActionPerformed
+
+    public void SalvarDados() {
+
+        //
+        ArrayList<String> Registro = new ArrayList<>();
+        Registro.add(id_cfornecedores.getText());
+        Registro.add(nome_cfornecedores.getText());
+        Registro.add(end_cfornecedores.getText());
+        Registro.add(cep_cfornecedores.getText());
+        Registro.add(cidade_cfornecedores.getText());
+        String uf = (String) cbx_uf_cfornecedores.getSelectedItem();
+        Registro.add(uf);
+        Registro.add(cnpj_cfornecedores.getText());
+
+        if ("  /  /    ".equals(registro_cnpj_cfornecedores.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(registro_cnpj_cfornecedores.getText());
+        }
+        Registro.add(cpf_cfornecedores.getText());
+        if ("  /  /    ".equals(dt_nasc_cfornecedores.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(dt_nasc_cfornecedores.getText());
+        }
+        Registro.add(tel_com1_cfornecedores.getText());
+        Registro.add(tel_com2_cfornecedores.getText());
+        Registro.add(cel_cfornecedores.getText());
+        Registro.add(fax_cfornecedores.getText());
+        Registro.add(email_cfornecedores.getText());
+        Registro.add(obs_cfornecedores.getText());
+
+        fornecedorControl ControllerForn = new fornecedorControl();
+        try {
+            //
+            ControllerForn.Salvar(Registro);
+            //
+
+// TODO add your handling code here:
+        } catch (ParseException ex) {
+
+            JOptionPane.showMessageDialog(null, "Erro Fatal! Erro, " + ex + ". Informações inseridas incorretamentes!");
+
+            Logger.getLogger(fornecedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        LimparCampos();
+
+    }
+
+    public void LimparCampos() {
+
+        id_cfornecedores.setText(null);
+        nome_cfornecedores.setText(null);
+        end_cfornecedores.setText(null);
+        cep_cfornecedores.setText(null);
+        cidade_cfornecedores.setText(null);
+        cbx_uf_cfornecedores.setSelectedItem(null);
+        cnpj_cfornecedores.setText(null);
+        registro_cnpj_cfornecedores.setText(null);
+        cpf_cfornecedores.setText(null);
+        dt_nasc_cfornecedores.setText(null);
+        tel_com1_cfornecedores.setText(null);
+        tel_com2_cfornecedores.setText(null);
+        cel_cfornecedores.setText(null);
+        fax_cfornecedores.setText(null);
+        email_cfornecedores.setText(null);
+        obs_cfornecedores.setText(null);
+
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,7 +5,7 @@
  */
 package br.com.visao.telas.atualiza;
 
-import br.com.classes.clienteClass;
+
 import br.com.conexao.conexao;
 import br.com.controle.clienteControl;
 import br.com.visao.telas.cadastro.*;
@@ -536,9 +536,9 @@ public class clientes extends javax.swing.JInternalFrame {
         Registro.add(email_ccliente.getText());
         Registro.add(obs_ccliente.getText());
 
-        clienteControl ControllerCidade = new clienteControl();
+        clienteControl ControllerClie = new clienteControl();
         try {
-            ControllerCidade.Atualizar(Registro);
+            ControllerClie.Atualizar(Registro);
         } catch (ParseException ex) {
             Logger.getLogger(clientes.class.getName()).log(Level.SEVERE, null, ex);
         }
