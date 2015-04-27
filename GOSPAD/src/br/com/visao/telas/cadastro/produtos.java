@@ -5,6 +5,20 @@
  */
 package br.com.visao.telas.cadastro;
 
+import br.com.conexao.conexao;
+import br.com.controle.produtosControl;
+import br.com.visao.Principal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rafael Paes Leme
@@ -70,6 +84,11 @@ public class produtos extends javax.swing.JInternalFrame {
         bt_salvar_cprodutos.setContentAreaFilled(false);
         bt_salvar_cprodutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_salvar_cprodutos.setOpaque(true);
+        bt_salvar_cprodutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvar_cprodutosActionPerformed(evt);
+            }
+        });
 
         bt_limpar_cprodutos.setBackground(new java.awt.Color(0, 153, 204));
         bt_limpar_cprodutos.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -79,6 +98,11 @@ public class produtos extends javax.swing.JInternalFrame {
         bt_limpar_cprodutos.setContentAreaFilled(false);
         bt_limpar_cprodutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_cprodutos.setOpaque(true);
+        bt_limpar_cprodutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_cprodutosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -149,10 +173,25 @@ public class produtos extends javax.swing.JInternalFrame {
         jLabel7.setText("Fornecedor");
 
         cbx_fornecedor_cprodutos.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        cbx_fornecedor_cprodutos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_fornecedor_cprodutos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clique aqui para carregar lista de Fornecedores." }));
+        cbx_fornecedor_cprodutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_fornecedor_cprodutosMousePressed(evt);
+            }
+        });
+        cbx_fornecedor_cprodutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_fornecedor_cprodutosActionPerformed(evt);
+            }
+        });
 
         bt_carregar_forn_cprodutos.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        bt_carregar_forn_cprodutos.setText("Carregar");
+        bt_carregar_forn_cprodutos.setText("Exibir");
+        bt_carregar_forn_cprodutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_carregar_forn_cprodutosActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -205,38 +244,40 @@ public class produtos extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nome_cprodutos))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(compra_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(venda_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(qtd_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipo_cprodutos))
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(jLabel11))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cbx_fornecedor_cprodutos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_carregar_forn_cprodutos)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(id_fornecedor_cprodutos)
-                            .addComponent(id_comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(id_comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_carregar_forn_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cbx_fornecedor_cprodutos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(compra_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(venda_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(qtd_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tipo_cprodutos))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(id_fornecedor_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +302,6 @@ public class produtos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cbx_fornecedor_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_carregar_forn_cprodutos)
                     .addComponent(jLabel8)
                     .addComponent(id_fornecedor_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -269,12 +309,13 @@ public class produtos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel10)
                     .addComponent(comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(id_comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id_comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_carregar_forn_cprodutos))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -294,6 +335,180 @@ public class produtos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_carregar_forn_cprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_carregar_forn_cprodutosActionPerformed
+
+        ExibirComprador();
+        ListarFornecedores_ID();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_carregar_forn_cprodutosActionPerformed
+
+    private void bt_salvar_cprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_cprodutosActionPerformed
+
+        SalvarDados();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_salvar_cprodutosActionPerformed
+
+    private void cbx_fornecedor_cprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_fornecedor_cprodutosActionPerformed
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_fornecedor_cprodutosActionPerformed
+
+    private void cbx_fornecedor_cprodutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_fornecedor_cprodutosMousePressed
+
+        Listar_Fornecedores_CBX();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_fornecedor_cprodutosMousePressed
+
+    private void bt_limpar_cprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cprodutosActionPerformed
+
+        LimparCampos();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_cprodutosActionPerformed
+
+    public void LimparCampos() {
+
+        id_cprodutos.setText(null);
+        nome_cprodutos.setText(null);
+        compra_cprodutos.setText(null);
+        venda_cprodutos.setText(null);
+        qtd_cprodutos.setText(null);
+        tipo_cprodutos.setText(null);
+        cbx_fornecedor_cprodutos.addItem(null);
+        id_fornecedor_cprodutos.setText(null);
+        comprador_cprodutos.setText(null);
+        id_comprador_cprodutos.setText(null);
+        obs_cprodutos.setText(null);
+
+    }
+
+    public void ListarFornecedores_ID() {
+
+        String buscarId = (String) cbx_fornecedor_cprodutos.getSelectedItem();
+
+        try {
+
+            if (!buscarId.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.fornecedor WHERE nome = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarId);
+
+                ResultSet rs = comando.executeQuery();
+
+                while (rs.next()) {
+
+                    id_fornecedor_cprodutos.setText(rs.getString("id"));
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um ID!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void SalvarDados() {
+
+        //
+        ArrayList<String> Registro = new ArrayList<>();
+        Registro.add(id_cprodutos.getText());
+        Registro.add(nome_cprodutos.getText());
+        Registro.add(compra_cprodutos.getText());
+        Registro.add(venda_cprodutos.getText());
+        Registro.add(qtd_cprodutos.getText());
+        Registro.add(tipo_cprodutos.getText());
+        Registro.add((String) cbx_fornecedor_cprodutos.getSelectedItem());
+        Registro.add(id_fornecedor_cprodutos.getText());
+        Registro.add(compra_cprodutos.getText());
+        Registro.add(id_comprador_cprodutos.getText());
+        Registro.add(obs_cprodutos.getText());
+
+        produtosControl ControllerProd = new produtosControl();
+        try {
+            //
+            ControllerProd.Salvar(Registro);
+            //
+
+// TODO add your handling code here:
+        } catch (ParseException ex) {
+
+            JOptionPane.showMessageDialog(null, "Erro Fatal! Erro, " + ex + ". Informações inseridas incorretamentes!");
+
+            Logger.getLogger(fornecedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        LimparCampos();
+
+    }
+
+
+
+    public void Listar_Fornecedores_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.fornecedor";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_fornecedor_cprodutos.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_fornecedor_cprodutos.addItem(rs.getString("nome"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+    
+    public void ExibirComprador(){
+        
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.comprador";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            while (rs.next()) {
+
+                comprador_cprodutos.setText(rs.getString("nome"));
+                id_comprador_cprodutos.setText(rs.getString("id_comprador"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -326,4 +541,5 @@ public class produtos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tipo_cprodutos;
     private javax.swing.JFormattedTextField venda_cprodutos;
     // End of variables declaration//GEN-END:variables
+
 }

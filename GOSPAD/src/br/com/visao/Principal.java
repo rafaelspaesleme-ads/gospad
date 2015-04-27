@@ -11,6 +11,7 @@ import br.com.visao.telas.Exclui;
 import br.com.visao.telas.Movimentos;
 import br.com.visao.telas.Relatorio;
 import br.com.visao.telas.Temas;
+import br.com.visao.telas.cadastro.produtos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -39,7 +40,6 @@ public class Principal extends javax.swing.JFrame {
         return p;
 
     }
-
 
     public static JDesktopPane getPainel() {
 
@@ -98,6 +98,9 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -774,12 +777,17 @@ public class Principal extends javax.swing.JFrame {
         Date dataSistema = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         JLDATA.setText(formato.format(dataSistema));
-        
+
         Timer timer = new Timer(1000, new hora());
         timer.start();
-        
+
 // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -802,7 +810,7 @@ public class Principal extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -864,15 +872,15 @@ public class Principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     class hora implements ActionListener {
-        
+
         @Override
-        public void actionPerformed (ActionEvent e) {
-            
+        public void actionPerformed(ActionEvent e) {
+
             Calendar now = Calendar.getInstance();
-            
-      JLHORA.setText(String.format("%1$tH:%1$tM:%1$tS", now));
+
+            JLHORA.setText(String.format("%1$tH:%1$tM:%1$tS", now));
         }
-        
+
     }
 
 
