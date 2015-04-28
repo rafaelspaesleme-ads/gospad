@@ -433,7 +433,7 @@ public class produtos extends javax.swing.JInternalFrame {
         Registro.add(tipo_cprodutos.getText());
         Registro.add((String) cbx_fornecedor_cprodutos.getSelectedItem());
         Registro.add(id_fornecedor_cprodutos.getText());
-        Registro.add(compra_cprodutos.getText());
+        Registro.add(comprador_cprodutos.getText());
         Registro.add(id_comprador_cprodutos.getText());
         Registro.add(obs_cprodutos.getText());
 

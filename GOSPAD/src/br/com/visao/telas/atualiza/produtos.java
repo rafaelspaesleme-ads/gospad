@@ -5,7 +5,19 @@
  */
 package br.com.visao.telas.atualiza;
 
+import br.com.conexao.conexao;
+import br.com.controle.produtosControl;
 import br.com.visao.telas.cadastro.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -46,7 +58,6 @@ public class produtos extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         tipo_cprodutos = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        cbx_fornecedor_cprodutos = new javax.swing.JComboBox();
         bt_carregar_forn_cprodutos = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         id_fornecedor_cprodutos = new javax.swing.JTextField();
@@ -59,10 +70,11 @@ public class produtos extends javax.swing.JInternalFrame {
         id_comprador_cprodutos = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbx_busca_nome = new javax.swing.JComboBox();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        cbx_busca_id = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        cbx_fornecedor_cprodutos = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -78,6 +90,11 @@ public class produtos extends javax.swing.JInternalFrame {
         bt_salvar_cprodutos.setContentAreaFilled(false);
         bt_salvar_cprodutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_salvar_cprodutos.setOpaque(true);
+        bt_salvar_cprodutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvar_cprodutosActionPerformed(evt);
+            }
+        });
 
         bt_limpar_cprodutos.setBackground(new java.awt.Color(0, 153, 204));
         bt_limpar_cprodutos.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -87,6 +104,11 @@ public class produtos extends javax.swing.JInternalFrame {
         bt_limpar_cprodutos.setContentAreaFilled(false);
         bt_limpar_cprodutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_cprodutos.setOpaque(true);
+        bt_limpar_cprodutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_cprodutosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -156,11 +178,13 @@ public class produtos extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel7.setText("Fornecedor");
 
-        cbx_fornecedor_cprodutos.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        cbx_fornecedor_cprodutos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         bt_carregar_forn_cprodutos.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         bt_carregar_forn_cprodutos.setText("Carregar");
+        bt_carregar_forn_cprodutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_carregar_forn_cprodutosActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -199,14 +223,24 @@ public class produtos extends javax.swing.JInternalFrame {
         jLabel17.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel17.setText("Buscar por Nome");
 
-        jComboBox1.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_busca_nome.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_busca_nome.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clique aqui para carregar informações de pesquisa" }));
+        cbx_busca_nome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_busca_nomeMousePressed(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel18.setText("Buscar por ID");
 
-        jComboBox2.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_busca_id.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_busca_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID" }));
+        cbx_busca_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_busca_idMousePressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setFont(new java.awt.Font("Khmer UI", 1, 12)); // NOI18N
@@ -216,6 +250,11 @@ public class produtos extends javax.swing.JInternalFrame {
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setOpaque(true);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -225,11 +264,11 @@ public class produtos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_busca_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -240,12 +279,16 @@ public class produtos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_busca_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        cbx_fornecedor_cprodutos.setEditable(false);
+        cbx_fornecedor_cprodutos.setBackground(new java.awt.Color(255, 255, 204));
+        cbx_fornecedor_cprodutos.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -283,22 +326,20 @@ public class produtos extends javax.swing.JInternalFrame {
                         .addComponent(tipo_cprodutos))
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(jLabel11))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cbx_fornecedor_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_carregar_forn_cprodutos)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(id_fornecedor_cprodutos)
-                            .addComponent(id_comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(id_comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_carregar_forn_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(cbx_fornecedor_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(id_fornecedor_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(66, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -328,21 +369,21 @@ public class produtos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(cbx_fornecedor_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_carregar_forn_cprodutos)
                     .addComponent(jLabel8)
-                    .addComponent(id_fornecedor_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id_fornecedor_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_fornecedor_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(id_comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id_comprador_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_carregar_forn_cprodutos))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -363,20 +404,315 @@ public class produtos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbx_busca_nomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_busca_nomeMousePressed
+
+        cbx_busca_id.setEnabled(false);
+        ListarNomes_CBX();
+        cbx_busca_nome.setEnabled(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_nomeMousePressed
+
+    private void cbx_busca_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_busca_idMousePressed
+
+        cbx_busca_nome.setEnabled(false);
+        ListarId_CBX();
+        cbx_busca_id.setEnabled(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_idMousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        
+        boolean nome = cbx_busca_nome.isEnabled();
+        String cbxNome = (String) cbx_busca_nome.getSelectedItem();
+
+        boolean id = cbx_busca_id.isEnabled();
+        String cbxID = (String) cbx_busca_id.getSelectedItem();
+
+        if (nome == true && id == false) {
+            ListarProdutos_Nome();
+        } else if (nome == true && id == true) {
+            ListarProdutos_ID();
+        } else if (nome == false && id == true) {
+            ListarProdutos_ID();
+        } else if (nome == true && id == true && "Clique aqui para carregar informações de pesquisa".equals(cbxNome) && "ID".equals(cbxID)) {
+            JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
+        } else if (nome == true && id == true && "Clique aqui para carregar informações de pesquisa".equals(cbxNome) && !"ID".equals(cbxID)) {
+            ListarProdutos_ID();
+        } else if (nome == true && id == true && !"Clique aqui para carregar informações de pesquisa".equals(cbxNome) && "ID".equals(cbxID)) {
+            ListarProdutos_Nome();
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
+        }
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bt_carregar_forn_cprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_carregar_forn_cprodutosActionPerformed
+
+        ExibirComprador();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_carregar_forn_cprodutosActionPerformed
+
+    private void bt_salvar_cprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_cprodutosActionPerformed
+    
+        AtualizarDados();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_salvar_cprodutosActionPerformed
+
+    private void bt_limpar_cprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cprodutosActionPerformed
+    
+        LimparCampos();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_cprodutosActionPerformed
+
+    
+    public void LimparCampos() {
+
+        id_cprodutos.setText(null);
+        nome_cprodutos.setText(null);
+        compra_cprodutos.setText(null);
+        venda_cprodutos.setText(null);
+        qtd_cprodutos.setText(null);
+        tipo_cprodutos.setText(null);
+        cbx_fornecedor_cprodutos.setText(null);
+        id_fornecedor_cprodutos.setText(null);
+        comprador_cprodutos.setText(null);
+        id_comprador_cprodutos.setText(null);
+        obs_cprodutos.setText(null);
+
+    }
+
+    
+    public void AtualizarDados() {
+
+        //
+        ArrayList<String> Registro = new ArrayList<>();
+        Registro.add(id_cprodutos.getText());
+        Registro.add(nome_cprodutos.getText());
+        Registro.add(compra_cprodutos.getText());
+        Registro.add(venda_cprodutos.getText());
+        Registro.add(qtd_cprodutos.getText());
+        Registro.add(tipo_cprodutos.getText());
+        Registro.add(cbx_fornecedor_cprodutos.getText());
+        Registro.add(id_fornecedor_cprodutos.getText());
+        Registro.add(comprador_cprodutos.getText());
+        Registro.add(id_comprador_cprodutos.getText());
+        Registro.add(obs_cprodutos.getText());
+
+        produtosControl ControllerProd = new produtosControl();
+        try {
+            //
+            ControllerProd.Atualizar(Registro);
+            //
+
+// TODO add your handling code here:
+        } catch (ParseException ex) {
+
+            JOptionPane.showMessageDialog(null, "Erro Fatal! Erro, " + ex + ". Informações inseridas incorretamentes!");
+
+            Logger.getLogger(br.com.visao.telas.cadastro.fornecedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        LimparCampos();
+
+    }
+    
+        
+    public void ExibirComprador(){
+        
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.comprador";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            while (rs.next()) {
+
+                comprador_cprodutos.setText(rs.getString("nome"));
+                id_comprador_cprodutos.setText(rs.getString("id_comprador"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+    }
+
+ 
+    
+    
+    public void ListarProdutos_ID() {
+
+        String buscarId = (String) cbx_busca_id.getSelectedItem();
+
+        try {
+
+            if (!buscarId.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.produtos WHERE id = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarId);
+
+                ResultSet rs = comando.executeQuery();
+
+                while (rs.next()) {
+
+                    id_cprodutos.setText(rs.getString("id"));
+                    nome_cprodutos.setText(rs.getString("nome"));
+                    compra_cprodutos.setText(rs.getString("compra"));
+                    venda_cprodutos.setText(rs.getString("venda"));
+                    qtd_cprodutos.setText(rs.getString("quantidade"));
+                    tipo_cprodutos.setText(rs.getString("tipo"));
+                    cbx_fornecedor_cprodutos.setText(rs.getString("fornecedor"));
+                    id_fornecedor_cprodutos.setText(rs.getString("id_fornecedor"));
+                    ExibirComprador();
+                    obs_cprodutos.setText(rs.getString("observacao"));
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um ID!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    
+    public void ListarProdutos_Nome() {
+
+        String buscarNome = (String) cbx_busca_nome.getSelectedItem();
+
+        try {
+
+            if (!buscarNome.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.produtos WHERE nome = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarNome);
+
+                ResultSet rs = comando.executeQuery();
+
+                while (rs.next()) {
+
+                    id_cprodutos.setText(rs.getString("id"));
+                    nome_cprodutos.setText(rs.getString("nome"));
+                    compra_cprodutos.setText(rs.getString("compra"));
+                    venda_cprodutos.setText(rs.getString("venda"));
+                    qtd_cprodutos.setText(rs.getString("quantidade"));
+                    tipo_cprodutos.setText(rs.getString("tipo"));
+                    cbx_fornecedor_cprodutos.setText(rs.getString("fornecedor"));
+                    id_fornecedor_cprodutos.setText(rs.getString("id_fornecedor"));
+                    ExibirComprador();
+                    obs_cprodutos.setText(rs.getString("observacao"));
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    
+    public void ListarId_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.produtos";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+//          cbx_id_pes_usuario.removeAllItems();
+
+            cbx_busca_id.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_busca_id.addItem(rs.getString("id"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    
+    public void ListarNomes_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.produtos";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_busca_nome.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_busca_nome.addItem(rs.getString("nome"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_carregar_forn_cprodutos;
     private javax.swing.JButton bt_limpar_cprodutos;
     private javax.swing.JButton bt_salvar_cprodutos;
-    private javax.swing.JComboBox cbx_fornecedor_cprodutos;
+    private javax.swing.JComboBox cbx_busca_id;
+    private javax.swing.JComboBox cbx_busca_nome;
+    private javax.swing.JTextField cbx_fornecedor_cprodutos;
     private javax.swing.JFormattedTextField compra_cprodutos;
     private javax.swing.JTextField comprador_cprodutos;
     private javax.swing.JTextField id_comprador_cprodutos;
     private javax.swing.JTextField id_cprodutos;
     private javax.swing.JTextField id_fornecedor_cprodutos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

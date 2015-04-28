@@ -777,7 +777,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
                     String data_nascimento = df2.format(rs.getDate("nascimento_dt"));
 
                     dt_nasc_cfornecedores.setText(String.valueOf(data_nascimento));
-
+                    
                     tel_com1_cfornecedores.setText(rs.getString("tel_comercial"));
                     tel_com2_cfornecedores.setText(rs.getString("tel_residencial"));
                     cel_cfornecedores.setText(rs.getString("celular"));
