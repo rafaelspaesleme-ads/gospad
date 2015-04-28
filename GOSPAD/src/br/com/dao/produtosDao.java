@@ -6,6 +6,7 @@
 package br.com.dao;
 
 import br.com.conexao.conexao;
+import br.com.modelo.FornecedorModel;
 import br.com.modelo.ProdutosModel;
 import java.sql.Connection;
 import java.sql.Date;
@@ -56,7 +57,7 @@ public class produtosDao {
             insereSt.setDouble(5, produtos.getQuantidade());
             insereSt.setString(6, produtos.getTipo());
             insereSt.setString(7, produtos.getFornecedor());
-            insereSt.setInt(8, produtos.getFK_fornecedor());
+            insereSt.setInt(8, produtos.getFK_fornecedor().getId());
             insereSt.setString(9, produtos.getComprador());
             insereSt.setInt(10, produtos.getFK_comprador());
             insereSt.setString(11, produtos.getObservacao());
@@ -95,7 +96,8 @@ public class produtosDao {
                 Double vQuantidade = Double.parseDouble(objRsSt.getString("quantidade"));
                 String vTipo = objRsSt.getString("tipo");
                 String vFornecedor = objRsSt.getString("fornecedor");
-                int vFK_fornecedor = Integer.parseInt(objRsSt.getString("id_fornecedor"));
+                FornecedorModel fm = new FornecedorModel();
+                fm.setId(objRsSt.getInt("id_fornecedor"));
                 String vComprador = objRsSt.getString("comprador");
                 int vFK_comprador = Integer.parseInt(objRsSt.getString("id_comprador"));
                 String vObservacao = objRsSt.getString("observacao");
@@ -109,7 +111,7 @@ public class produtosDao {
                 cid.setQuantidade(vQuantidade);
                 cid.setTipo(vTipo);
                 cid.setFornecedor(vFornecedor);
-                cid.setFK_fornecedor(vFK_fornecedor);
+                cid.setFK_fornecedor(fm);
                 cid.setComprador(vComprador);
                 cid.setFK_comprador(vFK_comprador);
                 cid.setObservacao(vObservacao);
@@ -147,7 +149,8 @@ public class produtosDao {
                 Double vQuantidade = Double.parseDouble(objRsSt.getString("quantidade"));
                 String vTipo = objRsSt.getString("tipo");
                 String vFornecedor = objRsSt.getString("fornecedor");
-                int vFK_fornecedor = Integer.parseInt(objRsSt.getString("id_fornecedor"));
+                FornecedorModel fm = new FornecedorModel();               
+                fm.setId(objRsSt.getInt("id_fornecedor"));
                 String vComprador = objRsSt.getString("comprador");
                 int vFK_comprador = Integer.parseInt(objRsSt.getString("id_comprador"));
                 String vObservacao = objRsSt.getString("observacao");
@@ -161,7 +164,7 @@ public class produtosDao {
                 c.setQuantidade(vQuantidade);
                 c.setTipo(vTipo);
                 c.setFornecedor(vFornecedor);
-                c.setFK_fornecedor(vFK_fornecedor);
+                c.setFK_fornecedor(fm);
                 c.setComprador(vComprador);
                 c.setFK_comprador(vFK_comprador);
                 c.setObservacao(vObservacao);
@@ -206,7 +209,7 @@ public class produtosDao {
             insereSt.setDouble(5, produtos.getQuantidade());
             insereSt.setString(6, produtos.getTipo());
             insereSt.setString(7, produtos.getFornecedor());
-            insereSt.setInt(8, produtos.getFK_fornecedor());
+            insereSt.setInt(8, produtos.getFK_fornecedor().getId());
             insereSt.setString(9, produtos.getComprador());
             insereSt.setInt(10, produtos.getFK_comprador());
             insereSt.setString(11, produtos.getObservacao());

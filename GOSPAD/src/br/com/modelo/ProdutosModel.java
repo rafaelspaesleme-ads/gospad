@@ -21,7 +21,7 @@ public class ProdutosModel {
     private Double quantidade = 0.0;
     private String tipo = "";
     private String fornecedor = "";
-    private int FK_fornecedor = 0;
+    private FornecedorModel FK_fornecedor = new FornecedorModel();
     private String comprador = "";
     private int FK_comprador = 0;
     private String observacao = "";
@@ -83,11 +83,11 @@ public class ProdutosModel {
         this.fornecedor = fornecedor;
     }
 
-    public int getFK_fornecedor() {
+    public FornecedorModel getFK_fornecedor() {
         return FK_fornecedor;
     }
 
-    public void setFK_fornecedor(int FK_fornecedor) {
+    public void setFK_fornecedor(FornecedorModel FK_fornecedor) {
         this.FK_fornecedor = FK_fornecedor;
     }
 

@@ -5,6 +5,7 @@
  */
 package br.com.controle;
 
+import br.com.modelo.FornecedorModel;
 import br.com.modelo.ProdutosModel;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -14,8 +15,7 @@ import java.util.ArrayList;
  * @author Rafael Paes Leme
  */
 public class produtosControl {
-    
-    
+
     private final ProdutosModel objProdutos;
 
     public produtosControl() {
@@ -23,18 +23,18 @@ public class produtosControl {
     }
 
     public int Salvar(ArrayList<String> pLista) throws ParseException {
-        
+
         this.objProdutos.setNome(pLista.get(1));
         this.objProdutos.setCompra(Double.parseDouble(pLista.get(2)));
         this.objProdutos.setVenda(Double.parseDouble(pLista.get(3)));
         this.objProdutos.setQuantidade(Double.parseDouble(pLista.get(4)));
         this.objProdutos.setTipo(pLista.get(5));
         this.objProdutos.setFornecedor(pLista.get(6));
-        this.objProdutos.setFK_fornecedor(Integer.parseInt((pLista.get(7))));
+        this.objProdutos.getFK_fornecedor().setId(Integer.parseInt((pLista.get(7))));
         this.objProdutos.setComprador(pLista.get(8));
         this.objProdutos.setFK_comprador(Integer.parseInt(pLista.get(9)));
         this.objProdutos.setObservacao(pLista.get(10));
-        
+
         this.objProdutos.Salvar();
 
         return this.objProdutos.getId();
@@ -48,7 +48,7 @@ public class produtosControl {
         this.objProdutos.setQuantidade(Double.parseDouble(pLista.get(4)));
         this.objProdutos.setTipo(pLista.get(5));
         this.objProdutos.setFornecedor(pLista.get(6));
-        this.objProdutos.setFK_fornecedor(Integer.parseInt(pLista.get(7)));
+        this.objProdutos.getFK_fornecedor().setId(Integer.parseInt((pLista.get(7))));
         this.objProdutos.setComprador(pLista.get(8));
         this.objProdutos.setFK_comprador(Integer.parseInt(pLista.get(9)));
         this.objProdutos.setObservacao(pLista.get(10));
@@ -76,12 +76,11 @@ public class produtosControl {
         this.objProdutos.RecuperaObjeto(iCodigo);
         return converterObjetoParaArray();
     }
-    
+
     public void Excluir(int iChave) {
         this.objProdutos.setId(iChave);
         this.objProdutos.Excluir();
 
     }
 
-    
 }
