@@ -23,14 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `abre_cx`
---
--- em uso(#1033 - Incorrect information in file: '.\gospad_bd\abre_cx.frm')
--- Error reading data: (#1033 - Incorrect information in file: '.\gospad_bd\abre_cx.frm')
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `a_pagar`
 --
 
@@ -212,14 +204,6 @@ CREATE TABLE IF NOT EXISTS `contato` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `fechar_cx`
---
--- em uso(#1033 - Incorrect information in file: '.\gospad_bd\fechar_cx.frm')
--- Error reading data: (#1033 - Incorrect information in file: '.\gospad_bd\fechar_cx.frm')
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `fornecedor`
 --
 
@@ -241,15 +225,14 @@ CREATE TABLE IF NOT EXISTS `fornecedor` (
   `email` varchar(100) DEFAULT NULL,
   `observacao` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `fornecedor`
 --
 
 INSERT INTO `fornecedor` (`id`, `nome`, `endereco`, `cep`, `cidade`, `uf`, `cnpj`, `registro_dt`, `cpf`, `nascimento_dt`, `tel_comercial`, `tel_residencial`, `celular`, `fax`, `email`, `observacao`) VALUES
-(1, 'Goel Tecnologia', 'Rua Dr. Vasconcelos', '25804-240', 'Três Rios', 'RJ ', '  .   .   /    -  ', '0002-11-30', '132.851.197-99', '1989-08-05', '(  )    -    ', '(  )    -    ', '(24)9 9999-7634', '', 'rafaels.paesleme@hotmail.com', 'teste'),
-(2, 'Nike', 'Rua Nike', '10210-210', 'New York', 'RJ ', '12.121.212/1212-12', '1900-01-01', '   .   .   -  ', '0002-11-30', '(  )    -    ', '(  )    -    ', '(  )      -    ', '', '', '');
+(1, 'Goel Tecnologia', 'Rua Dr. Vasconcelos', '25804-240', 'Três Rios', 'RJ ', '  .   .   /    -  ', '0002-11-30', '132.851.197-99', '1989-08-05', '(  )    -    ', '(  )    -    ', '(24)9 9999-7634', '', 'rafaels.paesleme@hotmail.com', 'teste');
 
 -- --------------------------------------------------------
 
@@ -286,15 +269,57 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `observacao` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_fornecedor` (`id_fornecedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id`, `nome`, `compra`, `venda`, `quantidade`, `tipo`, `fornecedor`, `id_fornecedor`, `comprador`, `id_comprador`, `observacao`) VALUES
+(1, 'Mouse Optico', 34.00, 45.00, 40.00, 'peça', 'Goel Tecnologia', 1, 'Rafael S. Paes Leme', 10, 'Cadastro de Produtos Teste!'),
+(2, 'Site ', 900.00, 1000.00, 10.00, 'pagina web', 'Goel Tecnologia', 1, 'Rafael S. Paes Leme', 10, 'teste');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `vendas_e_servicos`
 --
--- em uso(#1033 - Incorrect information in file: '.\gospad_bd\vendas_e_servicos.frm')
--- Error reading data: (#1033 - Incorrect information in file: '.\gospad_bd\vendas_e_servicos.frm')
+
+CREATE TABLE IF NOT EXISTS `vendas_e_servicos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(50) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `produto` varchar(100) DEFAULT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `local` varchar(100) DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  `hora` time DEFAULT NULL,
+  `vendedor` varchar(100) DEFAULT NULL,
+  `id_vendedor` int(11) DEFAULT NULL,
+  `observacao` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vendedor`
+--
+
+CREATE TABLE IF NOT EXISTS `vendedor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `vendedor` varchar(100) DEFAULT NULL,
+  `id_vendedor` int(11) DEFAULT NULL,
+  `obs` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `vendedor`
+--
+
+INSERT INTO `vendedor` (`id`, `vendedor`, `id_vendedor`, `obs`) VALUES
+(1, 'Rafael Vendedor', 20, 'teste');
 
 --
 -- Restrições para as tabelas dumpadas
