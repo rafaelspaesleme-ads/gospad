@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -143,7 +145,7 @@ public class produtos extends javax.swing.JInternalFrame {
         jLabel5.setText("Compra");
 
         try {
-            compra_cprodutos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######.##")));
+            compra_cprodutos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######,##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -153,7 +155,7 @@ public class produtos extends javax.swing.JInternalFrame {
         jLabel3.setText("Venda");
 
         try {
-            venda_cprodutos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######.##")));
+            venda_cprodutos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######,##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -423,13 +425,15 @@ public class produtos extends javax.swing.JInternalFrame {
 
     public void SalvarDados() {
 
-        //
+//      total_compra.setText(String.valueOf(numberFormat.format(recebe_total)));
+
+
         ArrayList<String> Registro = new ArrayList<>();
         Registro.add(id_cprodutos.getText());
         Registro.add(nome_cprodutos.getText());
-        Registro.add(compra_cprodutos.getText());
-        Registro.add(venda_cprodutos.getText());
-        Registro.add(qtd_cprodutos.getText());
+        Registro.add(compra_cprodutos.getText().replace(",", "."));
+        Registro.add(venda_cprodutos.getText().replace(",", "."));
+        Registro.add(qtd_cprodutos.getText().replace(",", "."));
         Registro.add(tipo_cprodutos.getText());
         Registro.add((String) cbx_fornecedor_cprodutos.getSelectedItem());
         Registro.add(id_fornecedor_cprodutos.getText());
@@ -454,8 +458,6 @@ public class produtos extends javax.swing.JInternalFrame {
         LimparCampos();
 
     }
-
-
 
     public void Listar_Fornecedores_CBX() {
 
@@ -483,9 +485,9 @@ public class produtos extends javax.swing.JInternalFrame {
         }
 
     }
-    
-    public void ExibirComprador(){
-        
+
+    public void ExibirComprador() {
+
         try {
 
             Connection conn = conexao.GeraConexao();
@@ -506,8 +508,7 @@ public class produtos extends javax.swing.JInternalFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, e);
         }
-        
-        
+
     }
 
 

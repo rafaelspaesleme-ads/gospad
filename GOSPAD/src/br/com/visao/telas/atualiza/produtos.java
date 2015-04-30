@@ -50,9 +50,7 @@ public class produtos extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         nome_cprodutos = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        compra_cprodutos = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        venda_cprodutos = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
         qtd_cprodutos = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -75,6 +73,8 @@ public class produtos extends javax.swing.JInternalFrame {
         cbx_busca_id = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         cbx_fornecedor_cprodutos = new javax.swing.JTextField();
+        compra_cprodutos = new javax.swing.JTextField();
+        venda_cprodutos = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -148,22 +148,8 @@ public class produtos extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel5.setText("Compra");
 
-        try {
-            compra_cprodutos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######.##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        compra_cprodutos.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-
         jLabel3.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel3.setText("Venda");
-
-        try {
-            venda_cprodutos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######.##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        venda_cprodutos.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel4.setText("Quantidade");
@@ -290,6 +276,10 @@ public class produtos extends javax.swing.JInternalFrame {
         cbx_fornecedor_cprodutos.setBackground(new java.awt.Color(255, 255, 204));
         cbx_fornecedor_cprodutos.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
+        compra_cprodutos.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+
+        venda_cprodutos.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -359,13 +349,13 @@ public class produtos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(compra_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(venda_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(qtd_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(tipo_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tipo_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(compra_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(venda_cprodutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -383,7 +373,7 @@ public class produtos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -424,7 +414,6 @@ public class produtos extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        
         boolean nome = cbx_busca_nome.isEnabled();
         String cbxNome = (String) cbx_busca_nome.getSelectedItem();
 
@@ -446,32 +435,31 @@ public class produtos extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
         }
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bt_carregar_forn_cprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_carregar_forn_cprodutosActionPerformed
 
         ExibirComprador();
-        
+
 // TODO add your handling code here:
     }//GEN-LAST:event_bt_carregar_forn_cprodutosActionPerformed
 
     private void bt_salvar_cprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_cprodutosActionPerformed
-    
+
         AtualizarDados();
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_salvar_cprodutosActionPerformed
 
     private void bt_limpar_cprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cprodutosActionPerformed
-    
+
         LimparCampos();
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_limpar_cprodutosActionPerformed
 
-    
     public void LimparCampos() {
 
         id_cprodutos.setText(null);
@@ -488,16 +476,15 @@ public class produtos extends javax.swing.JInternalFrame {
 
     }
 
-    
     public void AtualizarDados() {
 
         //
         ArrayList<String> Registro = new ArrayList<>();
         Registro.add(id_cprodutos.getText());
         Registro.add(nome_cprodutos.getText());
-        Registro.add(compra_cprodutos.getText());
-        Registro.add(venda_cprodutos.getText());
-        Registro.add(qtd_cprodutos.getText());
+        Registro.add(compra_cprodutos.getText().replace(",", "."));
+        Registro.add(venda_cprodutos.getText().replace(",", "."));
+        Registro.add(qtd_cprodutos.getText().replace(",", "."));
         Registro.add(tipo_cprodutos.getText());
         Registro.add(cbx_fornecedor_cprodutos.getText());
         Registro.add(id_fornecedor_cprodutos.getText());
@@ -522,10 +509,9 @@ public class produtos extends javax.swing.JInternalFrame {
         LimparCampos();
 
     }
-    
-        
-    public void ExibirComprador(){
-        
+
+    public void ExibirComprador() {
+
         try {
 
             Connection conn = conexao.GeraConexao();
@@ -546,13 +532,9 @@ public class produtos extends javax.swing.JInternalFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, e);
         }
-        
-        
+
     }
 
- 
-    
-    
     public void ListarProdutos_ID() {
 
         String buscarId = (String) cbx_busca_id.getSelectedItem();
@@ -573,11 +555,25 @@ public class produtos extends javax.swing.JInternalFrame {
 
                 while (rs.next()) {
 
-                    id_cprodutos.setText(rs.getString("id"));
+                     id_cprodutos.setText(rs.getString("id"));
                     nome_cprodutos.setText(rs.getString("nome"));
-                    compra_cprodutos.setText(rs.getString("compra"));
-                    venda_cprodutos.setText(rs.getString("venda"));
-                    qtd_cprodutos.setText(rs.getString("quantidade"));
+                    String compra = rs.getString("compra");
+                    
+                    double compra2 = Double.parseDouble(compra.replace(",", "."));
+                    String compra3 = String.valueOf(compra2);
+                    compra_cprodutos.setText(compra3);
+
+                    String venda = rs.getString("venda");
+                    double venda2 = Double.parseDouble(compra.replace(",", "."));
+                    String venda3 = String.valueOf(venda2);
+
+                    venda_cprodutos.setText(venda3);
+                    
+                    String quant = rs.getString("quantidade");
+                    double quant2 = Double.parseDouble(quant.replace(",", "."));
+                    String quant3 = String.valueOf(quant2);
+                    qtd_cprodutos.setText(quant3);
+                    
                     tipo_cprodutos.setText(rs.getString("tipo"));
                     cbx_fornecedor_cprodutos.setText(rs.getString("fornecedor"));
                     id_fornecedor_cprodutos.setText(rs.getString("id_fornecedor"));
@@ -597,7 +593,6 @@ public class produtos extends javax.swing.JInternalFrame {
 
     }
 
-    
     public void ListarProdutos_Nome() {
 
         String buscarNome = (String) cbx_busca_nome.getSelectedItem();
@@ -620,9 +615,23 @@ public class produtos extends javax.swing.JInternalFrame {
 
                     id_cprodutos.setText(rs.getString("id"));
                     nome_cprodutos.setText(rs.getString("nome"));
-                    compra_cprodutos.setText(rs.getString("compra"));
-                    venda_cprodutos.setText(rs.getString("venda"));
-                    qtd_cprodutos.setText(rs.getString("quantidade"));
+                    String compra = rs.getString("compra");
+                    
+                    double compra2 = Double.parseDouble(compra.replace(",", "."));
+                    String compra3 = String.valueOf(compra2);
+                    compra_cprodutos.setText(compra3);
+
+                    String venda = rs.getString("venda");
+                    double venda2 = Double.parseDouble(compra.replace(",", "."));
+                    String venda3 = String.valueOf(venda2);
+
+                    venda_cprodutos.setText(venda3);
+                    
+                    String quant = rs.getString("quantidade");
+                    double quant2 = Double.parseDouble(quant.replace(",", "."));
+                    String quant3 = String.valueOf(quant2);
+                    qtd_cprodutos.setText(quant3);
+                    
                     tipo_cprodutos.setText(rs.getString("tipo"));
                     cbx_fornecedor_cprodutos.setText(rs.getString("fornecedor"));
                     id_fornecedor_cprodutos.setText(rs.getString("id_fornecedor"));
@@ -642,7 +651,6 @@ public class produtos extends javax.swing.JInternalFrame {
 
     }
 
-    
     public void ListarId_CBX() {
 
         try {
@@ -671,7 +679,6 @@ public class produtos extends javax.swing.JInternalFrame {
 
     }
 
-    
     public void ListarNomes_CBX() {
 
         try {
@@ -707,7 +714,7 @@ public class produtos extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cbx_busca_id;
     private javax.swing.JComboBox cbx_busca_nome;
     private javax.swing.JTextField cbx_fornecedor_cprodutos;
-    private javax.swing.JFormattedTextField compra_cprodutos;
+    private javax.swing.JTextField compra_cprodutos;
     private javax.swing.JTextField comprador_cprodutos;
     private javax.swing.JTextField id_comprador_cprodutos;
     private javax.swing.JTextField id_cprodutos;
@@ -734,6 +741,6 @@ public class produtos extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea obs_cprodutos;
     private javax.swing.JTextField qtd_cprodutos;
     private javax.swing.JTextField tipo_cprodutos;
-    private javax.swing.JFormattedTextField venda_cprodutos;
+    private javax.swing.JTextField venda_cprodutos;
     // End of variables declaration//GEN-END:variables
 }

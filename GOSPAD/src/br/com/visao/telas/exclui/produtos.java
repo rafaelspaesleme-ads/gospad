@@ -491,16 +491,29 @@ public class produtos extends javax.swing.JInternalFrame {
 
                 while (rs.next()) {
 
-                    id_cprodutos.setText(rs.getString("id"));
+                     id_cprodutos.setText(rs.getString("id"));
                     nome_cprodutos.setText(rs.getString("nome"));
-                    compra_cprodutos.setText(rs.getString("compra"));
-                    venda_cprodutos.setText(rs.getString("venda"));
-                    qtd_cprodutos.setText(rs.getString("quantidade"));
+                    String compra = rs.getString("compra");
+                    
+                    double compra2 = Double.parseDouble(compra.replace(",", "."));
+                    String compra3 = String.valueOf(compra2);
+                    compra_cprodutos.setText(compra3);
+
+                    String venda = rs.getString("venda");
+                    double venda2 = Double.parseDouble(compra.replace(",", "."));
+                    String venda3 = String.valueOf(venda2);
+
+                    venda_cprodutos.setText(venda3);
+                    
+                    String quant = rs.getString("quantidade");
+                    double quant2 = Double.parseDouble(quant.replace(",", "."));
+                    String quant3 = String.valueOf(quant2);
+                    qtd_cprodutos.setText(quant3);
+                    
                     tipo_cprodutos.setText(rs.getString("tipo"));
                     cbx_fornecedor_cprodutos.setText(rs.getString("fornecedor"));
                     id_fornecedor_cprodutos.setText(rs.getString("id_fornecedor"));
-                    comprador_cprodutos.setText(rs.getString("comprador"));
-                    id_comprador_cprodutos.setText(rs.getString("id_comprador"));
+                    ExibirComprador();
                     obs_cprodutos.setText(rs.getString("observacao"));
 
                 }
@@ -536,11 +549,25 @@ public class produtos extends javax.swing.JInternalFrame {
 
                 while (rs.next()) {
 
-                    id_cprodutos.setText(rs.getString("id"));
+                     id_cprodutos.setText(rs.getString("id"));
                     nome_cprodutos.setText(rs.getString("nome"));
-                    compra_cprodutos.setText(rs.getString("compra"));
-                    venda_cprodutos.setText(rs.getString("venda"));
-                    qtd_cprodutos.setText(rs.getString("quantidade"));
+                    String compra = rs.getString("compra");
+                    
+                    double compra2 = Double.parseDouble(compra.replace(",", "."));
+                    String compra3 = String.valueOf(compra2);
+                    compra_cprodutos.setText(compra3);
+
+                    String venda = rs.getString("venda");
+                    double venda2 = Double.parseDouble(compra.replace(",", "."));
+                    String venda3 = String.valueOf(venda2);
+
+                    venda_cprodutos.setText(venda3);
+                    
+                    String quant = rs.getString("quantidade");
+                    double quant2 = Double.parseDouble(quant.replace(",", "."));
+                    String quant3 = String.valueOf(quant2);
+                    qtd_cprodutos.setText(quant3);
+                    
                     tipo_cprodutos.setText(rs.getString("tipo"));
                     cbx_fornecedor_cprodutos.setText(rs.getString("fornecedor"));
                     id_fornecedor_cprodutos.setText(rs.getString("id_fornecedor"));
