@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 public class fornecedores extends javax.swing.JInternalFrame {
 //
 //
+
     /**
      * Creates new form fornecedores
      */
@@ -136,6 +137,11 @@ public class fornecedores extends javax.swing.JInternalFrame {
 
         cbx_uf_cfornecedores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         cbx_uf_cfornecedores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC ", "AL ", "AP ", "AM ", "BA ", "CE ", "DF ", "GO ", "ES ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SP ", "SC ", "SE ", "TO" }));
+        cbx_uf_cfornecedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_uf_cfornecedoresMousePressed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel8.setText("CNPJ");
@@ -549,7 +555,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
     private void bt_limpar_cfornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cfornecedoresActionPerformed
 
         LimparCampos();
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_limpar_cfornecedoresActionPerformed
 
@@ -560,13 +566,20 @@ public class fornecedores extends javax.swing.JInternalFrame {
     private void bt_salvar_cfornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_cfornecedoresActionPerformed
 
         AtualizarDados();
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_salvar_cfornecedoresActionPerformed
-    
+
+    private void cbx_uf_cfornecedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_uf_cfornecedoresMousePressed
+
+        cbx_uf_cfornecedores.removeAllItems();
+        cbx_uf_cfornecedores.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"AC ", "AL ", "AP ", "AM ", "BA ", "CE ", "DF ", "GO ", "ES ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SP ", "SC ", "SE ", "TO"}));
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_uf_cfornecedoresMousePressed
+
     public void AtualizarDados() {
-        
-        
+
         ArrayList<String> Registro = new ArrayList<>();
         Registro.add(id_cfornecedores.getText());
         Registro.add(nome_cfornecedores.getText());
@@ -603,9 +616,9 @@ public class fornecedores extends javax.swing.JInternalFrame {
         }
 
         LimparCampos();
- 
+
     }
-    
+
     public void LimparCampos() {
 
         id_cfornecedores.setText(null);
@@ -626,7 +639,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
         obs_cfornecedores.setText(null);
 
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_limpar_cfornecedores;
     private javax.swing.JButton bt_salvar_cfornecedores;
@@ -777,7 +790,7 @@ public class fornecedores extends javax.swing.JInternalFrame {
                     String data_nascimento = df2.format(rs.getDate("nascimento_dt"));
 
                     dt_nasc_cfornecedores.setText(String.valueOf(data_nascimento));
-                    
+
                     tel_com1_cfornecedores.setText(rs.getString("tel_comercial"));
                     tel_com2_cfornecedores.setText(rs.getString("tel_residencial"));
                     cel_cfornecedores.setText(rs.getString("celular"));
