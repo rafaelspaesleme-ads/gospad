@@ -5,6 +5,13 @@
  */
 package br.com.visao.telas.cadastro;
 
+import br.com.controle.contatosControl;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rafael Paes Leme
@@ -70,6 +77,11 @@ public class contatos extends javax.swing.JInternalFrame {
         bt_salvar_ccontatos.setContentAreaFilled(false);
         bt_salvar_ccontatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_salvar_ccontatos.setOpaque(true);
+        bt_salvar_ccontatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvar_ccontatosActionPerformed(evt);
+            }
+        });
 
         bt_limpar_ccontatos.setBackground(new java.awt.Color(0, 153, 204));
         bt_limpar_ccontatos.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -79,6 +91,11 @@ public class contatos extends javax.swing.JInternalFrame {
         bt_limpar_ccontatos.setContentAreaFilled(false);
         bt_limpar_ccontatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_ccontatos.setOpaque(true);
+        bt_limpar_ccontatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_ccontatosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -256,6 +273,70 @@ public class contatos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_salvar_ccontatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_ccontatosActionPerformed
+
+        SalvarDados();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_salvar_ccontatosActionPerformed
+
+    private void bt_limpar_ccontatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_ccontatosActionPerformed
+    
+        LimparCampos();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_ccontatosActionPerformed
+
+    
+    public void LimparCampos() {
+
+        id_ccontatos.setText(null);
+        nome_ccontatos.setText(null);
+        tel_1_ccontatos.setText(null);
+        tel_2_ccontatos.setText(null);
+        fax_ccontatos.setText(null);
+        cel_1_ccontatos.setText(null);
+        cel_2_ccontatos.setText(null);
+        outro_ccontatos.setText(null);
+        email_ccontatos.setText(null);
+        obs_ccontatos.setText(null);
+
+    }
+
+    
+    public void SalvarDados() {
+
+        //
+        ArrayList<String> Registro = new ArrayList<>();
+        Registro.add(id_ccontatos.getText());
+        Registro.add(nome_ccontatos.getText());
+        Registro.add(tel_1_ccontatos.getText());
+        Registro.add(tel_2_ccontatos.getText());
+        Registro.add(fax_ccontatos.getText());
+        Registro.add(cel_1_ccontatos.getText());
+        Registro.add(cel_2_ccontatos.getText());
+        Registro.add(outro_ccontatos.getText());
+        Registro.add(email_ccontatos.getText());
+        Registro.add(obs_ccontatos.getText());
+
+        contatosControl ControllerCont = new contatosControl();
+        try {
+            //
+            ControllerCont.Salvar(Registro);
+            //
+
+// TODO add your handling code here:
+        } catch (ParseException ex) {
+
+            JOptionPane.showMessageDialog(null, "Erro Fatal! Erro, " + ex + ". Informações inseridas incorretamentes!");
+
+            Logger.getLogger(contatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        LimparCampos();
+
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
