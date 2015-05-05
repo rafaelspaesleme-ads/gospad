@@ -5,7 +5,20 @@
  */
 package br.com.visao.telas.atualiza;
 
+import br.com.conexao.conexao;
+import br.com.controle.a_pagarControl;
 import br.com.visao.telas.cadastro.*;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,10 +71,11 @@ public class a_pagar extends javax.swing.JInternalFrame {
         obs_a_pagar = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbx_busca_nome = new javax.swing.JComboBox();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        cbx_busca_id = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        id_fornecedor = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -78,6 +92,11 @@ public class a_pagar extends javax.swing.JInternalFrame {
         bt_salvar_a_pagar.setContentAreaFilled(false);
         bt_salvar_a_pagar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_salvar_a_pagar.setOpaque(true);
+        bt_salvar_a_pagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvar_a_pagarActionPerformed(evt);
+            }
+        });
 
         bt_limpar_a_pagar.setBackground(new java.awt.Color(0, 153, 204));
         bt_limpar_a_pagar.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -87,6 +106,11 @@ public class a_pagar extends javax.swing.JInternalFrame {
         bt_limpar_a_pagar.setContentAreaFilled(false);
         bt_limpar_a_pagar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_a_pagar.setOpaque(true);
+        bt_limpar_a_pagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_a_pagarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -137,7 +161,12 @@ public class a_pagar extends javax.swing.JInternalFrame {
         jLabel4.setText("Fornecedor");
 
         cbx_forn_a_pagar.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        cbx_forn_a_pagar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_forn_a_pagar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clique aqui para carregar lista de Fornecedores." }));
+        cbx_forn_a_pagar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_forn_a_pagarMousePressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel5.setText("Pagamento");
@@ -195,6 +224,11 @@ public class a_pagar extends javax.swing.JInternalFrame {
         bt_situacao_a_pagar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bt_situacao_a_pagar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_situacao_a_pagar.setOpaque(true);
+        bt_situacao_a_pagar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                bt_situacao_a_pagarMousePressed(evt);
+            }
+        });
 
         situacao_a_pagar.setEditable(false);
         situacao_a_pagar.setBackground(new java.awt.Color(255, 255, 204));
@@ -215,14 +249,24 @@ public class a_pagar extends javax.swing.JInternalFrame {
         jLabel17.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel17.setText("Buscar por Documento");
 
-        jComboBox1.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_busca_nome.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_busca_nome.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clique aqui para carregar informações de pesquisa" }));
+        cbx_busca_nome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_busca_nomeMousePressed(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel18.setText("Buscar por ID");
 
-        jComboBox2.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_busca_id.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_busca_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID" }));
+        cbx_busca_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_busca_idMousePressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setFont(new java.awt.Font("Khmer UI", 1, 12)); // NOI18N
@@ -232,6 +276,11 @@ public class a_pagar extends javax.swing.JInternalFrame {
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setOpaque(true);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -241,11 +290,11 @@ public class a_pagar extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_busca_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -256,12 +305,15 @@ public class a_pagar extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_busca_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        id_fornecedor.setVisible(false);
+        id_fornecedor.setText("iid fornecedor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -270,6 +322,7 @@ public class a_pagar extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
@@ -278,44 +331,45 @@ public class a_pagar extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(id_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(doc_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(VL_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbx_forn_a_pagar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(VL_pgto_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(VL_pagar_a_pagar))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(dt_pgto_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dt_venc_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bt_situacao_a_pagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dt_lanc_a_pagar)
-                                    .addComponent(situacao_a_pagar)))
-                            .addComponent(jScrollPane1))
-                        .addGap(0, 56, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(id_fornecedor)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(id_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(doc_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(VL_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cbx_forn_a_pagar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(VL_pgto_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel9)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(VL_pagar_a_pagar))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(dt_pgto_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel6)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(dt_venc_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bt_situacao_a_pagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(dt_lanc_a_pagar)
+                                        .addComponent(situacao_a_pagar)))
+                                .addComponent(jScrollPane1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -355,7 +409,9 @@ public class a_pagar extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(id_fornecedor)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -376,6 +432,425 @@ public class a_pagar extends javax.swing.JInternalFrame {
         setBounds(0, 0, 643, 466);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbx_busca_nomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_busca_nomeMousePressed
+
+        cbx_busca_id.setEnabled(false);
+        ListarNomes_CBX();
+        cbx_busca_nome.setEnabled(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_nomeMousePressed
+
+    private void cbx_busca_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_busca_idMousePressed
+
+        cbx_busca_nome.setEnabled(false);
+        ListarId_CBX();
+        cbx_busca_id.setEnabled(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_idMousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        Buscar();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cbx_forn_a_pagarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_forn_a_pagarMousePressed
+
+        Listar_Fornecedor_CBX();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_forn_a_pagarMousePressed
+
+    private void bt_situacao_a_pagarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_situacao_a_pagarMousePressed
+
+        bt_situacao();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_situacao_a_pagarMousePressed
+
+    private void bt_salvar_a_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_a_pagarActionPerformed
+
+        SalvarDados();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_salvar_a_pagarActionPerformed
+
+    private void bt_limpar_a_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_a_pagarActionPerformed
+
+        LimparCampos();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_a_pagarActionPerformed
+
+    
+    public void LimparCampos() {
+
+        id_a_pagar.setText(null);
+        doc_a_pagar.setText(null);
+        VL_a_pagar.setText(null);
+        cbx_forn_a_pagar.addItem("Clique aqui para carregar lista de Fornecedores.");
+        dt_pgto_a_pagar.setText(null);
+        dt_venc_a_pagar.setText(null);
+        dt_lanc_a_pagar.setText(null);
+        VL_pgto_a_pagar.setText("");
+        situacao_a_pagar.setText(null);
+        obs_a_pagar.setText(null);
+
+    }
+
+    
+    public void SalvarDados() {
+
+        ArrayList<String> Registro = new ArrayList<>();
+        Registro.add(id_a_pagar.getText());
+        Registro.add(doc_a_pagar.getText());
+        Registro.add(VL_a_pagar.getText());
+        Registro.add(id_fornecedor.getText());
+
+        if ("  /  /    ".equals(dt_pgto_a_pagar.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(dt_pgto_a_pagar.getText());
+        }
+
+        if ("  /  /    ".equals(dt_venc_a_pagar.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(dt_venc_a_pagar.getText());
+        }
+
+        if ("  /  /    ".equals(dt_lanc_a_pagar.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(dt_lanc_a_pagar.getText());
+        }
+
+        Registro.add(VL_pgto_a_pagar.getText());
+        Registro.add(VL_pagar_a_pagar.getText());
+        Registro.add(situacao_a_pagar.getText());
+        Registro.add(obs_a_pagar.getText());
+
+        a_pagarControl Controllap = new a_pagarControl();
+        try {
+            //
+            Controllap.Atualizar(Registro);
+            //
+
+// TODO add your handling code here:
+        } catch (ParseException ex) {
+
+            JOptionPane.showMessageDialog(null, "Erro Fatal! Erro, " + ex + ". Informações inseridas incorretamentes!");
+
+            Logger.getLogger(br.com.visao.telas.cadastro.fornecedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        LimparCampos();
+
+    }
+
+    
+    public void bt_situacao() {
+
+        Double valor_total = Double.parseDouble(VL_a_pagar.getText());
+        Double valor_pago = Double.parseDouble(VL_pgto_a_pagar.getText());
+        Double valor_a_pagar;
+
+        valor_a_pagar = valor_total - valor_pago;
+
+        if (valor_a_pagar > 0) {
+            situacao_a_pagar.setText("Conta Pendente");
+            situacao_a_pagar.setForeground(Color.RED);
+            situacao_a_pagar.setBackground(Color.BLACK);
+            VL_pagar_a_pagar.setText(String.valueOf(valor_a_pagar));
+        } else if (valor_a_pagar == 0) {
+            situacao_a_pagar.setText("Conta Paga");
+            situacao_a_pagar.setForeground(Color.BLUE);
+            situacao_a_pagar.setBackground(Color.BLACK);
+            VL_pagar_a_pagar.setText(String.valueOf(valor_a_pagar));
+        } else {
+            situacao_a_pagar.setText("Troco de " + String.valueOf(valor_a_pagar).replace("-", "") + " real(reais).");
+            situacao_a_pagar.setForeground(Color.GREEN);
+            situacao_a_pagar.setBackground(Color.BLACK);
+            VL_pagar_a_pagar.setText(String.valueOf(valor_a_pagar));
+        }
+
+    }
+
+    
+    public void Listar_Fornecedor_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.fornecedor";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_forn_a_pagar.removeAllItems();
+
+            while (rs.next()) {
+
+                id_fornecedor.setText(rs.getString("id"));
+                cbx_forn_a_pagar.addItem(rs.getString("nome"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void ListaAP_ID() {
+
+        String buscarNome = (String) cbx_busca_id.getSelectedItem();
+
+        try {
+
+            if (!buscarNome.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.vendas_e_servicos WHERE id = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarNome);
+
+                ResultSet rs = comando.executeQuery();
+
+                cbx_forn_a_pagar.removeAllItems();
+
+                while (rs.next()) {
+
+                    id_a_pagar.setText(rs.getString("id"));
+                    doc_a_pagar.setText(rs.getString("documento"));
+                    VL_a_pagar.setText(rs.getString("vl_total"));
+
+                    id_fornecedor.setText(rs.getString("id_fornecedor"));
+
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+                    String data_registro = df.format(rs.getDate("pgto_dt"));
+                    dt_pgto_a_pagar.setText(String.valueOf(data_registro));
+
+                    DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+                    df2.setLenient(false);
+                    String data_registro2 = df2.format(rs.getDate("vencimento_dt"));
+                    dt_pgto_a_pagar.setText(String.valueOf(data_registro2));
+
+                    DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
+                    df3.setLenient(false);
+                    String data_registro3 = df3.format(rs.getDate("lancamento_dt"));
+                    dt_pgto_a_pagar.setText(String.valueOf(data_registro3));
+
+                    VL_pgto_a_pagar.setText(rs.getString("vl_pago"));
+                    VL_pagar_a_pagar.setText(rs.getString("vl_apagar"));
+                    situacao_a_pagar.setText(rs.getString("situacao"));
+                    obs_a_pagar.setText(rs.getString("observacao"));
+
+                    Lista_id_fornecedor();
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void ListaAP_Nome() {
+
+        String buscarNome = (String) cbx_busca_nome.getSelectedItem();
+
+        try {
+
+            if (!buscarNome.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.a_pagar WHERE documento = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarNome);
+
+                ResultSet rs = comando.executeQuery();
+
+                cbx_forn_a_pagar.removeAllItems();
+
+                while (rs.next()) {
+
+                    id_a_pagar.setText(rs.getString("id"));
+                    doc_a_pagar.setText(rs.getString("documento"));
+                    VL_a_pagar.setText(rs.getString("vl_total"));
+
+                    id_fornecedor.setText(rs.getString("id_fornecedor"));
+
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+                    String data_registro = df.format(rs.getDate("pgto_dt"));
+                    dt_pgto_a_pagar.setText(String.valueOf(data_registro));
+
+                    DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+                    df2.setLenient(false);
+                    String data_registro2 = df2.format(rs.getDate("vencimento_dt"));
+                    dt_pgto_a_pagar.setText(String.valueOf(data_registro2));
+
+                    DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
+                    df3.setLenient(false);
+                    String data_registro3 = df3.format(rs.getDate("lancamento_dt"));
+                    dt_pgto_a_pagar.setText(String.valueOf(data_registro3));
+
+                    VL_pgto_a_pagar.setText(rs.getString("vl_pago"));
+                    VL_pagar_a_pagar.setText(rs.getString("vl_apagar"));
+                    situacao_a_pagar.setText(rs.getString("situacao"));
+                    obs_a_pagar.setText(rs.getString("observacao"));
+
+                    Lista_id_fornecedor();
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void Lista_id_fornecedor() {
+
+        String buscarID = (String) id_fornecedor.getText();
+
+        try {
+
+            if (!buscarID.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.fornecedor WHERE id = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarID);
+
+                ResultSet rs = comando.executeQuery();
+
+                cbx_forn_a_pagar.removeAllItems();
+
+                while (rs.next()) {
+
+                    cbx_forn_a_pagar.addItem(rs.getString("nome"));
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void Buscar() {
+
+        boolean nome = cbx_busca_nome.isEnabled();
+        String cbxNome = (String) cbx_busca_nome.getSelectedItem();
+
+        boolean id = cbx_busca_id.isEnabled();
+        String cbxID = (String) cbx_busca_id.getSelectedItem();
+
+        if (nome == true && id == false) {
+            ListaAP_Nome();
+        } else if (nome == true && id == true) {
+            ListaAP_ID();
+        } else if (nome == false && id == true) {
+            ListaAP_ID();
+        } else if (nome == true && id == true && "Clique aqui para carregar informações de pesquisa".equals(cbxNome) && "ID".equals(cbxID)) {
+            JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
+        } else if (nome == true && id == true && "Clique aqui para carregar informações de pesquisa".equals(cbxNome) && !"ID".equals(cbxID)) {
+            ListaAP_ID();
+        } else if (nome == true && id == true && !"Clique aqui para carregar informações de pesquisa".equals(cbxNome) && "ID".equals(cbxID)) {
+            ListaAP_Nome();
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
+        }
+
+    }
+
+    public void ListarId_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.a_pagar";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_busca_id.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_busca_id.addItem(rs.getString("id"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void ListarNomes_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.a_pagar";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_busca_nome.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_busca_nome.addItem(rs.getString("documento"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField VL_a_pagar;
@@ -384,15 +859,16 @@ public class a_pagar extends javax.swing.JInternalFrame {
     private javax.swing.JButton bt_limpar_a_pagar;
     private javax.swing.JButton bt_salvar_a_pagar;
     private javax.swing.JLabel bt_situacao_a_pagar;
+    private javax.swing.JComboBox cbx_busca_id;
+    private javax.swing.JComboBox cbx_busca_nome;
     private javax.swing.JComboBox cbx_forn_a_pagar;
     private javax.swing.JTextField doc_a_pagar;
     private javax.swing.JFormattedTextField dt_lanc_a_pagar;
     private javax.swing.JFormattedTextField dt_pgto_a_pagar;
     private javax.swing.JFormattedTextField dt_venc_a_pagar;
     private javax.swing.JTextField id_a_pagar;
+    private javax.swing.JLabel id_fornecedor;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel17;
@@ -412,6 +888,5 @@ public class a_pagar extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea obs_a_pagar;
     private javax.swing.JTextField situacao_a_pagar;
     // End of variables declaration//GEN-END:variables
-
 
 }

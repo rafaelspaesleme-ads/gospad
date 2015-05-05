@@ -371,12 +371,12 @@ public class a_pagar extends javax.swing.JInternalFrame {
 
     private void cbx_forn_a_pagarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_forn_a_pagarMousePressed
 
-        Listar_Produtos_CBX();
+        Listar_Fornecedor_CBX();
 
 // TODO add your handling code here:
     }//GEN-LAST:event_cbx_forn_a_pagarMousePressed
 
-    public void Listar_Produtos_CBX() {
+    public void Listar_Fornecedor_CBX() {
 
         try {
 
