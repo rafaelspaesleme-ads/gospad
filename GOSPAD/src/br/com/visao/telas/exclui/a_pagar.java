@@ -7,7 +7,7 @@ package br.com.visao.telas.exclui;
 
 import br.com.conexao.conexao;
 import br.com.controle.a_pagarControl;
-import br.com.controle.vendas_e_servicosControl;
+import br.com.controle.a_pagarControl;
 import br.com.visao.telas.atualiza.*;
 import br.com.visao.telas.cadastro.*;
 import java.sql.Connection;
@@ -589,7 +589,7 @@ public class a_pagar extends javax.swing.JInternalFrame {
 
                 Connection conn = conexao.GeraConexao();
 
-                String sql = "SELECT * FROM GOSPAD_BD.vendas_e_servicos WHERE id = ?";
+                String sql = "SELECT * FROM GOSPAD_BD.a_pagar WHERE id = ?";
 
                 PreparedStatement comando = conn.prepareStatement(sql);
 

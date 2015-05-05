@@ -618,7 +618,7 @@ public class a_pagar extends javax.swing.JInternalFrame {
 
                 Connection conn = conexao.GeraConexao();
 
-                String sql = "SELECT * FROM GOSPAD_BD.vendas_e_servicos WHERE id = ?";
+                String sql = "SELECT * FROM GOSPAD_BD.a_pagar WHERE id = ?";
 
                 PreparedStatement comando = conn.prepareStatement(sql);
 
