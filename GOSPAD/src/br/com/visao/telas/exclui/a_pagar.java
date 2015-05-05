@@ -10,6 +10,7 @@ import br.com.controle.a_pagarControl;
 import br.com.controle.a_pagarControl;
 import br.com.visao.telas.atualiza.*;
 import br.com.visao.telas.cadastro.*;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,7 +49,6 @@ public class a_pagar extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         doc_a_pagar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        VL_a_pagar = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
         cbx_forn_a_pagar = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
@@ -58,7 +58,6 @@ public class a_pagar extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         dt_lanc_a_pagar = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
-        VL_pgto_a_pagar = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         VL_pagar_a_pagar = new javax.swing.JTextField();
         bt_situacao_a_pagar = new javax.swing.JLabel();
@@ -73,6 +72,8 @@ public class a_pagar extends javax.swing.JInternalFrame {
         cbx_busca_id = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         id_fornecedor = new javax.swing.JLabel();
+        VL_a_pagar = new javax.swing.JTextField();
+        VL_pgto_a_pagar = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -149,15 +150,6 @@ public class a_pagar extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel3.setText("Valor Total");
 
-        VL_a_pagar.setEditable(false);
-        VL_a_pagar.setBackground(new java.awt.Color(255, 255, 204));
-        try {
-            VL_a_pagar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######.##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        VL_a_pagar.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-
         jLabel4.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel4.setText("Fornecedor");
 
@@ -205,15 +197,6 @@ public class a_pagar extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel8.setText("Valor Pago");
 
-        VL_pgto_a_pagar.setEditable(false);
-        VL_pgto_a_pagar.setBackground(new java.awt.Color(255, 255, 204));
-        try {
-            VL_pgto_a_pagar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######.##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        VL_pgto_a_pagar.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-
         jLabel9.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel9.setText("Valor a Pagar");
 
@@ -232,6 +215,7 @@ public class a_pagar extends javax.swing.JInternalFrame {
         bt_situacao_a_pagar.setEnabled(false);
         bt_situacao_a_pagar.setOpaque(true);
 
+        buscar_situacao();
         situacao_a_pagar.setEditable(false);
         situacao_a_pagar.setBackground(new java.awt.Color(255, 255, 204));
         situacao_a_pagar.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
@@ -319,6 +303,14 @@ public class a_pagar extends javax.swing.JInternalFrame {
         id_fornecedor.setVisible(false);
         id_fornecedor.setText("iid fornecedor");
 
+        VL_a_pagar.setEditable(false);
+        VL_a_pagar.setBackground(new java.awt.Color(255, 255, 204));
+        VL_a_pagar.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+
+        VL_pgto_a_pagar.setEditable(false);
+        VL_pgto_a_pagar.setBackground(new java.awt.Color(255, 255, 204));
+        VL_pgto_a_pagar.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -326,7 +318,6 @@ public class a_pagar extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
@@ -335,45 +326,46 @@ public class a_pagar extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(id_fornecedor)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(id_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(doc_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(VL_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbx_forn_a_pagar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(VL_pgto_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel9)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(VL_pagar_a_pagar))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(dt_pgto_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel6)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(dt_venc_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(bt_situacao_a_pagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(dt_lanc_a_pagar)
-                                        .addComponent(situacao_a_pagar)))
-                                .addComponent(jScrollPane1)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(id_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(doc_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(VL_pgto_a_pagar)
+                                    .addComponent(dt_pgto_a_pagar, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dt_venc_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(VL_pagar_a_pagar)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bt_situacao_a_pagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dt_lanc_a_pagar)
+                                    .addComponent(situacao_a_pagar)))
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(VL_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbx_forn_a_pagar, 0, 1, Short.MAX_VALUE)))
+                        .addGap(0, 54, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -390,9 +382,9 @@ public class a_pagar extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(VL_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(cbx_forn_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbx_forn_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VL_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -404,11 +396,11 @@ public class a_pagar extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(VL_pgto_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(VL_pagar_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_situacao_a_pagar)
-                    .addComponent(situacao_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(situacao_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VL_pgto_a_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
@@ -471,6 +463,7 @@ public class a_pagar extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     
         Buscar();
+        buscar_situacao();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -512,12 +505,12 @@ public class a_pagar extends javax.swing.JInternalFrame {
                     DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
                     df2.setLenient(false);
                     String data_registro2 = df2.format(rs.getDate("vencimento_dt"));
-                    dt_pgto_a_pagar.setText(String.valueOf(data_registro2));
+                    dt_venc_a_pagar.setText(String.valueOf(data_registro2));
 
                     DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
                     df3.setLenient(false);
                     String data_registro3 = df3.format(rs.getDate("lancamento_dt"));
-                    dt_pgto_a_pagar.setText(String.valueOf(data_registro3));
+                    dt_lanc_a_pagar.setText(String.valueOf(data_registro3));
 
                     VL_pgto_a_pagar.setText(rs.getString("vl_pago"));
                     VL_pagar_a_pagar.setText(rs.getString("vl_apagar"));
@@ -615,12 +608,12 @@ public class a_pagar extends javax.swing.JInternalFrame {
                     DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
                     df2.setLenient(false);
                     String data_registro2 = df2.format(rs.getDate("vencimento_dt"));
-                    dt_pgto_a_pagar.setText(String.valueOf(data_registro2));
+                    dt_venc_a_pagar.setText(String.valueOf(data_registro2));
 
                     DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
                     df3.setLenient(false);
                     String data_registro3 = df3.format(rs.getDate("lancamento_dt"));
-                    dt_pgto_a_pagar.setText(String.valueOf(data_registro3));
+                    dt_lanc_a_pagar.setText(String.valueOf(data_registro3));
 
                     VL_pgto_a_pagar.setText(rs.getString("vl_pago"));
                     VL_pagar_a_pagar.setText(rs.getString("vl_apagar"));
@@ -753,11 +746,29 @@ public class a_pagar extends javax.swing.JInternalFrame {
 
     }
 
+        public void buscar_situacao(){
+        String situacao = situacao_a_pagar.getText();
+
+if (    null != situacao)switch (situacao) {
+            case "Conta Pendente":
+                situacao_a_pagar.setForeground(Color.RED);
+                situacao_a_pagar.setBackground(Color.BLACK);
+                break;
+            case "Conta Paga":
+                situacao_a_pagar.setForeground(Color.BLUE);
+                situacao_a_pagar.setBackground(Color.BLACK);
+                break;
+            default:
+                situacao_a_pagar.setForeground(Color.GREEN);
+                situacao_a_pagar.setBackground(Color.BLACK);
+                break;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField VL_a_pagar;
+    private javax.swing.JTextField VL_a_pagar;
     private javax.swing.JTextField VL_pagar_a_pagar;
-    private javax.swing.JFormattedTextField VL_pgto_a_pagar;
+    private javax.swing.JTextField VL_pgto_a_pagar;
     private javax.swing.JButton bt_limpar_a_pagar;
     private javax.swing.JButton bt_salvar_a_pagar;
     private javax.swing.JLabel bt_situacao_a_pagar;
