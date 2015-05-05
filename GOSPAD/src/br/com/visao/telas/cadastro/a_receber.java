@@ -5,6 +5,18 @@
  */
 package br.com.visao.telas.cadastro;
 
+import br.com.conexao.conexao;
+import br.com.controle.a_receberControl;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rafael Paes Leme
@@ -12,7 +24,7 @@ package br.com.visao.telas.cadastro;
 public class a_receber extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form a_pagar
+     * Creates new form a_receber
      */
     public a_receber() {
         initComponents();
@@ -54,6 +66,7 @@ public class a_receber extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         obs_a_receber = new javax.swing.JTextArea();
+        id_fornecedor = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -70,6 +83,11 @@ public class a_receber extends javax.swing.JInternalFrame {
         bt_salvar_a_receber.setContentAreaFilled(false);
         bt_salvar_a_receber.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_salvar_a_receber.setOpaque(true);
+        bt_salvar_a_receber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvar_a_receberActionPerformed(evt);
+            }
+        });
 
         bt_limpar_a_receber.setBackground(new java.awt.Color(0, 153, 204));
         bt_limpar_a_receber.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -79,6 +97,11 @@ public class a_receber extends javax.swing.JInternalFrame {
         bt_limpar_a_receber.setContentAreaFilled(false);
         bt_limpar_a_receber.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_a_receber.setOpaque(true);
+        bt_limpar_a_receber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_a_receberActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -130,7 +153,12 @@ public class a_receber extends javax.swing.JInternalFrame {
         jLabel4.setText("Cliente");
 
         cbx_clie_a_receber.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        cbx_clie_a_receber.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_clie_a_receber.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clique aqui para carregar lista de Clientes." }));
+        cbx_clie_a_receber.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_clie_a_receberMousePressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel5.setText("Recebimento");
@@ -189,6 +217,11 @@ public class a_receber extends javax.swing.JInternalFrame {
         bt_situacao_a_receber.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bt_situacao_a_receber.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_situacao_a_receber.setOpaque(true);
+        bt_situacao_a_receber.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                bt_situacao_a_receberMousePressed(evt);
+            }
+        });
 
         situacao_a_receber.setEditable(false);
         situacao_a_receber.setBackground(new java.awt.Color(255, 255, 204));
@@ -203,6 +236,9 @@ public class a_receber extends javax.swing.JInternalFrame {
         obs_a_receber.setRows(5);
         jScrollPane1.setViewportView(obs_a_receber);
 
+        id_fornecedor.setVisible(false);
+        id_fornecedor.setText("iid fornecedor");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -216,41 +252,43 @@ public class a_receber extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(VLT_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbx_clie_a_receber, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(dt_receb_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dt_venc_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
-                        .addComponent(dt_lanc_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(id_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(doc_a_receber))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(VL_rec_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(VL_a_rec_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_situacao_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(situacao_a_receber))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(id_fornecedor)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(VLT_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbx_clie_a_receber, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(dt_receb_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(dt_venc_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                            .addComponent(dt_lanc_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(id_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(doc_a_receber))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(VL_rec_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(VL_a_rec_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(bt_situacao_a_receber, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(situacao_a_receber))
+                        .addComponent(jScrollPane1)))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +325,9 @@ public class a_receber extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(id_fornecedor)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -308,6 +348,158 @@ public class a_receber extends javax.swing.JInternalFrame {
         setBounds(0, 0, 720, 423);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bt_salvar_a_receberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_a_receberActionPerformed
+
+        SalvarDados();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_salvar_a_receberActionPerformed
+
+    private void bt_limpar_a_receberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_a_receberActionPerformed
+
+        LimparCampos();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_a_receberActionPerformed
+
+    private void cbx_clie_a_receberMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_clie_a_receberMousePressed
+
+        Listar_Clientes_CBX();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_clie_a_receberMousePressed
+
+    private void bt_situacao_a_receberMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_situacao_a_receberMousePressed
+    
+        bt_situacao();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_situacao_a_receberMousePressed
+
+    
+    public void bt_situacao() {
+
+        Double valor_total = Double.parseDouble(VLT_a_receber.getText());
+        Double valor_recebido = Double.parseDouble(VL_rec_a_receber.getText());
+        Double valor_a_receber;
+
+        valor_a_receber = valor_total - valor_recebido;
+
+        if (valor_a_receber > 0) {
+            situacao_a_receber.setText("Conta Pendente");
+            situacao_a_receber.setForeground(Color.RED);
+            situacao_a_receber.setBackground(Color.BLACK);
+            VL_a_rec_a_receber.setText(String.valueOf(valor_a_receber));
+        } else if (valor_a_receber == 0) {
+            situacao_a_receber.setText("Conta Finalizada");
+            situacao_a_receber.setForeground(Color.BLUE);
+            situacao_a_receber.setBackground(Color.BLACK);
+            VL_a_rec_a_receber.setText(String.valueOf(valor_a_receber));
+        } else {
+            situacao_a_receber.setText("Troco de " + String.valueOf(valor_a_receber).replace("-", "") + " real(reais).");
+            situacao_a_receber.setForeground(Color.GREEN);
+            situacao_a_receber.setBackground(Color.BLACK);
+            VL_a_rec_a_receber.setText(String.valueOf(valor_a_receber));
+        }
+
+    }
+
+    
+    public void Listar_Clientes_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.clientes";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_clie_a_receber.removeAllItems();
+
+            while (rs.next()) {
+
+                id_fornecedor.setText(rs.getString("id"));
+                cbx_clie_a_receber.addItem(rs.getString("nome"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    
+    public void SalvarDados() {
+
+        ArrayList<String> Registro = new ArrayList<>();
+        Registro.add(id_a_receber.getText());
+        Registro.add(doc_a_receber.getText());
+        Registro.add(VLT_a_receber.getText());
+        Registro.add(id_fornecedor.getText());
+
+        if ("  /  /    ".equals(dt_receb_a_receber.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(dt_receb_a_receber.getText());
+        }
+
+        if ("  /  /    ".equals(dt_venc_a_receber.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(dt_venc_a_receber.getText());
+        }
+
+        if ("  /  /    ".equals(dt_lanc_a_receber.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(dt_lanc_a_receber.getText());
+        }
+
+        Registro.add(VL_rec_a_receber.getText());
+        Registro.add(VL_a_rec_a_receber.getText());
+        Registro.add(situacao_a_receber.getText());
+        Registro.add(obs_a_receber.getText());
+
+        a_receberControl Controllap = new a_receberControl();
+        try {
+            //
+            Controllap.Salvar(Registro);
+            //
+
+// TODO add your handling code here:
+        } catch (ParseException ex) {
+
+            JOptionPane.showMessageDialog(null, "Erro Fatal! Erro, " + ex + ". Informações inseridas incorretamentes!");
+
+            Logger.getLogger(fornecedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        LimparCampos();
+
+    }
+
+    
+    public void LimparCampos() {
+
+        id_a_receber.setText(null);
+        doc_a_receber.setText(null);
+        VLT_a_receber.setText(null);
+        cbx_clie_a_receber.addItem("Clique aqui para carregar lista de Clientes.");
+        dt_receb_a_receber.setText(null);
+        dt_venc_a_receber.setText(null);
+        dt_lanc_a_receber.setText(null);
+        VL_rec_a_receber.setText("");
+        situacao_a_receber.setText(null);
+        obs_a_receber.setText(null);
+
+    }
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField VLT_a_receber;
@@ -322,6 +514,7 @@ public class a_receber extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField dt_receb_a_receber;
     private javax.swing.JFormattedTextField dt_venc_a_receber;
     private javax.swing.JTextField id_a_receber;
+    private javax.swing.JLabel id_fornecedor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
