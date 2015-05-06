@@ -701,7 +701,7 @@ public class colaboradores extends javax.swing.JInternalFrame {
 
         String confirmaUsuario = (String) cbx_confirma_ccolaboradores.getSelectedItem();
 
-        if (confirmaUsuario == "NÃO") {
+        if ("NÃO".equals(confirmaUsuario)) {
 
             cbx_perfil_ccolaboradores.setSelectedItem("Selecione Perfil");
             cbx_perfil_ccolaboradores.setEnabled(false);
