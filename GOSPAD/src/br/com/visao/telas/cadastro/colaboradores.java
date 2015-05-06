@@ -5,6 +5,13 @@
  */
 package br.com.visao.telas.cadastro;
 
+import br.com.controle.colaboradoresControl;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rafael Paes Leme
@@ -91,6 +98,9 @@ public class colaboradores extends javax.swing.JInternalFrame {
         confi_senha_ccolaboradores = new javax.swing.JPasswordField();
         jLabel28 = new javax.swing.JLabel();
         email_senha_ccolaboradores = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        obs_ccolaboradores = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -106,6 +116,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
         bt_salvar_ccolaboradores.setContentAreaFilled(false);
         bt_salvar_ccolaboradores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_salvar_ccolaboradores.setOpaque(true);
+        bt_salvar_ccolaboradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvar_ccolaboradoresActionPerformed(evt);
+            }
+        });
 
         bt_limpar_ccolaboradores.setBackground(new java.awt.Color(0, 153, 204));
         bt_limpar_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -115,6 +130,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
         bt_limpar_ccolaboradores.setContentAreaFilled(false);
         bt_limpar_ccolaboradores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_ccolaboradores.setOpaque(true);
+        bt_limpar_ccolaboradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_ccolaboradoresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -471,7 +491,7 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jLabel22.setText("Este Colaborador é um funcionario do Sistema GOSPAD?");
 
         cbx_confirma_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        cbx_confirma_ccolaboradores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO", " " }));
+        cbx_confirma_ccolaboradores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
 
         jLabel23.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
@@ -484,39 +504,58 @@ public class colaboradores extends javax.swing.JInternalFrame {
         bt_confirma_ccolaboradores.setContentAreaFilled(false);
         bt_confirma_ccolaboradores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_confirma_ccolaboradores.setOpaque(true);
+        bt_confirma_ccolaboradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_confirma_ccolaboradoresActionPerformed(evt);
+            }
+        });
 
         cbx_perfil_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        cbx_perfil_ccolaboradores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Contabil", "Logistica", "Padrão", "Basico", "Bloqueado" }));
+        cbx_perfil_ccolaboradores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Perfil", "Administrador", "Contabil", "Logistica", "Padrão", "Basico", "Bloqueado" }));
+        cbx_perfil_ccolaboradores.setEnabled(false);
 
         jLabel24.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Login");
 
         login_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        login_ccolaboradores.setEnabled(false);
 
         jLabel25.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Confirma Login");
 
         confir_login_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        confir_login_ccolaboradores.setEnabled(false);
 
         jLabel26.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Senha");
 
         senha_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        senha_ccolaboradores.setEnabled(false);
 
         jLabel27.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Confirma Senha");
 
         confi_senha_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        confi_senha_ccolaboradores.setEnabled(false);
 
         jLabel28.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Email para recuperar Senha");
 
         email_senha_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        email_senha_ccolaboradores.setEnabled(false);
+
+        jLabel29.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setText("Observação");
+
+        obs_ccolaboradores.setColumns(20);
+        obs_ccolaboradores.setRows(5);
+        jScrollPane1.setViewportView(obs_ccolaboradores);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -525,6 +564,10 @@ public class colaboradores extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -589,7 +632,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(email_senha_ccolaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel29)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jtp_ccolaboradores.addTab("USUARIOS DO SISTEMA", jPanel4);
@@ -628,6 +675,167 @@ public class colaboradores extends javax.swing.JInternalFrame {
 
         setBounds(0, 0, 778, 511);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_salvar_ccolaboradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_ccolaboradoresActionPerformed
+
+        SalvarDados();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_salvar_ccolaboradoresActionPerformed
+
+    private void bt_limpar_ccolaboradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_ccolaboradoresActionPerformed
+
+        LimparCampos();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_ccolaboradoresActionPerformed
+
+    private void bt_confirma_ccolaboradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_confirma_ccolaboradoresActionPerformed
+
+        BT_confirma();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_confirma_ccolaboradoresActionPerformed
+
+    public void BT_confirma() {
+
+        String confirmaUsuario = (String) cbx_confirma_ccolaboradores.getSelectedItem();
+
+        if (confirmaUsuario == "NÃO") {
+
+            cbx_perfil_ccolaboradores.setSelectedItem("Selecione Perfil");
+            cbx_perfil_ccolaboradores.setEnabled(false);
+            login_ccolaboradores.setEnabled(false);
+            confir_login_ccolaboradores.setEnabled(false);
+            senha_ccolaboradores.setEnabled(false);
+            confi_senha_ccolaboradores.setEnabled(false);
+            email_senha_ccolaboradores.setEnabled(false);
+
+        } else {
+
+            cbx_perfil_ccolaboradores.setSelectedItem("Selecione Perfil");
+            cbx_perfil_ccolaboradores.setEnabled(true);
+            login_ccolaboradores.setEnabled(true);
+            confir_login_ccolaboradores.setEnabled(true);
+            senha_ccolaboradores.setEnabled(true);
+            confi_senha_ccolaboradores.setEnabled(true);
+            email_senha_ccolaboradores.setEnabled(true);
+            
+        }
+
+    }
+
+    public void SalvarDados() {
+
+        //
+        ArrayList<String> Registro = new ArrayList<>();
+        Registro.add(id_ccolaboradores.getText());
+        Registro.add(nome_ccolaboradores.getText());
+        Registro.add((String) cbx_sexo_ccolaboradores.getSelectedItem());
+        Registro.add(cpf_ccolaboradores.getText());
+        Registro.add(rg_ccolaboradores.getText());
+        Registro.add(ctps_ccolaboradores.getText());
+        Registro.add(cnh_ccolaboradores.getText());
+
+        if ("  /  /    ".equals(cnh_vali_ccolaboradores.getText())) {
+            Registro.add("00/00/0000");
+        } else {
+            Registro.add(cnh_vali_ccolaboradores.getText());
+        }
+        Registro.add(cnh_tipo_ccolaboradores.getText());
+        Registro.add(t_sang_ccolaboradores.getText());
+        Registro.add(tel_ccolaboradores.getText());
+        Registro.add(cel_ccolaboradores.getText());
+        Registro.add(outc_ccolaboradores.getText());
+        Registro.add(email_ccolaboradores.getText());
+        Registro.add(end_ccolaboradores.getText());
+        Registro.add(cep_ccolaboradores.getText());
+        Registro.add(cidade_ccolaboradores.getText());
+        Registro.add((String) cbx_uf_ccolaboradores.getSelectedItem());
+        Registro.add(setor_ccolaboradores.getText());
+        Registro.add(cargo_ccolaboradores.getText());
+        Registro.add(funcao_ccolaboradores.getText());
+        Registro.add((String) cbx_confirma_ccolaboradores.getSelectedItem());
+        Registro.add((String) cbx_perfil_ccolaboradores.getSelectedItem());
+        Registro.add(login_ccolaboradores.getText());
+        Registro.add(confir_login_ccolaboradores.getText());
+        Registro.add(senha_ccolaboradores.getText());
+        Registro.add(confi_senha_ccolaboradores.getText());
+        Registro.add(email_senha_ccolaboradores.getText());
+        Registro.add(obs_ccolaboradores.getText());
+
+        colaboradoresControl ControllerForn = new colaboradoresControl();
+        try {
+            //
+            String confirma_usuario = (String) cbx_confirma_ccolaboradores.getSelectedItem();
+            String login = login_ccolaboradores.getText();
+            String confirma_login = confir_login_ccolaboradores.getText();
+            String senha = senha_ccolaboradores.getText();
+            String confirma_senha = confi_senha_ccolaboradores.getText();
+
+            if ("NÃO".equals(confirma_usuario)) {
+
+                ControllerForn.Salvar(Registro);
+
+            } else {
+
+                if (login.equals(confirma_login) && senha.equals(confirma_senha)) {
+
+                    ControllerForn.Salvar(Registro);
+
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Divergencia no momento de confirmar Login e Senha. Tente Novamente!");
+
+                }
+            }
+
+            //
+// TODO add your handling code here:
+        } catch (ParseException ex) {
+
+            JOptionPane.showMessageDialog(null, "Erro Fatal! Erro, " + ex + ". Informações inseridas incorretamentes!");
+
+            Logger.getLogger(colaboradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        LimparCampos();
+
+    }
+
+    public void LimparCampos() {
+
+        id_ccolaboradores.setText(null);
+        nome_ccolaboradores.setText(null);
+        cbx_sexo_ccolaboradores.addItem(null);
+        cpf_ccolaboradores.setText(null);
+        rg_ccolaboradores.setText(null);
+        ctps_ccolaboradores.setText(null);
+        cnh_ccolaboradores.setText(null);
+        cnh_vali_ccolaboradores.setText(null);
+        cnh_tipo_ccolaboradores.setText(null);
+        t_sang_ccolaboradores.setText(null);
+        tel_ccolaboradores.setText(null);
+        cel_ccolaboradores.setText(null);
+        outc_ccolaboradores.setText(null);
+        email_ccolaboradores.setText(null);
+        end_ccolaboradores.setText(null);
+        cep_ccolaboradores.setText(null);
+        cidade_ccolaboradores.setText(null);
+        cbx_uf_ccolaboradores.addItem(null);
+        setor_ccolaboradores.setText(null);
+        cargo_ccolaboradores.setText(null);
+        funcao_ccolaboradores.setText(null);
+        cbx_confirma_ccolaboradores.addItem(null);
+        cbx_perfil_ccolaboradores.addItem(null);
+        login_ccolaboradores.setText(null);
+        confir_login_ccolaboradores.setText(null);
+        senha_ccolaboradores.setText(null);
+        confi_senha_ccolaboradores.setText(null);
+        email_senha_ccolaboradores.setText(null);
+        obs_ccolaboradores.setText(null);
+
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -675,6 +883,7 @@ public class colaboradores extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -686,9 +895,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jtp_ccolaboradores;
     private javax.swing.JTextField login_ccolaboradores;
     private javax.swing.JTextField nome_ccolaboradores;
+    private javax.swing.JTextArea obs_ccolaboradores;
     private javax.swing.JTextField outc_ccolaboradores;
     private javax.swing.JFormattedTextField rg_ccolaboradores;
     private javax.swing.JPasswordField senha_ccolaboradores;
