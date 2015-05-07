@@ -84,6 +84,11 @@ public class a_pagar extends javax.swing.JInternalFrame {
         bt_limpar_ccliente.setContentAreaFilled(false);
         bt_limpar_ccliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_ccliente.setOpaque(true);
+        bt_limpar_ccliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_cclienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -132,7 +137,7 @@ public class a_pagar extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Documento", "VL Total", "Fornecedor", "PGTO", "DT Vencimento", "DT Lançamento", "VL PGO", "VL A PAGAR", "Situação", "Observação"
+                "ID", "Documento", "VL Total", "Fornecedor", "DT PGTO", "DT Vencimento", "DT Lançamento", "VL PGO", "VL A PAGAR", "Situação", "Observação"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -350,6 +355,13 @@ public class a_pagar extends javax.swing.JInternalFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_cbx_situacaoMousePressed
 
+    private void bt_limpar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cclienteActionPerformed
+
+        LimparCampos();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_cclienteActionPerformed
+
     public void CarregarInformacao() {
 
         String documento = (String) cbx_doc.getSelectedItem();
@@ -458,17 +470,26 @@ public class a_pagar extends javax.swing.JInternalFrame {
 
                 while (rs.next()) {
 
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+
+                    DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+                    df2.setLenient(false);
+
+                    DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
+                    df3.setLenient(false);
+
                     modelo.addRow(
                             new Object[]{
                                 rs.getString("id"),
                                 rs.getString("documento"),
-                                rs.getString("vl_total"),
+                                rs.getString("vl_total").replace(".", ","),
                                 rs.getString("id_fornecedor"),
-                                rs.getString("pgto_dt"),
-                                rs.getString("vencimento_dt"),
-                                rs.getString("lancamento_dt"),
-                                rs.getString("vl_pago"),
-                                rs.getString("vl_apagar"),
+                                df.format(rs.getDate("pgto_dt")),
+                                df2.format(rs.getDate("vencimento_dt")),
+                                df3.format(rs.getDate("lancamento_dt")),
+                                rs.getString("vl_pago").replace(".", ","),
+                                rs.getString("vl_apagar").replace(".", ","),
                                 rs.getString("situacao"),
                                 rs.getString("observacao")
 
@@ -511,17 +532,26 @@ public class a_pagar extends javax.swing.JInternalFrame {
 
                 while (rs.next()) {
 
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+
+                    DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+                    df2.setLenient(false);
+
+                    DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
+                    df3.setLenient(false);
+
                     modelo.addRow(
                             new Object[]{
                                 rs.getString("id"),
                                 rs.getString("documento"),
-                                rs.getString("vl_total"),
+                                rs.getString("vl_total").replace(".", ","),
                                 rs.getString("id_fornecedor"),
-                                rs.getString("pgto_dt"),
-                                rs.getString("vencimento_dt"),
-                                rs.getString("lancamento_dt"),
-                                rs.getString("vl_pago"),
-                                rs.getString("vl_apagar"),
+                                df.format(rs.getDate("pgto_dt")),
+                                df2.format(rs.getDate("vencimento_dt")),
+                                df3.format(rs.getDate("lancamento_dt")),
+                                rs.getString("vl_pago").replace(".", ","),
+                                rs.getString("vl_apagar").replace(".", ","),
                                 rs.getString("situacao"),
                                 rs.getString("observacao")
 
@@ -564,17 +594,26 @@ public class a_pagar extends javax.swing.JInternalFrame {
 
                 while (rs.next()) {
 
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+
+                    DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+                    df2.setLenient(false);
+
+                    DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
+                    df3.setLenient(false);
+
                     modelo.addRow(
                             new Object[]{
                                 rs.getString("id"),
                                 rs.getString("documento"),
-                                rs.getString("vl_total"),
+                                rs.getString("vl_total").replace(".", ","),
                                 rs.getString("id_fornecedor"),
-                                rs.getString("pgto_dt"),
-                                rs.getString("vencimento_dt"),
-                                rs.getString("lancamento_dt"),
-                                rs.getString("vl_pago"),
-                                rs.getString("vl_apagar"),
+                                df.format(rs.getDate("pgto_dt")),
+                                df2.format(rs.getDate("vencimento_dt")),
+                                df3.format(rs.getDate("lancamento_dt")),
+                                rs.getString("vl_pago").replace(".", ","),
+                                rs.getString("vl_apagar").replace(".", ","),
                                 rs.getString("situacao"),
                                 rs.getString("observacao")
 
@@ -646,17 +685,26 @@ public class a_pagar extends javax.swing.JInternalFrame {
 
             while (rs.next()) {
 
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                df.setLenient(false);
+
+                DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+                df2.setLenient(false);
+
+                DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
+                df3.setLenient(false);
+
                 modelo.addRow(
                         new Object[]{
                             rs.getString("id"),
                             rs.getString("documento"),
-                            rs.getString("vl_total"),
+                            rs.getString("vl_total").replace(".", ","),
                             rs.getString("id_fornecedor"),
-                            rs.getString("pgto_dt"),
-                            rs.getString("vencimento_dt"),
-                            rs.getString("lancamento_dt"),
-                            rs.getString("vl_pago"),
-                            rs.getString("vl_apagar"),
+                            df.format(rs.getDate("pgto_dt")),
+                            df2.format(rs.getDate("vencimento_dt")),
+                            df3.format(rs.getDate("lancamento_dt")),
+                            rs.getString("vl_pago").replace(".", ","),
+                            rs.getString("vl_apagar").replace(".", ","),
                             rs.getString("situacao"),
                             rs.getString("observacao")
 
@@ -780,6 +828,9 @@ public class a_pagar extends javax.swing.JInternalFrame {
     }
 
     public void LimparCampos() {
+
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
 
     }
 
