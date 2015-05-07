@@ -558,10 +558,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="nome_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -580,10 +576,6 @@
                 </Component>
                 <Component class="javax.swing.JFormattedTextField" name="cpf_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="###.###.###-##" subtype="-1" type="5"/>
                     </Property>
@@ -605,10 +597,6 @@
                 </Component>
                 <Component class="javax.swing.JFormattedTextField" name="rg_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="##.###.###-##" subtype="-1" type="5"/>
                     </Property>
@@ -630,10 +618,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="ctps_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -652,10 +636,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="cnh_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -674,10 +654,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="cnh_tipo_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -696,10 +672,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="t_sang_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -718,10 +690,6 @@
                 </Component>
                 <Component class="javax.swing.JFormattedTextField" name="cnh_vali_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="##/##/####" subtype="-1" type="5"/>
                     </Property>
@@ -743,9 +711,6 @@
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbx_sexo_ccolaboradores">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -755,7 +720,6 @@
                         <StringItem index="1" value="F"/>
                       </StringArray>
                     </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
@@ -771,10 +735,6 @@
                 </Component>
                 <Component class="javax.swing.JFormattedTextField" name="tel_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="(##)####-####" subtype="-1" type="5"/>
                     </Property>
@@ -796,10 +756,6 @@
                 </Component>
                 <Component class="javax.swing.JFormattedTextField" name="cel_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="(##)# ####-####" subtype="-1" type="5"/>
                     </Property>
@@ -821,10 +777,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="outc_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -843,10 +795,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="email_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -876,10 +824,6 @@
                 </Component>
                 <Component class="javax.swing.JFormattedTextField" name="cep_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="#####-###" subtype="-1" type="5"/>
                     </Property>
@@ -901,10 +845,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="cidade_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -923,9 +863,6 @@
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbx_uf_ccolaboradores">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -960,7 +897,6 @@
                         <StringItem index="26" value="TO"/>
                       </StringArray>
                     </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel19">
@@ -976,10 +912,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="setor_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -998,10 +930,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="cargo_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -1020,10 +948,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="funcao_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -1031,10 +955,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="end_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -1182,7 +1102,6 @@
                         <StringItem index="1" value="N&#xc3;O"/>
                       </StringArray>
                     </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel23">
@@ -1232,7 +1151,6 @@
                         <StringItem index="6" value="Bloqueado"/>
                       </StringArray>
                     </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel24">
@@ -1248,10 +1166,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="login_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -1270,10 +1184,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="confir_login_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -1292,10 +1202,6 @@
                 </Component>
                 <Component class="javax.swing.JPasswordField" name="senha_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -1314,10 +1220,6 @@
                 </Component>
                 <Component class="javax.swing.JPasswordField" name="confi_senha_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -1336,10 +1238,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="email_senha_ccolaboradores">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Khmer UI" size="11" style="0"/>
                     </Property>
@@ -1354,10 +1252,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextArea" name="obs_ccolaboradores">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
                       </Properties>

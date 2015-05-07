@@ -282,16 +282,12 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nome");
 
-        nome_ccolaboradores.setEditable(false);
-        nome_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         nome_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CPF");
 
-        cpf_ccolaboradores.setEditable(false);
-        cpf_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         try {
             cpf_ccolaboradores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -303,8 +299,6 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("RG");
 
-        rg_ccolaboradores.setEditable(false);
-        rg_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         try {
             rg_ccolaboradores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -316,40 +310,30 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("CTPS");
 
-        ctps_ccolaboradores.setEditable(false);
-        ctps_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         ctps_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("CNH");
 
-        cnh_ccolaboradores.setEditable(false);
-        cnh_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         cnh_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Tipo");
 
-        cnh_tipo_ccolaboradores.setEditable(false);
-        cnh_tipo_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         cnh_tipo_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Tipo Sanguineo");
 
-        t_sang_ccolaboradores.setEditable(false);
-        t_sang_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         t_sang_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Validade");
 
-        cnh_vali_ccolaboradores.setEditable(false);
-        cnh_vali_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         try {
             cnh_vali_ccolaboradores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -361,17 +345,13 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Sexo");
 
-        cbx_sexo_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         cbx_sexo_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         cbx_sexo_ccolaboradores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "F" }));
-        cbx_sexo_ccolaboradores.setEnabled(false);
 
         jLabel11.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Telefone");
 
-        tel_ccolaboradores.setEditable(false);
-        tel_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         try {
             tel_ccolaboradores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
@@ -383,8 +363,6 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Celular");
 
-        cel_ccolaboradores.setEditable(false);
-        cel_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         try {
             cel_ccolaboradores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# ####-####")));
         } catch (java.text.ParseException ex) {
@@ -396,16 +374,12 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Outro Contato");
 
-        outc_ccolaboradores.setEditable(false);
-        outc_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         outc_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Email");
 
-        email_ccolaboradores.setEditable(false);
-        email_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         email_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
@@ -416,8 +390,6 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("CEP");
 
-        cep_ccolaboradores.setEditable(false);
-        cep_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         try {
             cep_ccolaboradores.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
@@ -429,45 +401,33 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Cidade");
 
-        cidade_ccolaboradores.setEditable(false);
-        cidade_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         cidade_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("UF");
 
-        cbx_uf_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         cbx_uf_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         cbx_uf_ccolaboradores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC ", "AL ", "AP ", "AM ", "BA ", "CE ", "DF ", "GO ", "ES ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN ", "RS ", "RO ", "RR ", "SP ", "SC ", "SE ", "TO" }));
-        cbx_uf_ccolaboradores.setEnabled(false);
 
         jLabel19.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Setor");
 
-        setor_ccolaboradores.setEditable(false);
-        setor_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         setor_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel20.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Cargo");
 
-        cargo_ccolaboradores.setEditable(false);
-        cargo_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         cargo_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Função");
 
-        funcao_ccolaboradores.setEditable(false);
-        funcao_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         funcao_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
-        end_ccolaboradores.setEditable(false);
-        end_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         end_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -636,7 +596,6 @@ public class colaboradores extends javax.swing.JInternalFrame {
 
         cbx_confirma_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         cbx_confirma_ccolaboradores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-        cbx_confirma_ccolaboradores.setEnabled(false);
 
         jLabel23.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
@@ -657,50 +616,37 @@ public class colaboradores extends javax.swing.JInternalFrame {
 
         cbx_perfil_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         cbx_perfil_ccolaboradores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Perfil", "Administrador", "Contabil", "Logistica", "Padrão", "Basico", "Bloqueado" }));
-        cbx_perfil_ccolaboradores.setEnabled(false);
 
         jLabel24.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Login");
 
-        login_ccolaboradores.setEditable(false);
-        login_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         login_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel25.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Confirma Login");
 
-        confir_login_ccolaboradores.setEditable(false);
-        confir_login_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         confir_login_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel26.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Senha");
 
-        senha_ccolaboradores.setEditable(false);
-        senha_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         senha_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel27.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Confirma Senha");
 
-        confi_senha_ccolaboradores.setEditable(false);
-        confi_senha_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         confi_senha_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
         jLabel28.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Email para recuperar Senha");
 
-        email_senha_ccolaboradores.setEditable(false);
-        email_senha_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         email_senha_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
-        obs_ccolaboradores.setEditable(false);
-        obs_ccolaboradores.setBackground(new java.awt.Color(255, 255, 204));
         obs_ccolaboradores.setColumns(20);
         obs_ccolaboradores.setRows(5);
         jScrollPane1.setViewportView(obs_ccolaboradores);
@@ -871,7 +817,7 @@ public class colaboradores extends javax.swing.JInternalFrame {
         ListarId_CBX();
         cbx_busca_id.setEnabled(true);
 
-// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_cbx_busca_idMousePressed
 
     public void ListarNomes_CBX() {
@@ -957,11 +903,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
 
     public void ListarColaboradores_ID() {
 
-        String buscarNome = (String) cbx_busca_nome.getSelectedItem();
+        String buscarID = (String) cbx_busca_id.getSelectedItem();
 
         try {
 
-            if (!buscarNome.equals("")) {
+            if (!buscarID.equals("")) {
 
                 Connection conn = conexao.GeraConexao();
 
@@ -969,7 +915,7 @@ public class colaboradores extends javax.swing.JInternalFrame {
 
                 PreparedStatement comando = conn.prepareStatement(sql);
 
-                comando.setString(1, buscarNome);
+                comando.setString(1, buscarID);
 
                 ResultSet rs = comando.executeQuery();
 
