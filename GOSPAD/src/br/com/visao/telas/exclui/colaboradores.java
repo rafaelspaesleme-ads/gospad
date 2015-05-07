@@ -5,8 +5,20 @@
  */
 package br.com.visao.telas.exclui;
 
+import br.com.conexao.conexao;
+import br.com.controle.colaboradoresControl;
 import br.com.visao.telas.atualiza.*;
 import br.com.visao.telas.cadastro.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,9 +50,9 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbx_busca_nome = new javax.swing.JComboBox();
         jLabel30 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        cbx_busca_id = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -101,6 +113,9 @@ public class colaboradores extends javax.swing.JInternalFrame {
         confi_senha_ccolaboradores = new javax.swing.JPasswordField();
         jLabel28 = new javax.swing.JLabel();
         email_senha_ccolaboradores = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        obs_ccolaboradores = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -116,6 +131,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
         bt_salvar_ccolaboradores.setContentAreaFilled(false);
         bt_salvar_ccolaboradores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_salvar_ccolaboradores.setOpaque(true);
+        bt_salvar_ccolaboradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvar_ccolaboradoresActionPerformed(evt);
+            }
+        });
 
         bt_limpar_ccolaboradores.setBackground(new java.awt.Color(0, 153, 204));
         bt_limpar_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
@@ -125,6 +145,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
         bt_limpar_ccolaboradores.setContentAreaFilled(false);
         bt_limpar_ccolaboradores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_ccolaboradores.setOpaque(true);
+        bt_limpar_ccolaboradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_ccolaboradoresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -162,14 +187,24 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jLabel29.setFont(new java.awt.Font("Khmer UI", 1, 12)); // NOI18N
         jLabel29.setText("Buscar por Nome");
 
-        jComboBox1.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_busca_nome.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_busca_nome.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clique aqui para carregar informações de pesquisa" }));
+        cbx_busca_nome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_busca_nomeMousePressed(evt);
+            }
+        });
 
         jLabel30.setFont(new java.awt.Font("Khmer UI", 1, 12)); // NOI18N
         jLabel30.setText("Buscar por ID");
 
-        jComboBox2.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_busca_id.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_busca_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID" }));
+        cbx_busca_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_busca_idMousePressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setFont(new java.awt.Font("Khmer UI", 1, 12)); // NOI18N
@@ -179,6 +214,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setOpaque(true);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -188,11 +228,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, 0, 256, Short.MAX_VALUE)
+                .addComponent(cbx_busca_nome, 0, 276, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(107, 107, 107))
@@ -203,9 +243,9 @@ public class colaboradores extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_busca_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_busca_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -569,6 +609,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
         bt_confirma_ccolaboradores.setContentAreaFilled(false);
         bt_confirma_ccolaboradores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_confirma_ccolaboradores.setOpaque(true);
+        bt_confirma_ccolaboradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_confirma_ccolaboradoresActionPerformed(evt);
+            }
+        });
 
         cbx_perfil_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         cbx_perfil_ccolaboradores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Contabil", "Logistica", "Padrão", "Basico", "Bloqueado" }));
@@ -603,47 +648,62 @@ public class colaboradores extends javax.swing.JInternalFrame {
 
         email_senha_ccolaboradores.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
 
+        jLabel31.setFont(new java.awt.Font("Khmer UI", 1, 11)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText("Observação");
+
+        obs_ccolaboradores.setColumns(20);
+        obs_ccolaboradores.setRows(5);
+        jScrollPane1.setViewportView(obs_ccolaboradores);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(senha_ccolaboradores))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel24)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(login_ccolaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel25)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(confir_login_ccolaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel26)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(senha_ccolaboradores))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel24)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(login_ccolaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel25)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(confir_login_ccolaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel27)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(confi_senha_ccolaboradores))))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel27)
+                                .addComponent(jLabel23)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(confi_senha_ccolaboradores))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbx_perfil_ccolaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbx_confirma_ccolaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_confirma_ccolaboradores))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(email_senha_ccolaboradores)))
+                                .addComponent(cbx_perfil_ccolaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbx_confirma_ccolaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bt_confirma_ccolaboradores))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(email_senha_ccolaboradores)))))
                 .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -674,7 +734,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(email_senha_ccolaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel31)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jtp_ccolaboradores.addTab("USUARIOS DO SISTEMA", jPanel4);
@@ -714,12 +778,361 @@ public class colaboradores extends javax.swing.JInternalFrame {
         setBounds(0, 0, 778, 511);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bt_salvar_ccolaboradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvar_ccolaboradoresActionPerformed
+
+        ExcluirDados();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_salvar_ccolaboradoresActionPerformed
+
+    private void bt_limpar_ccolaboradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_ccolaboradoresActionPerformed
+
+        LimparCampos();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_ccolaboradoresActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        Buscar();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bt_confirma_ccolaboradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_confirma_ccolaboradoresActionPerformed
+
+        BT_confirma();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_confirma_ccolaboradoresActionPerformed
+
+    private void cbx_busca_nomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_busca_nomeMousePressed
+
+        cbx_busca_id.setEnabled(false);
+        ListarNomes_CBX();
+        cbx_busca_nome.setEnabled(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_nomeMousePressed
+
+    private void cbx_busca_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_busca_idMousePressed
+
+        cbx_busca_nome.setEnabled(false);
+        ListarId_CBX();
+        cbx_busca_id.setEnabled(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_busca_idMousePressed
+
+    public void ListarNomes_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.colaboradores";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_busca_nome.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_busca_nome.addItem(rs.getString("nome"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void ListarId_CBX() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.colaboradores";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+//          cbx_id_pes_usuario.removeAllItems();
+
+            cbx_busca_id.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_busca_id.addItem(rs.getString("id"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void Buscar() {
+
+        boolean nome = cbx_busca_nome.isEnabled();
+        String cbxNome = (String) cbx_busca_nome.getSelectedItem();
+
+        boolean id = cbx_busca_id.isEnabled();
+        String cbxID = (String) cbx_busca_id.getSelectedItem();
+
+        if (nome == true && id == false) {
+            ListarColaboradores_Nome();
+        } else if (nome == true && id == true) {
+            ListarColaboradores_ID();
+        } else if (nome == false && id == true) {
+            ListarColaboradores_ID();
+        } else if (nome == true && id == true && "Clique aqui para carregar informações de pesquisa".equals(cbxNome) && "ID".equals(cbxID)) {
+            JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
+        } else if (nome == true && id == true && "Clique aqui para carregar informações de pesquisa".equals(cbxNome) && !"ID".equals(cbxID)) {
+            ListarColaboradores_ID();
+        } else if (nome == true && id == true && !"Clique aqui para carregar informações de pesquisa".equals(cbxNome) && "ID".equals(cbxID)) {
+            ListarColaboradores_Nome();
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao Carregar Informações!\n\nFavor, insira informações para pesquisa! (Nome e ID).");
+        }
+
+    }
+
+    public void ListarColaboradores_ID() {
+
+        String buscarNome = (String) cbx_busca_nome.getSelectedItem();
+
+        try {
+
+            if (!buscarNome.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.colaboradores WHERE id = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarNome);
+
+                ResultSet rs = comando.executeQuery();
+
+                while (rs.next()) {
+
+                    id_ccolaboradores.setText(rs.getString("id"));
+                    nome_ccolaboradores.setText(rs.getString("nome"));
+                    cbx_sexo_ccolaboradores.addItem(rs.getString("sexo"));
+                    cpf_ccolaboradores.setText(rs.getString("cpf"));
+                    rg_ccolaboradores.setText(rs.getString("rg"));
+                    ctps_ccolaboradores.setText(rs.getString("ctps"));
+                    cnh_ccolaboradores.setText(rs.getString("cnh"));
+
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+
+                    String data_registro = df.format(rs.getDate("validade_cnh"));
+
+                    cnh_vali_ccolaboradores.setText(String.valueOf(data_registro));
+
+                    cnh_tipo_ccolaboradores.setText(rs.getString("tipo_cnh"));
+                    t_sang_ccolaboradores.setText(rs.getString("tipo_sangue"));
+                    tel_ccolaboradores.setText(rs.getString("telefone"));
+                    cel_ccolaboradores.setText(rs.getString("celular"));
+                    outc_ccolaboradores.setText(rs.getString("outro"));
+                    email_ccolaboradores.setText(rs.getString("email"));
+                    end_ccolaboradores.setText(rs.getString("endereco"));
+                    cep_ccolaboradores.setText(rs.getString("cep"));
+                    cidade_ccolaboradores.setText(rs.getString("cidade"));
+                    cbx_uf_ccolaboradores.addItem(rs.getString("uf"));
+                    setor_ccolaboradores.setText(rs.getString("setor"));
+                    cargo_ccolaboradores.setText(rs.getString("cargo"));
+                    funcao_ccolaboradores.setText(rs.getString("funcao"));
+                    cbx_confirma_ccolaboradores.addItem(rs.getString("usuario_sistema"));
+                    cbx_perfil_ccolaboradores.addItem(rs.getString("perfil"));
+                    login_ccolaboradores.setText(rs.getString("login"));
+                    confir_login_ccolaboradores.setText(rs.getString("conf_login"));
+                    senha_ccolaboradores.setText(rs.getString("senha"));
+                    confi_senha_ccolaboradores.setText(rs.getString("conf_senha"));
+                    email_senha_ccolaboradores.setText(rs.getString("email_senha"));
+                    obs_ccolaboradores.setText(rs.getString("observacao"));
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void ListarColaboradores_Nome() {
+
+        String buscarNome = (String) cbx_busca_nome.getSelectedItem();
+
+        try {
+
+            if (!buscarNome.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.colaboradores WHERE nome = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, buscarNome);
+
+                ResultSet rs = comando.executeQuery();
+
+                cbx_confirma_ccolaboradores.removeAllItems();
+                cbx_perfil_ccolaboradores.removeAllItems();
+                cbx_sexo_ccolaboradores.removeAllItems();
+                cbx_uf_ccolaboradores.removeAllItems();
+
+                while (rs.next()) {
+
+                    id_ccolaboradores.setText(rs.getString("id"));
+                    nome_ccolaboradores.setText(rs.getString("nome"));
+                    cbx_sexo_ccolaboradores.addItem(rs.getString("sexo"));
+                    cpf_ccolaboradores.setText(rs.getString("cpf"));
+                    rg_ccolaboradores.setText(rs.getString("rg"));
+                    ctps_ccolaboradores.setText(rs.getString("ctps"));
+                    cnh_ccolaboradores.setText(rs.getString("cnh"));
+
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    df.setLenient(false);
+
+                    String data_registro = df.format(rs.getDate("validade_cnh"));
+
+                    cnh_vali_ccolaboradores.setText(String.valueOf(data_registro));
+
+                    cnh_tipo_ccolaboradores.setText(rs.getString("tipo_cnh"));
+                    t_sang_ccolaboradores.setText(rs.getString("tipo_sangue"));
+                    tel_ccolaboradores.setText(rs.getString("telefone"));
+                    cel_ccolaboradores.setText(rs.getString("celular"));
+                    outc_ccolaboradores.setText(rs.getString("outro"));
+                    email_ccolaboradores.setText(rs.getString("email"));
+                    end_ccolaboradores.setText(rs.getString("endereco"));
+                    cep_ccolaboradores.setText(rs.getString("cep"));
+                    cidade_ccolaboradores.setText(rs.getString("cidade"));
+                    cbx_uf_ccolaboradores.addItem(rs.getString("uf"));
+                    setor_ccolaboradores.setText(rs.getString("setor"));
+                    cargo_ccolaboradores.setText(rs.getString("cargo"));
+                    funcao_ccolaboradores.setText(rs.getString("funcao"));
+                    cbx_confirma_ccolaboradores.addItem(rs.getString("usuario_sistema"));
+
+                    BT_confirma();
+
+                    cbx_perfil_ccolaboradores.addItem(rs.getString("perfil"));
+                    login_ccolaboradores.setText(rs.getString("login"));
+                    confir_login_ccolaboradores.setText(rs.getString("conf_login"));
+                    senha_ccolaboradores.setText(rs.getString("senha"));
+                    confi_senha_ccolaboradores.setText(rs.getString("conf_senha"));
+                    email_senha_ccolaboradores.setText(rs.getString("email_senha"));
+                    obs_ccolaboradores.setText(rs.getString("observacao"));
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void LimparCampos() {
+
+        id_ccolaboradores.setText(null);
+        nome_ccolaboradores.setText(null);
+        cbx_sexo_ccolaboradores.addItem(null);
+        cpf_ccolaboradores.setText(null);
+        rg_ccolaboradores.setText(null);
+        ctps_ccolaboradores.setText(null);
+        cnh_ccolaboradores.setText(null);
+        cnh_vali_ccolaboradores.setText(null);
+        cnh_tipo_ccolaboradores.setText(null);
+        t_sang_ccolaboradores.setText(null);
+        tel_ccolaboradores.setText(null);
+        cel_ccolaboradores.setText(null);
+        outc_ccolaboradores.setText(null);
+        email_ccolaboradores.setText(null);
+        end_ccolaboradores.setText(null);
+        cep_ccolaboradores.setText(null);
+        cidade_ccolaboradores.setText(null);
+        cbx_uf_ccolaboradores.addItem(null);
+        setor_ccolaboradores.setText(null);
+        cargo_ccolaboradores.setText(null);
+        funcao_ccolaboradores.setText(null);
+        cbx_confirma_ccolaboradores.addItem(null);
+        cbx_perfil_ccolaboradores.addItem(null);
+        login_ccolaboradores.setText(null);
+        confir_login_ccolaboradores.setText(null);
+        senha_ccolaboradores.setText(null);
+        confi_senha_ccolaboradores.setText(null);
+        email_senha_ccolaboradores.setText(null);
+        obs_ccolaboradores.setText(null);
+
+    }
+
+    public void BT_confirma() {
+
+        String confirmaUsuario = (String) cbx_confirma_ccolaboradores.getSelectedItem();
+
+        if ("NÃO".equals(confirmaUsuario)) {
+
+            cbx_perfil_ccolaboradores.setSelectedItem("Selecione Perfil");
+            cbx_perfil_ccolaboradores.setEnabled(false);
+            login_ccolaboradores.setEnabled(false);
+            confir_login_ccolaboradores.setEnabled(false);
+            senha_ccolaboradores.setEnabled(false);
+            confi_senha_ccolaboradores.setEnabled(false);
+            email_senha_ccolaboradores.setEnabled(false);
+
+        } else {
+
+            cbx_perfil_ccolaboradores.setSelectedItem("Selecione Perfil");
+            cbx_perfil_ccolaboradores.setEnabled(true);
+            login_ccolaboradores.setEnabled(true);
+            confir_login_ccolaboradores.setEnabled(true);
+            senha_ccolaboradores.setEnabled(true);
+            confi_senha_ccolaboradores.setEnabled(true);
+            email_senha_ccolaboradores.setEnabled(true);
+
+        }
+
+    }
+
+    public void ExcluirDados() {
+
+        int iPodeExcluir = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir?", "Meu cadastro", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (iPodeExcluir == 0) {
+            colaboradoresControl ctrlCt = new colaboradoresControl();
+            ctrlCt.Excluir(Integer.parseInt(id_ccolaboradores.getText()));
+            LimparCampos();
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_confirma_ccolaboradores;
     private javax.swing.JButton bt_limpar_ccolaboradores;
     private javax.swing.JButton bt_salvar_ccolaboradores;
     private javax.swing.JTextField cargo_ccolaboradores;
+    private javax.swing.JComboBox cbx_busca_id;
+    private javax.swing.JComboBox cbx_busca_nome;
     private javax.swing.JComboBox cbx_confirma_ccolaboradores;
     private javax.swing.JComboBox cbx_perfil_ccolaboradores;
     private javax.swing.JComboBox cbx_sexo_ccolaboradores;
@@ -740,8 +1153,6 @@ public class colaboradores extends javax.swing.JInternalFrame {
     private javax.swing.JTextField funcao_ccolaboradores;
     private javax.swing.JTextField id_ccolaboradores;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -766,6 +1177,7 @@ public class colaboradores extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -778,9 +1190,11 @@ public class colaboradores extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jtp_ccolaboradores;
     private javax.swing.JTextField login_ccolaboradores;
     private javax.swing.JTextField nome_ccolaboradores;
+    private javax.swing.JTextArea obs_ccolaboradores;
     private javax.swing.JTextField outc_ccolaboradores;
     private javax.swing.JFormattedTextField rg_ccolaboradores;
     private javax.swing.JPasswordField senha_ccolaboradores;
