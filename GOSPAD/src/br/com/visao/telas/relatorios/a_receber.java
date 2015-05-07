@@ -53,7 +53,7 @@ public class a_receber extends javax.swing.JInternalFrame {
         cbx_situacao = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         cbx_clientes = new javax.swing.JComboBox();
-        id_clientes = new javax.swing.JLabel();
+        id_cliente = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -83,6 +83,11 @@ public class a_receber extends javax.swing.JInternalFrame {
         bt_limpar_ccliente.setContentAreaFilled(false);
         bt_limpar_ccliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_limpar_ccliente.setOpaque(true);
+        bt_limpar_ccliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_cclienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -247,8 +252,8 @@ public class a_receber extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        id_clientes.setVisible(false);
-        id_clientes.setText("iid clientes");
+        id_cliente.setVisible(false);
+        id_cliente.setText("iid clientes");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -259,7 +264,7 @@ public class a_receber extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1305, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(id_clientes))
+                    .addComponent(id_cliente))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -270,7 +275,7 @@ public class a_receber extends javax.swing.JInternalFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(id_clientes)
+                .addComponent(id_cliente)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -349,6 +354,13 @@ public class a_receber extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbx_situacaoMousePressed
 
+    private void bt_limpar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cclienteActionPerformed
+
+        LimparCampos();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_cclienteActionPerformed
+
     public void CarregarInformacao() {
 
         String documento = (String) cbx_doc.getSelectedItem();
@@ -356,7 +368,7 @@ public class a_receber extends javax.swing.JInternalFrame {
         String clientes = (String) cbx_clientes.getSelectedItem();
         String situacao = (String) cbx_situacao.getSelectedItem();
 
-        if ("Selecione Documento".equals(documento) && "ID".equals(id) && "Selecione Fornecedor".equals(clientes) && "Selecione Situação".equals(situacao)) {
+        if ("Selecione Documento".equals(documento) && "ID".equals(id) && "Selecione Clientes".equals(clientes) && "Selecione Situação".equals(situacao)) {
             CarregarTabela();
         } else {
             if (!"Selecione Documento".equals(documento)) {
@@ -409,7 +421,7 @@ public class a_receber extends javax.swing.JInternalFrame {
                                 rs.getString("id"),
                                 rs.getString("documento"),
                                 rs.getString("vl_total").replace(".", ","),
-                                rs.getString("id_clientes"),
+                                rs.getString("id_cliente"),
                                 df.format(rs.getDate("recebimento_dt")),
                                 df2.format(rs.getDate("vencimento_dt")),
                                 df3.format(rs.getDate("lancamento_dt")),
@@ -471,7 +483,7 @@ public class a_receber extends javax.swing.JInternalFrame {
                                 rs.getString("id"),
                                 rs.getString("documento"),
                                 rs.getString("vl_total").replace(".", ","),
-                                rs.getString("id_clientes"),
+                                rs.getString("id_cliente"),
                                 df.format(rs.getDate("recebimento_dt")),
                                 df2.format(rs.getDate("vencimento_dt")),
                                 df3.format(rs.getDate("lancamento_dt")),
@@ -498,7 +510,7 @@ public class a_receber extends javax.swing.JInternalFrame {
 
     public void CarregarFornecedor() {
 
-        String buscarSit = (String) id_clientes.getText();
+        String buscarSit = (String) id_cliente.getText();
 
         try {
 
@@ -506,7 +518,7 @@ public class a_receber extends javax.swing.JInternalFrame {
 
                 Connection conn = conexao.GeraConexao();
 
-                String sql = "SELECT * FROM GOSPAD_BD.a_receber WHERE id_clientes = ?";
+                String sql = "SELECT * FROM GOSPAD_BD.a_receber WHERE id_cliente = ?";
 
                 PreparedStatement comando = conn.prepareStatement(sql);
 
@@ -533,7 +545,7 @@ public class a_receber extends javax.swing.JInternalFrame {
                                 rs.getString("id"),
                                 rs.getString("documento"),
                                 rs.getString("vl_total").replace(".", ","),
-                                rs.getString("id_clientes"),
+                                rs.getString("id_cliente"),
                                 df.format(rs.getDate("recebimento_dt")),
                                 df2.format(rs.getDate("vencimento_dt")),
                                 df3.format(rs.getDate("lancamento_dt")),
@@ -595,7 +607,7 @@ public class a_receber extends javax.swing.JInternalFrame {
                                 rs.getString("id"),
                                 rs.getString("documento"),
                                 rs.getString("vl_total").replace(".", ","),
-                                rs.getString("id_clientes"),
+                                rs.getString("id_cliente"),
                                 df.format(rs.getDate("recebimento_dt")),
                                 df2.format(rs.getDate("vencimento_dt")),
                                 df3.format(rs.getDate("lancamento_dt")),
@@ -622,7 +634,7 @@ public class a_receber extends javax.swing.JInternalFrame {
 
     public void CarregarIDFornecedor() {
 
-        String buscarIDF = (String) id_clientes.getText();
+        String buscarIDF = (String) id_cliente.getText();
 
         try {
 
@@ -686,7 +698,7 @@ public class a_receber extends javax.swing.JInternalFrame {
                             rs.getString("id"),
                             rs.getString("documento"),
                             rs.getString("vl_total").replace(".", ","),
-                            rs.getString("id_clientes"),
+                            rs.getString("id_cliente"),
                             df.format(rs.getDate("recebimento_dt")),
                             df2.format(rs.getDate("vencimento_dt")),
                             df3.format(rs.getDate("lancamento_dt")),
@@ -770,11 +782,11 @@ public class a_receber extends javax.swing.JInternalFrame {
 
             ResultSet rs = comando.executeQuery();
 
-            id_clientes.setText(null);
+            id_cliente.setText(null);
 
             while (rs.next()) {
 
-                id_clientes.setText(rs.getString("id_clientes"));
+                id_cliente.setText(rs.getString("id_cliente"));
 
             }
 
@@ -829,7 +841,7 @@ public class a_receber extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cbx_doc;
     private javax.swing.JComboBox cbx_id;
     private javax.swing.JComboBox cbx_situacao;
-    private javax.swing.JLabel id_clientes;
+    private javax.swing.JLabel id_cliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
