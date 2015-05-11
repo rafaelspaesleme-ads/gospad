@@ -97,7 +97,7 @@ public class clientes extends javax.swing.JInternalFrame {
                 .addComponent(bt_salvar_ccliente)
                 .addGap(18, 18, 18)
                 .addComponent(bt_limpar_ccliente)
-                .addContainerGap(523, Short.MAX_VALUE))
+                .addContainerGap(843, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,7 +279,7 @@ public class clientes extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1053, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,8 +318,8 @@ public class clientes extends javax.swing.JInternalFrame {
 
         CBX_id();
         cbx_Nome.setEnabled(false);
-        cbx_id.setEnabled(false);
-        cbx_CPF.setEnabled(true);
+        cbx_id.setEnabled(true);
+        cbx_CPF.setEnabled(false);
         cbx_Cidade.setEnabled(false);
 
         // TODO add your handling code here:
@@ -329,8 +329,8 @@ public class clientes extends javax.swing.JInternalFrame {
 
         CBX_CPF();
         cbx_Nome.setEnabled(false);
-        cbx_id.setEnabled(true);
-        cbx_CPF.setEnabled(false);
+        cbx_id.setEnabled(false);
+        cbx_CPF.setEnabled(true);
         cbx_Cidade.setEnabled(false);
 
 // TODO add your handling code here:
