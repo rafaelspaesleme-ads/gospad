@@ -97,7 +97,7 @@ public class clientes extends javax.swing.JInternalFrame {
                 .addComponent(bt_salvar_ccliente)
                 .addGap(18, 18, 18)
                 .addComponent(bt_limpar_ccliente)
-                .addContainerGap(843, Short.MAX_VALUE))
+                .addContainerGap(524, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,7 +279,7 @@ public class clientes extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1053, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,13 +376,13 @@ public class clientes extends javax.swing.JInternalFrame {
         if ("Selecione Nome".equals(documento) && "ID".equals(id) && "Selecione CPF".equals(clientes) && "Selecione Cidade".equals(situacao)) {
             CarregarTabela();
         } else {
-            if (!"Selecione Documento".equals(documento)) {
+            if (!"Selecione Nome".equals(documento)) {
                 CarregarNome();
             } else if (!"ID".equals(id)) {
                 CarregarID();
-            } else if (!"Selecione Clientes".equals(clientes)) {
+            } else if (!"Selecione CPF".equals(clientes)) {
                 CarregarCPF();
-            } else if (!"Selecione Situação".equals(situacao)) {
+            } else if (!"Selecione Cidade".equals(situacao)) {
                 CarregarCidade();
             }
         }
@@ -748,11 +748,11 @@ public class clientes extends javax.swing.JInternalFrame {
 
             ResultSet rs = comando.executeQuery();
 
-            cbx_Cidade.removeAllItems();
+            cbx_CPF.removeAllItems();
 
             while (rs.next()) {
 
-                cbx_Cidade.addItem(rs.getString("cpf"));
+                cbx_CPF.addItem(rs.getString("cpf"));
 
             }
 
