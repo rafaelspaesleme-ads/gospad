@@ -299,7 +299,7 @@ public class clientes extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         CarregarInformacao();
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -350,7 +350,7 @@ public class clientes extends javax.swing.JInternalFrame {
     private void bt_limpar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cclienteActionPerformed
 
         LimparCampos();
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_limpar_cclienteActionPerformed
 
@@ -360,12 +360,12 @@ public class clientes extends javax.swing.JInternalFrame {
         cbx_Cidade.removeAllItems();
         cbx_id.removeAllItems();
         cbx_Nome.removeAllItems();
-        
+
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
 
     }
-    
+
     public void CarregarInformacao() {
 
         String nome = (String) cbx_Nome.getSelectedItem();
@@ -373,16 +373,21 @@ public class clientes extends javax.swing.JInternalFrame {
         String cpf = (String) cbx_CPF.getSelectedItem();
         String cidade = (String) cbx_Cidade.getSelectedItem();
 
+        boolean nome2 = cbx_Nome.isEnabled();
+        boolean id2 = cbx_id.isEnabled();
+        boolean cpf2 = cbx_CPF.isEnabled();
+        boolean cid = cbx_Cidade.isEnabled();
+
         if ("Selecione Nome".equals(nome) && "ID".equals(id) && "Selecione CPF".equals(cpf) && "Selecione Cidade".equals(cidade)) {
             CarregarTabela();
         } else {
-            if (!"Selecione Nome".equals(nome)) {
+            if (!"Selecione Nome".equals(nome) && id2 == false && cpf2 == false && cid == false) {
                 CarregarNome();
-            } else if (!"ID".equals(id)) {
+            } else if (!"ID".equals(id) && nome2 == false && cpf2 == false && cid == false) {
                 CarregarID();
-            } else if (!"Selecione CPF".equals(cpf)) {
+            } else if (!"Selecione CPF".equals(cpf) && id2 == false && nome2 == false && cid == false) {
                 CarregarCPF();
-            } else if (!"Selecione Cidade".equals(cidade)) {
+            } else if (!"Selecione Cidade".equals(cidade) && id2 == false && cpf2 == false && nome2 == false) {
                 CarregarCidade();
             } else {
                 JOptionPane.showMessageDialog(null, "Erro de pesquisa, reinicie esta Janela!");

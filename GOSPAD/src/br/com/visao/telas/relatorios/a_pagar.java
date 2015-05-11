@@ -369,16 +369,21 @@ public class a_pagar extends javax.swing.JInternalFrame {
         String fornecedor = (String) cbx_fornecedor.getSelectedItem();
         String situacao = (String) cbx_situacao.getSelectedItem();
 
-        if ("Selecione Documento".equals(documento) && "ID".equals(id) && "Selecione Fornecedor".equals(fornecedor) && "Selecione Situação".equals(situacao)) {
+        boolean doc = cbx_doc.isEnabled();
+        boolean id2 = cbx_id.isEnabled();
+        boolean cli = cbx_fornecedor.isEnabled();
+        boolean sit = cbx_situacao.isEnabled();
+
+        if ("Selecione Documento".equals(documento) && "ID".equals(id) && "Selecione Clientes".equals(fornecedor) && "Selecione Situação".equals(situacao)) {
             CarregarTabela();
         } else {
-            if (!"Selecione Documento".equals(documento)) {
+            if (!"Selecione Documento".equals(documento) && id2 == false && cli == false && sit == false) {
                 CarregarDoc();
-            } else if (!"ID".equals(id)) {
+            } else if (!"ID".equals(id) && doc == false && cli == false && sit == false) {
                 CarregarID();
-            } else if (!"Selecione Fornecedor".equals(fornecedor)) {
+            } else if (!"Selecione Clientes".equals(fornecedor) && id2 == false && doc == false && sit == false) {
                 CarregarFornecedor();
-            } else if (!"Selecione Situação".equals(situacao)) {
+            } else if (!"Selecione Situação".equals(situacao)  && id2 == false && cli == false && doc == false) {
                 CarregarSituacao();
             } else {
                 JOptionPane.showMessageDialog(null, "Erro de pesquisa, reinicie esta Janela!");

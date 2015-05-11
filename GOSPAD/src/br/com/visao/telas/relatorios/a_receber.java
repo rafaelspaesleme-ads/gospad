@@ -357,7 +357,7 @@ public class a_receber extends javax.swing.JInternalFrame {
     private void bt_limpar_cclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_cclienteActionPerformed
 
         LimparCampos();
-        
+
 // TODO add your handling code here:
     }//GEN-LAST:event_bt_limpar_cclienteActionPerformed
 
@@ -368,16 +368,21 @@ public class a_receber extends javax.swing.JInternalFrame {
         String clientes = (String) cbx_clientes.getSelectedItem();
         String situacao = (String) cbx_situacao.getSelectedItem();
 
+        boolean doc = cbx_doc.isEnabled();
+        boolean id2 = cbx_id.isEnabled();
+        boolean cli = cbx_clientes.isEnabled();
+        boolean sit = cbx_situacao.isEnabled();
+
         if ("Selecione Documento".equals(documento) && "ID".equals(id) && "Selecione Clientes".equals(clientes) && "Selecione Situação".equals(situacao)) {
             CarregarTabela();
         } else {
-            if (!"Selecione Documento".equals(documento)) {
+            if (!"Selecione Documento".equals(documento) && id2 == false && cli == false && sit == false) {
                 CarregarDoc();
-            } else if (!"ID".equals(id)) {
+            } else if (!"ID".equals(id) && doc == false && cli == false && sit == false) {
                 CarregarID();
-            } else if (!"Selecione Clientes".equals(clientes)) {
+            } else if (!"Selecione Clientes".equals(clientes) && id2 == false && doc == false && sit == false) {
                 CarregarClientes();
-            } else if (!"Selecione Situação".equals(situacao)) {
+            } else if (!"Selecione Situação".equals(situacao)  && id2 == false && cli == false && doc == false) {
                 CarregarSituacao();
             } else {
                 JOptionPane.showMessageDialog(null, "Erro de pesquisa, reinicie esta Janela!");
@@ -834,7 +839,7 @@ public class a_receber extends javax.swing.JInternalFrame {
         cbx_doc.removeAllItems();
         cbx_id.removeAllItems();
         cbx_situacao.removeAllItems();
-        
+
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
 
