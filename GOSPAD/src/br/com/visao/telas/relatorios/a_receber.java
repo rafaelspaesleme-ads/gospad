@@ -828,6 +828,11 @@ public class a_receber extends javax.swing.JInternalFrame {
 
     public void LimparCampos() {
 
+        cbx_clientes.removeAllItems();
+        cbx_doc.removeAllItems();
+        cbx_id.removeAllItems();
+        cbx_situacao.removeAllItems();
+        
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
 
