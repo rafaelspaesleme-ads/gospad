@@ -375,8 +375,8 @@ public class a_receber extends javax.swing.JInternalFrame {
                 CarregarDoc();
             } else if (!"ID".equals(id)) {
                 CarregarID();
-            } else if (!"Selecione Fornecedor".equals(clientes)) {
-                CarregarFornecedor();
+            } else if (!"Selecione Clientes".equals(clientes)) {
+                CarregarClientes();
             } else if (!"Selecione Situação".equals(situacao)) {
                 CarregarSituacao();
             }
@@ -508,7 +508,7 @@ public class a_receber extends javax.swing.JInternalFrame {
 
     }
 
-    public void CarregarFornecedor() {
+    public void CarregarClientes() {
 
         String buscarSit = (String) id_cliente.getText();
 
