@@ -380,6 +380,8 @@ public class a_pagar extends javax.swing.JInternalFrame {
                 CarregarFornecedor();
             } else if (!"Selecione Situação".equals(situacao)) {
                 CarregarSituacao();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro de pesquisa, reinicie esta Janela!");
             }
         }
 

@@ -379,6 +379,8 @@ public class a_receber extends javax.swing.JInternalFrame {
                 CarregarClientes();
             } else if (!"Selecione Situação".equals(situacao)) {
                 CarregarSituacao();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro de pesquisa, reinicie esta Janela!");
             }
         }
 

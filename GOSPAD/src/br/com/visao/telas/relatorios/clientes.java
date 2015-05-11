@@ -368,22 +368,24 @@ public class clientes extends javax.swing.JInternalFrame {
     
     public void CarregarInformacao() {
 
-        String documento = (String) cbx_Nome.getSelectedItem();
+        String nome = (String) cbx_Nome.getSelectedItem();
         String id = (String) cbx_id.getSelectedItem();
-        String clientes = (String) cbx_CPF.getSelectedItem();
-        String situacao = (String) cbx_Cidade.getSelectedItem();
+        String cpf = (String) cbx_CPF.getSelectedItem();
+        String cidade = (String) cbx_Cidade.getSelectedItem();
 
-        if ("Selecione Nome".equals(documento) && "ID".equals(id) && "Selecione CPF".equals(clientes) && "Selecione Cidade".equals(situacao)) {
+        if ("Selecione Nome".equals(nome) && "ID".equals(id) && "Selecione CPF".equals(cpf) && "Selecione Cidade".equals(cidade)) {
             CarregarTabela();
         } else {
-            if (!"Selecione Nome".equals(documento)) {
+            if (!"Selecione Nome".equals(nome)) {
                 CarregarNome();
             } else if (!"ID".equals(id)) {
                 CarregarID();
-            } else if (!"Selecione CPF".equals(clientes)) {
+            } else if (!"Selecione CPF".equals(cpf)) {
                 CarregarCPF();
-            } else if (!"Selecione Cidade".equals(situacao)) {
+            } else if (!"Selecione Cidade".equals(cidade)) {
                 CarregarCidade();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro de pesquisa, reinicie esta Janela!");
             }
         }
 
