@@ -5,6 +5,15 @@
  */
 package br.com.visao.telas.relatorios;
 
+import br.com.conexao.conexao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Rafael Paes Leme
@@ -36,14 +45,14 @@ public class produtos extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbx_Nome = new javax.swing.JComboBox();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        cbx_id = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
+        cbx_com = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox();
+        cbx_tipo = new javax.swing.JComboBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -83,7 +92,7 @@ public class produtos extends javax.swing.JInternalFrame {
                 .addComponent(bt_salvar_ccliente)
                 .addGap(18, 18, 18)
                 .addComponent(bt_limpar_ccliente)
-                .addContainerGap(503, Short.MAX_VALUE))
+                .addContainerGap(498, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,14 +149,24 @@ public class produtos extends javax.swing.JInternalFrame {
         jLabel17.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel17.setText("Buscar por Nome");
 
-        jComboBox1.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_Nome.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_Nome.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Nome" }));
+        cbx_Nome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_NomeMousePressed(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel18.setText("Buscar por ID");
 
-        jComboBox2.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_id.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID" }));
+        cbx_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_idMousePressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setFont(new java.awt.Font("Khmer UI", 1, 12)); // NOI18N
@@ -166,14 +185,24 @@ public class produtos extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel1.setText("Buscar por Comprador");
 
-        jComboBox3.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_com.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_com.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Comprador" }));
+        cbx_com.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_comMousePressed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
         jLabel2.setText("Buscar por Tipo");
 
-        jComboBox4.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_tipo.setFont(new java.awt.Font("Khmer UI", 0, 11)); // NOI18N
+        cbx_tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Tipo" }));
+        cbx_tipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_tipoMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -183,19 +212,19 @@ public class produtos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbx_com, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -206,14 +235,14 @@ public class produtos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_com, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbx_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -245,7 +274,7 @@ public class produtos extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,18 +292,465 @@ public class produtos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bt_salvar_cclienteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+        CarregarInformacao();
+
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cbx_NomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_NomeMousePressed
+
+        CBX_Nome();
+        cbx_Nome.setEnabled(true);
+        cbx_id.setEnabled(false);
+        cbx_tipo.setEnabled(false);
+        cbx_com.setEnabled(false);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_NomeMousePressed
+
+    private void cbx_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_idMousePressed
+
+        CBX_id();
+        cbx_Nome.setEnabled(false);
+        cbx_id.setEnabled(true);
+        cbx_tipo.setEnabled(false);
+        cbx_com.setEnabled(false);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_idMousePressed
+
+    private void cbx_tipoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_tipoMousePressed
+
+        CBX_TIPO();
+        cbx_Nome.setEnabled(false);
+        cbx_id.setEnabled(false);
+        cbx_tipo.setEnabled(true);
+        cbx_com.setEnabled(false);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_tipoMousePressed
+
+    private void cbx_comMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_comMousePressed
+
+        CBX_COMP();
+        cbx_Nome.setEnabled(false);
+        cbx_id.setEnabled(false);
+        cbx_tipo.setEnabled(false);
+        cbx_com.setEnabled(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbx_comMousePressed
+
+    public void LimparCampos() {
+
+        cbx_Nome.removeAllItems();
+        cbx_id.removeAllItems();
+        cbx_tipo.removeAllItems();
+        cbx_com.removeAllItems();
+
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+
+    }
+
+    public void CarregarInformacao() {
+
+        String nome = (String) cbx_Nome.getSelectedItem();
+        String id = (String) cbx_id.getSelectedItem();
+        String tipo = (String) cbx_tipo.getSelectedItem();
+        String comp = (String) cbx_com.getSelectedItem();
+
+        boolean nome2 = cbx_Nome.isEnabled();
+        boolean id2 = cbx_id.isEnabled();
+        boolean tipo2 = cbx_tipo.isEnabled();
+        boolean comp2 = cbx_com.isEnabled();
+
+        if ("Selecione Nome".equals(nome) && "ID".equals(id) && "Selecione Tipo".equals(tipo) && "Selecione Comprador".equals(comp)) {
+            CarregarTabela();
+        } else {
+            if (!"Selecione Nome".equals(nome) && id2 == false && tipo2 == false && comp2 == false) {
+                CarregarNome();
+            } else if (!"ID".equals(id) && nome2 == false && tipo2 == false && comp2 == false) {
+                CarregarID();
+            } else if (!"Selecione Tipo".equals(tipo) && id2 == false && nome2 == false && comp2 == false) {
+                CarregarTipo();
+            } else if (!"Selecione Comprador".equals(comp) && id2 == false && tipo2 == false && nome2 == false) {
+                CarregarComprador();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro de pesquisa, reinicie esta Janela!");
+            }
+        }
+
+    }
+
+    public void CarregarTabela() {
+        try {
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.produtos";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            modelo.setNumRows(0);
+
+            while (rs.next()) {
+
+                modelo.addRow(
+                        new Object[]{
+                            rs.getString("id"),
+                            rs.getString("nome"),
+                            rs.getString("compra"),
+                            rs.getString("venda"),
+                            rs.getString("quantidade"),
+                            rs.getString("tipo"),
+                            rs.getString("fornecedor"),
+                            rs.getString("id_fornecedor"),
+                            rs.getString("comprador"),
+                            rs.getString("id_comprador"),
+                            rs.getString("observacao")
+
+                        }
+                );
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Problemas ao tentar conectar com o banco de dados: " + e);
+        }
+    }
+
+    public void CarregarNome() {
+
+        String btipocarNome = (String) cbx_Nome.getSelectedItem();
+
+        try {
+
+            if (!btipocarNome.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.produtos WHERE nome = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, btipocarNome);
+
+                ResultSet rs = comando.executeQuery();
+
+                DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+                modelo.setNumRows(0);
+
+                while (rs.next()) {
+
+                    modelo.addRow(
+                            new Object[]{
+                                rs.getString("id"),
+                                rs.getString("nome"),
+                                rs.getString("compra"),
+                                rs.getString("venda"),
+                                rs.getString("quantidade"),
+                                rs.getString("tipo"),
+                                rs.getString("fornecedor"),
+                                rs.getString("id_fornecedor"),
+                                rs.getString("comprador"),
+                                rs.getString("id_comprador"),
+                                rs.getString("observacao")
+
+                            }
+                    );
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void CarregarID() {
+
+        String btipocarID = (String) cbx_id.getSelectedItem();
+
+        try {
+
+            if (!btipocarID.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.produtos WHERE id = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, btipocarID);
+
+                ResultSet rs = comando.executeQuery();
+
+                DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+                modelo.setNumRows(0);
+
+                while (rs.next()) {
+
+                    modelo.addRow(
+                            new Object[]{
+                                rs.getString("id"),
+                                rs.getString("nome"),
+                                rs.getString("compra"),
+                                rs.getString("venda"),
+                                rs.getString("quantidade"),
+                                rs.getString("tipo"),
+                                rs.getString("fornecedor"),
+                                rs.getString("id_fornecedor"),
+                                rs.getString("comprador"),
+                                rs.getString("id_comprador"),
+                                rs.getString("observacao")
+
+                            }
+                    );
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void CarregarTipo() {
+
+        String btipocarCidade = (String) cbx_tipo.getSelectedItem();
+
+        try {
+
+            if (!btipocarCidade.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.produtos WHERE tipo = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, btipocarCidade);
+
+                ResultSet rs = comando.executeQuery();
+
+                DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+                modelo.setNumRows(0);
+
+                while (rs.next()) {
+
+                    modelo.addRow(
+                            new Object[]{
+                                rs.getString("id"),
+                                rs.getString("nome"),
+                                rs.getString("compra"),
+                                rs.getString("venda"),
+                                rs.getString("quantidade"),
+                                rs.getString("tipo"),
+                                rs.getString("fornecedor"),
+                                rs.getString("id_fornecedor"),
+                                rs.getString("comprador"),
+                                rs.getString("id_comprador"),
+                                rs.getString("observacao")
+
+                            }
+                    );
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void CarregarComprador() {
+
+        String btipocarCidade = (String) cbx_com.getSelectedItem();
+
+        try {
+
+            if (!btipocarCidade.equals("")) {
+
+                Connection conn = conexao.GeraConexao();
+
+                String sql = "SELECT * FROM GOSPAD_BD.produtos WHERE comp = ?";
+
+                PreparedStatement comando = conn.prepareStatement(sql);
+
+                comando.setString(1, btipocarCidade);
+
+                ResultSet rs = comando.executeQuery();
+
+                DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+                modelo.setNumRows(0);
+
+                while (rs.next()) {
+
+                    modelo.addRow(
+                            new Object[]{
+                                rs.getString("id"),
+                                rs.getString("nome"),
+                                rs.getString("compra"),
+                                rs.getString("venda"),
+                                rs.getString("quantidade"),
+                                rs.getString("tipo"),
+                                rs.getString("fornecedor"),
+                                rs.getString("id_fornecedor"),
+                                rs.getString("comprador"),
+                                rs.getString("id_comprador"),
+                                rs.getString("observacao")
+
+                            }
+                    );
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um nome!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void CBX_COMP() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.produtos";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_com.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_com.addItem(rs.getString("comprador"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void CBX_TIPO() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.produtos";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_tipo.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_tipo.addItem(rs.getString("tipo"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void CBX_id() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.produtos";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_id.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_id.addItem(rs.getString("id"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void CBX_Nome() {
+
+        try {
+
+            Connection conn = conexao.GeraConexao();
+
+            String sql = "SELECT * FROM GOSPAD_BD.produtos";
+
+            PreparedStatement comando = conn.prepareStatement(sql);
+
+            ResultSet rs = comando.executeQuery();
+
+            cbx_Nome.removeAllItems();
+
+            while (rs.next()) {
+
+                cbx_Nome.addItem(rs.getString("nome"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_limpar_ccliente;
     private javax.swing.JButton bt_salvar_ccliente;
+    private javax.swing.JComboBox cbx_Nome;
+    private javax.swing.JComboBox cbx_com;
+    private javax.swing.JComboBox cbx_id;
+    private javax.swing.JComboBox cbx_tipo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
